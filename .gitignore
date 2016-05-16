@@ -1,0 +1,5 @@
+.cordova/
+.settings/
+merges/
+plugins/
+.project
