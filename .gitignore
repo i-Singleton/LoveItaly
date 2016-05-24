@@ -1,6 +1,7 @@
 .cordova/
 .settings/
 merges/
+platform/
 plugins/
 .project
 .tern-project
