@@ -1,14 +1,42 @@
-<header class="bar bar-nav">
-	<h1 class="title">Title</h1>
-</header>
+<div id="headbar" class="navbar-fixed">
+	<nav>		
+		<div class="nav-wrapper green darken-2">
+			
+			<a id="titolo" class="brand-logo"></a>
+			
+			<ul class="left">
+				<li> 
+					<a id="menu" data-activates="mobile-demo" class="button-collapse waves-effect waves-green">
+						<i class="material-icons">&#xE5D2;</i>
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="right hide-on-med-and-down">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#categorie">Categorie</a></li>
+				<li><a href="#aziende">Aziende</a></li>
+				<li><a href="#profilo">Profilo</a></li>
+				<li><a href="#ordini">Ordini</a></li>
+			</ul>
+			
+			<ul class="right">
+				<li><a id="cerca" href="#cerca" class="waves-effect waves-green"><i class="material-icons">&#xE8B6;</i></a></li>
+				<li><a id="carrello" href="#carrello" class="waves-effect waves-green"><i class="material-icons">&#xE8CC;</i></a></li>
+			</ul>
+		</div>		
+	</nav>
+</div>
 
-<!-- <nav class="bar bar-tab">
-	<a class="tab-item active" id="nav1"> Nav1 </a> 
-	<a class="tab-item" id="nav2"> Nav2 </a>
-</nav> -->
 
-<!-- <nav id="navigation">
-    <div id="nav1" class="i-4">nav 1</div>
-    <div id="nav2" class="i-8">nav 2</div>
-</nav> -->
-<div id="content" class="content">asd</div>
+<div id="content" class="content">
+	<ul class="side-nav" id="mobile-demo">
+		<li><a class="waves-effect" href="#home"><i class="material-icons md-dark left">&#xE88A;</i>Home</a></li>
+		<li><a class="waves-effect" href="#categorie"><i class="material-icons md-dark left">&#xE896;</i>Categorie</a></li>
+		<li><a class="waves-effect" href="#aziende"><i class="material-icons md-dark left">&#xE7FB;</i>Aziende</a></li>
+		<li class="border-top"><a class="waves-effect" href="#profilo"><i class="material-icons md-dark left">&#xE7FD;</i>Profilo</a></li>
+		<li><a class="waves-effect" href="#ordini"><i class="material-icons md-dark left">&#xE558;</i>Ordini</a></li>
+	</ul>
+	<div class="drag-target"></div>
+	<div id="sidenav-overlay"></div>
+</div>
