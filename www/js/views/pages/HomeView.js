@@ -1,7 +1,9 @@
 define(function(require) {
 
+	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var ProdottoCardView = require("views/ProdottoCardView");
 
 	var HomeView = Utils.Page.extend({
 
@@ -13,6 +15,15 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.home;
 			document.getElementById('titolo').innerHTML = "Home";
+			$(document).ready(function() {
+				// in base al model che associo poi alla View, limito il ciclo
+				for (i = 0; i < 3; i++) {
+					var prodottoSX = new ProdottoCardView();
+					var prodottoDX = new ProdottoCardView();
+					$("#home-col-sx").append(prodottoSX.getTemplate());
+					$("#home-col-dx").append(prodottoDX.getTemplate());
+				}
+			});
 		},
 
 		// id : "home",
@@ -24,6 +35,7 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template());
+			// this.el.innerHTML = this.template({});
 			return this;
 		},
 

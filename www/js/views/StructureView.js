@@ -13,6 +13,7 @@ define(function(require) {
 		events : {
 			"click #menu" : "menu",
 			"swipeRight #content" : "menu",
+			// "swipeRight .drag-target" : "menu",
 			"swipeLeft #content" : "chiudiMenu",
 			"click #sidenav-overlay" : "chiudiMenu",
 			"click #cerca" : "chiudiMenu",

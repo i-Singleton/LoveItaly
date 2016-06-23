@@ -143,7 +143,6 @@ body {
 #headbar a {
 	font-size: 20px;
 	font-weight: bold;
-	border-radius: 50%;
 }
 /* annullo il comportamento hover */
 #headbar a:hover {
@@ -194,6 +193,11 @@ body {
 .drag-target {
 	display: none;
 }
+/* .drag-target {
+	left: 0;
+	position: absolute;
+	width: 25px;
+} */
 
 /* #cerca {
 	padding: 0 8px 0 15px;
@@ -202,3 +206,22 @@ body {
 #carrello {
 	padding: 0 15px 0 8px;
 } */
+
+/* HOME da qui in poi */
+/* cards */
+.card .card-content {
+	padding: 15px;
+}
+
+.card .card-content .card-title {
+	line-height: unset;
+}
+
+.card .card-title {
+	font-size: unset;
+	/* font-weight: bold; */
+}
+
+#main {
+	padding: 0 0 50px;
+}
