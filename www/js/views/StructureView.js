@@ -68,39 +68,39 @@ define(function(require) {
 
 		menu : function(event) {
 			// // ottengo la coordinata X della matrice di trasformazione
-			// var str = $('#mobile-demo').css('transform');
-			// var res = String(str.split("matrix("));
-			// res = String(res.split(")"));
-			// res = res.split(",");
-			// res = res[5];
+			var str = $('#mobile-demo').css('transform');
+			var res = String(str.split("matrix("));
+			res = String(res.split(")"));
+			res = res.split(",");
+			res = res[5];
 			// se il menu e' chiuso, aprilo
-			// if (res == -240) {
-			if ($('#mobile-demo').css('left') == '0px') {
-				// $('.button-collapse').sideNav('show');
-				$('#mobile-demo').animate({
-					left : '240px'
-				});
-				$('#sidenav-overlay').fadeIn();
+			if (res == -240) {
+//			if ($('#mobile-demo').css('left') == '0px') {
+				$('.button-collapse').sideNav('show');
+//				$('#mobile-demo').animate({
+//					left : '240px'
+//				});
+//				$('#sidenav-overlay').fadeIn();
 			} else if (event.type != 'swipeRight') {
-				// $('.button-collapse').sideNav('hide');
+				$('.button-collapse').sideNav('hide');
 				// se il menu e' aperto tramite menu, chiudilo
 				// serve per prevenire il caso di chiusura tramite swipe a
 				// destra
-				$('#mobile-demo').animate({
-					left : '0px'
-				});
-				$('#sidenav-overlay').fadeOut();
+//				$('#mobile-demo').animate({
+//					left : '0px'
+//				});
+//				$('#sidenav-overlay').fadeOut();
 			}
 		},
 
 		chiudiMenu : function(event) {
-			// $('.button-collapse').sideNav('hide');
-			if ($('#mobile-demo').css('left') != '0px') {
-				$('#mobile-demo').animate({
-					left : '0px'
-				});
-				$('#sidenav-overlay').fadeOut();
-			}
+			$('.button-collapse').sideNav('hide');
+//			if ($('#mobile-demo').css('left') != '0px') {
+//				$('#mobile-demo').animate({
+//					left : '0px'
+//				});
+//				$('#sidenav-overlay').fadeOut();
+//			}
 		}
 
 	});

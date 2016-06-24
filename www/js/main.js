@@ -74,7 +74,7 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 
 		require([ 'zepto' ]);
 		require([ 'materialize' ], function(){
-			//$('.button-collapse').sideNav();
+			$('.button-collapse').sideNav();
 			Waves.displayEffect();
 		});
 

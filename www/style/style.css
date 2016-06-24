@@ -162,15 +162,16 @@ body {
 }
 /* menu laterale */
 #mobile-demo {
-	position: absolute;
+	/* position: absolute;
 	height: 100%;
-	transform: translateX(-100%);
+	transform: translateX(-100%); */
 }
 /* menu laterale link */
 #mobile-demo a {
 	color: #707070;
 	padding: 0 0 0 15px;
 	font-weight: bold;
+	font-size: unset;
 }
 /* abilito il comportamento active quanto tappo */
 /* #mobile-demo a:active {
@@ -187,11 +188,13 @@ body {
 }
 /* div che si scurisce per effetto fading del menu */
 #sidenav-overlay {
-	display: none;
+	/* display: none; */
+	z-index: 998;
 }
 /* classe per div che si scurisce per effetto fading del menu */
 .drag-target {
-	display: none;
+	/* display: none; */
+	z-index: 999;
 }
 /* .drag-target {
 	left: 0;
@@ -223,5 +226,5 @@ body {
 }
 
 #main {
-	padding: 0 0 50px;
+	/* padding: 0 0 50px; */
 }
