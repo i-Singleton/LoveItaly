@@ -11,14 +11,14 @@ define(function(require) {
 		id : "main",
 
 		events : {
-			"click #menu" : "menu",
-			"swipeRight #content" : "menu",
-			// "swipeRight .drag-target" : "menu",
-			"swipeLeft #content" : "chiudiMenu",
-			"click #sidenav-overlay" : "chiudiMenu",
-			"click #cerca" : "chiudiMenu",
-			"click #carrello" : "chiudiMenu",
-			"click #mobile-demo a" : "chiudiMenu",
+//			"click #menu" : "menu",
+//			"swipeRight #content" : "menu",
+//			// "swipeRight .drag-target" : "menu",
+//			"swipeLeft #content" : "chiudiMenu",
+//			"click #sidenav-overlay" : "chiudiMenu",
+//			"click #cerca" : "chiudiMenu",
+//			"click #carrello" : "chiudiMenu",
+//			"click #mobile-demo a" : "chiudiMenu",
 		},
 
 		initialize : function(options) {
@@ -66,42 +66,52 @@ define(function(require) {
 		// });
 		// },
 
-		menu : function(event) {
-			// // ottengo la coordinata X della matrice di trasformazione
-			var str = $('#mobile-demo').css('transform');
-			var res = String(str.split("matrix("));
-			res = String(res.split(")"));
-			res = res.split(",");
-			res = res[5];
-			// se il menu e' chiuso, aprilo
-			if (res == -240) {
-//			if ($('#mobile-demo').css('left') == '0px') {
-				$('.button-collapse').sideNav('show');
-//				$('#mobile-demo').animate({
-//					left : '240px'
-//				});
-//				$('#sidenav-overlay').fadeIn();
-			} else if (event.type != 'swipeRight') {
-				$('.button-collapse').sideNav('hide');
-				// se il menu e' aperto tramite menu, chiudilo
-				// serve per prevenire il caso di chiusura tramite swipe a
-				// destra
-//				$('#mobile-demo').animate({
-//					left : '0px'
-//				});
-//				$('#sidenav-overlay').fadeOut();
-			}
-		},
-
-		chiudiMenu : function(event) {
-			$('.button-collapse').sideNav('hide');
-//			if ($('#mobile-demo').css('left') != '0px') {
-//				$('#mobile-demo').animate({
-//					left : '0px'
-//				});
-//				$('#sidenav-overlay').fadeOut();
+//		menu : function(event) {
+//			// // ottengo la coordinata X della matrice di trasformazione
+//			var str = $('#mobile-demo').css('transform');
+//			var res = String(str.split("matrix("));
+//			res = String(res.split(")"));
+//			res = res.split(",");
+//			res = res[5];
+//			// se il menu e' chiuso, aprilo
+//			if (res == -240) {
+////			if ($('#mobile-demo').css('left') == '0px') {
+//				$('.button-collapse').sideNav('show');
+////				$('#mobile-demo').animate({
+////					left : '240px'
+////				});
+////				$('#sidenav-overlay').fadeIn();
+//			} else if (event.type != 'swipeRight') {
+//				$('.button-collapse').sideNav('hide');
+//				// se il menu e' aperto tramite menu, chiudilo
+//				// serve per prevenire il caso di chiusura tramite swipe a
+//				// destra
+////				$('#mobile-demo').animate({
+////					left : '0px'
+////				});
+////				$('#sidenav-overlay').fadeOut();
 //			}
-		}
+//		},
+//
+//		chiudiMenu : function(event) {
+//			$('.button-collapse').sideNav('hide');
+////			if ($('#mobile-demo').css('left') != '0px') {
+////				$('#mobile-demo').animate({
+////					left : '0px'
+////				});
+////				$('#sidenav-overlay').fadeOut();
+////			}
+//		}
+		
+//		menu : function(event) {
+////			var str = $('#mobile-demo').css('transform');
+////			var res = String(str.split("matrix("));
+////			res = String(res.split(")"));
+////			res = res.split(",");
+////			res = res[5];
+////			if(res == -310)
+//				$('#mobile-demo').css('transform', 'translateX(-100%)');
+//		}
 
 	});
 

@@ -14,7 +14,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.home;
-			document.getElementById('titolo').innerHTML = "Home";
+			$("#titolo").html("Home");
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {

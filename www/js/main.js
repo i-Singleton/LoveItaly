@@ -12,7 +12,6 @@ require.config({
 		spin : '../lib/spin/spin.min',
 		preloader : '../lib/preloader/pre-loader',
 		utils : '../lib/utils/utils',
-		zepto : '../lib/zepto/zepto',
 		hammerjs : '../lib/hammer/hammer.min',
 		materialize : '../lib/materialize/js/materialize',
 //		'jquery.easing': '../lib/materialize/js/jquery.easing.1.3',
@@ -72,9 +71,12 @@ require.config({
 require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 	require([ 'preloader', 'router' ], function(PreLoader, AppRouter) {
 
-		require([ 'zepto' ]);
 		require([ 'materialize' ], function(){
-			$('.button-collapse').sideNav();
+			$('.button-collapse').sideNav({
+				menuWidth : 300,
+				edge: 'left',
+				closeOnClick: true
+			});
 			Waves.displayEffect();
 		});
 
