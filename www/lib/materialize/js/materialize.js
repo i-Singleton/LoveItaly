@@ -2241,7 +2241,7 @@ $(document).ready(function(){
 
                 // menu_id.css({'translateX': 0});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: /*'50%'*/ window.innerWidth - options.menuWidth, right: 0, left: ''});
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
@@ -2263,7 +2263,7 @@ $(document).ready(function(){
               if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
                 menu_id.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: /*'50%'*/ window.innerWidth - options.menuWidth, right: '', left: 0});
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
@@ -2304,11 +2304,11 @@ $(document).ready(function(){
               $('body').append(dragTarget);
 
               if (options.edge === 'left') {
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: /*'50%'*/ window.innerWidth - options.menuWidth, right: 0, left: ''});
                 menu_id.velocity({'translateX': [0, -1 * options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: /*'50%'*/ window.innerWidth - options.menuWidth, right: '', left: 0});
                 menu_id.velocity({'translateX': [0, options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
 

@@ -13,6 +13,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.categorie;
 			document.getElementById('titolo').innerHTML = "Categorie";
+			$("#cerca").css("display", "inline-block");
 		},
 
 		// id : "myview",

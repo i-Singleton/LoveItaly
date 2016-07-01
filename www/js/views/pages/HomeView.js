@@ -15,6 +15,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.home;
 			$("#titolo").html("Home");
+			$("#cerca").css("display", "inline-block");
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {

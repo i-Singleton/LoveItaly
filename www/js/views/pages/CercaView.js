@@ -1,7 +1,9 @@
 define(function(require) {
 
+	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var BarraRicercaView = require("views/BarraRicercaView");
 
 	var CercaView = Utils.Page.extend({
 
@@ -12,26 +14,26 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.cerca;
-			document.getElementById('titolo').innerHTML = "Cerca";
+			// nascondo l'icona cerca
+			$("#cerca").css("display", "none");
+			// carico il template della barra di ricerca
+			var bar = new BarraRicercaView();
+			$("#titolo").html(bar.getTemplate());
+			// metto il focus sull'input
+			$("#barra-ricerca input").focus();
+			$("#barra-ricerca").css("background-color", "#4caf50");
 		},
 
-		// id : "myview",
-		// className : "i-g page",
+		// id : "",
+		// className : "",
 
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
+		events : {},
 
 		render : function() {
 			$(this.el).html(this.template());
 			return this;
-		},
+		}
 
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
 	});
 
 	return CercaView;

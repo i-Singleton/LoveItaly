@@ -14,6 +14,7 @@ define({
 	/**
 	 * elementi
 	 */
+	barraRicerca : "templates/barraRicerca.html",
 	prodottoCard : "templates/prodottoCard.html",
 	prodottoCarrello : "templates/prodottoCarrello.html",
 	prodottoLista : "templates/prodottoLista.html",

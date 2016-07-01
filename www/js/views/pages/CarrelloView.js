@@ -13,6 +13,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.carrello;
 			document.getElementById('titolo').innerHTML = "Carrello";
+			$("#cerca").css("display", "inline-block");
 		},
 
 		// id : "myview",

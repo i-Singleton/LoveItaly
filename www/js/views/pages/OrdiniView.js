@@ -13,6 +13,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.ordini;
 			document.getElementById('titolo').innerHTML = "Ordini";
+			$("#cerca").css("display", "inline-block");
 		},
 
 		// id : "myview",
