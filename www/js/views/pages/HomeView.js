@@ -4,6 +4,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var ProdottoCardView = require("views/ProdottoCardView");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var HomeView = Utils.Page.extend({
 
@@ -16,6 +17,30 @@ define(function(require) {
 			this.template = Utils.templates.home;
 			$("#titolo").html("Home");
 			$("#cerca").css("display", "inline-block");
+//			$(document).ready(function() {
+//				// in base al model che associo poi alla View, limito il ciclo
+//				for (i = 0; i < 3; i++) {
+//					var prodottoSX = new ProdottoCardView();
+//					var prodottoDX = new ProdottoCardView();
+//					$("#home-col-sx").append(prodottoSX.getTemplate());
+//					$("#home-col-dx").append(prodottoDX.getTemplate());
+//				}
+//			});
+		},
+
+		// id : "home",
+		// className : "i-g page",
+
+		events : {},
+
+		render : function() {
+			// load the template
+			this.el.innerHTML = this.template({});
+
+			// carico il preloader per il contenuto
+			var spinner = new PreloaderCircolareView();
+			spinner.render();
+			
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {
@@ -25,26 +50,9 @@ define(function(require) {
 					$("#home-col-dx").append(prodottoDX.getTemplate());
 				}
 			});
-		},
 
-		// id : "home",
-		// className : "i-g page",
-
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
-
-		render : function() {
-			$(this.el).html(this.template());
-			// this.el.innerHTML = this.template({});
 			return this;
 		},
-
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
 	});
 
 	return HomeView;

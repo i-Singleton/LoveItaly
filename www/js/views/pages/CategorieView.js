@@ -2,6 +2,7 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var CategorieView = Utils.Page.extend({
 
@@ -16,23 +17,21 @@ define(function(require) {
 			$("#cerca").css("display", "inline-block");
 		},
 
-		// id : "myview",
-		// className : "i-g page",
+		// id : "",
+		// className : "",
 
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
+		events : {},
 
 		render : function() {
 			$(this.el).html(this.template());
-			return this;
-		},
 
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+			// carico il preloader per il contenuto
+			var spinner = new PreloaderCircolareView();
+			spinner.render();
+
+			return this;
+		}
+
 	});
 
 	return CategorieView;

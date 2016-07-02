@@ -14,6 +14,7 @@ define({
 	/**
 	 * elementi
 	 */
+	preloaderCircolare : "templates/preloaderCircolare.html",
 	barraRicerca : "templates/barraRicerca.html",
 	prodottoCard : "templates/prodottoCard.html",
 	prodottoCarrello : "templates/prodottoCarrello.html",
