@@ -171,6 +171,8 @@ body {
 /* padding div contenitore delle view */
 #content {
 	padding: 10px;
+	height: 100%;
+	height: calc(100% - 80px);
 }
 /* menu laterale */
 #mobile-demo {
@@ -315,7 +317,8 @@ body {
 }
 
 #home-row {
-	padding-bottom: 50px;
+	/*padding-bottom: 50px;*/
+	
 }
 
 #home-col-sx, #home-col-dx {
@@ -333,6 +336,7 @@ body {
 	border-color: white;
 	font-size: 16px;
 	font-weight: normal;
+	margin: 0 !important;
 }
 
 #barra-ricerca input {
@@ -340,7 +344,7 @@ body {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: normal;
 	background-color: transparent;
 	color: white;
@@ -381,4 +385,123 @@ body {
 
 #preloader-circolare {
 	top: 50%;
+}
+
+/* Profilo */
+.input-field {
+	margin: 0;
+	margin-left: 10px !important;
+}
+
+.input-field>label {
+	font-size: 12px;
+}
+
+.input-field>select {
+	display: block;
+	right: 0;
+	border: 0;
+	border-bottom: 1px solid #9e9e9e;
+	padding: 0;
+	font-size: 12px;
+	margin-left: 0;
+	color: #9e9e9e;
+}
+
+/* class valid, esce la cosa verde sotto
+
+border-bottom: 1px solid #4CAF50;
+box-shadow: 0 1px 0 0 #4CAF50;
+
+*/
+.input-field>select:focus {
+	outline: none;
+}
+
+.input-field>input {
+	margin: 0;
+}
+
+.section-title {
+	margin-left: 0 !important;
+}
+
+.section-title>input {
+	border-bottom: 1px solid #707070 !important;
+}
+
+.section-title>label {
+	font-size: 14px;
+	font-weight: bold;
+	color: #707070 !important;
+}
+
+.switch-profilo {
+	margin-top: 8px;
+	margin-left: -32px !important;
+}
+
+/* Accedi */
+#accedi-view input {
+	border-bottom: 1px solid white !important;
+	color: white;
+}
+
+#accedi-view label {
+	color: white !important;
+}
+
+#accedi-view .btn-flat {
+	color: #4caf50;
+	border: 0;
+}
+
+#chiudi-accedi-view i {
+	margin-top: 24px;
+}
+
+.bottom-button {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border-radius: 0;
+	height: 56px;
+	padding-top: 12px;
+	padding-left: 0;
+	padding-right: 0;
+	border-top: 1px solid;
+}
+
+/* Registrazione */
+#registrazione-view input {
+	border-bottom: 1px solid white !important;
+	color: white;
+}
+
+#registrazione-view label {
+	color: white !important;
+}
+
+#registrazione-view .btn-flat {
+	color: #4caf50;
+	border: 0;
+}
+
+#chiudi-registrazione-view i {
+	margin-top: 24px;
+}
+
+/* button */
+.btn {
+	background-color: #388E3C;
+}
+
+.btn:hover {
+	background-color: #388E3C !important;
+}
+
+/* color */
+.bianco {
+	color: white;
 }

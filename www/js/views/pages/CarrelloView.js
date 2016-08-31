@@ -12,7 +12,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.carrello;
-			document.getElementById('titolo').innerHTML = "Carrello";
+			document.getElementById("titolo").innerHTML = "Carrello";
 			$("#cerca").css("display", "inline-block");
 		},
 

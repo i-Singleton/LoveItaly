@@ -75,9 +75,10 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 			$('.button-collapse').sideNav({
 				menuWidth : 300,
 				edge: 'left',
-				closeOnClick: true
+				closeOnClick: false
 			});
 			Waves.displayEffect();
+			$('select').material_select();
 		});
 
 		document.addEventListener("deviceready", run, false);

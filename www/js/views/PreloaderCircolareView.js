@@ -22,10 +22,12 @@ define(function(require) {
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
-			$("#content").append(this.el);
+			//$("#content").css("display", "none");
+			$("#main").append(this.el);
 			setTimeout(function() {
 				$("#preloader-circolare").fadeOut();
 				$("#preloader-circolare-container").remove();
+				//$("#content").css("display", "block");
 			}, 1000);
 			return this;
 		}

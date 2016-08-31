@@ -10,7 +10,10 @@ define(function(require) {
 
 		id : "main",
 
-		events : {},
+		events : {
+			"click #mobile-demo a" : "waitAndHideMenu",
+			//"click #menu-accedi a" : "accedi"
+		},
 
 		initialize : function(options) {
 			// load the precompiled template
@@ -22,9 +25,25 @@ define(function(require) {
 			this.el.innerHTML = this.template({});
 			// cache a reference to the content element
 			this.contentElement = this.$el.find('#content')[0];
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
 			return this;
-		}
+		},
 
+		/**
+		 * 
+		 * Metodo esclusivamente per questioni di performance: si elimina del
+		 * tutto il lag, grazie a un'attesa totalmente impercettibile
+		 * all'utente, nonche' migliora il comfort visivo.
+		 * 
+		 * un decimo di secondo
+		 * 
+		 */
+		waitAndHideMenu : function() {
+			setTimeout(function() {
+				$('.button-collapse').sideNav('hide');
+			}, 100);
+		}
 	});
 
 	return StructureView;

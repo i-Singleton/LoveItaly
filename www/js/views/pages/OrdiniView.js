@@ -12,7 +12,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.ordini;
-			document.getElementById('titolo').innerHTML = "Ordini";
+			document.getElementById("titolo").innerHTML = "Ordini";
 			$("#cerca").css("display", "inline-block");
 		},
 

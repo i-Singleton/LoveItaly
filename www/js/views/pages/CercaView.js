@@ -14,14 +14,6 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.cerca;
-			// nascondo l'icona cerca
-			$("#cerca").css("display", "none");
-			// carico il template della barra di ricerca
-			var bar = new BarraRicercaView();
-			$("#titolo").html(bar.getTemplate());
-			// metto il focus sull'input
-			$("#barra-ricerca input").focus();
-			$("#barra-ricerca").css("background-color", "#4caf50");
 		},
 
 		// id : "",
@@ -30,6 +22,17 @@ define(function(require) {
 		events : {},
 
 		render : function() {
+			// Caricamento della Barra di Ricerca
+			// nascondo l'icona cerca
+			$("#cerca").css("display", "none");
+			// carico il template della barra di ricerca
+			var bar = new BarraRicercaView();
+			$("#titolo").html(bar.getTemplate());
+			// metto il focus sull'input
+			$("#barra-ricerca input").focus();
+			$("#barra-ricerca").css("background-color", "#4caf50");
+			
+			// comportamento di default
 			$(this.el).html(this.template());
 			return this;
 		}

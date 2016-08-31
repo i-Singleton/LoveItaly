@@ -5,14 +5,14 @@ define(function(require) {
 
 	var RiepilogoView = Utils.Page.extend({
 
-		constructorName : "AccediView",
+		constructorName : "RiepilogoView",
 
 		// model : MyModel,
 
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.riepilogo;
-			document.getElementById('titolo').innerHTML = "Riepilogo";
+			document.getElementById("titolo").innerHTML = "Riepilogo";
 		},
 
 		// id : "myview",

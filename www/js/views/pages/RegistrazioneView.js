@@ -12,20 +12,30 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.registrazione;
-			document.getElementById('titolo').innerHTML = "Registrazione";
 		},
 
-		// id : "myview",
+		id : "registrazione-view",
+
 		// className : "i-g page",
 
 		events : {
-		// "tap #goToMap" : "goToMap"
+			// "tap #goToMap" : "goToMap"
+			"click #chiudi-registrazione-view" : "chiudi"
 		},
 
 		render : function() {
 			$(this.el).html(this.template());
 			return this;
 		},
+
+		chiudi : function() {
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
+			$("#content").css({
+				"background-color" : "white",
+				"height" : "calc(100% - 80px)"
+			});
+		}
 
 	// goToMap : function(e) {
 	// Backbone.history.navigate("map", {

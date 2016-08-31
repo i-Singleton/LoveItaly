@@ -2,6 +2,7 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var ProfiloView = Utils.Page.extend({
 
@@ -12,7 +13,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.profilo;
-			document.getElementById('titolo').innerHTML = "Profilo";
+			document.getElementById("titolo").innerHTML = "Profilo";
 		},
 
 		// id : "myview",
@@ -24,6 +25,9 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template());
+			// carico il preloader per il contenuto
+			var spinner = new PreloaderCircolareView();
+			spinner.render();
 			return this;
 		},
 

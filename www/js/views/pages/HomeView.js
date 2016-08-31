@@ -41,6 +41,7 @@ define(function(require) {
 			var spinner = new PreloaderCircolareView();
 			spinner.render();
 			
+			
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {
