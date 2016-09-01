@@ -170,7 +170,6 @@ body {
 }
 /* padding div contenitore delle view */
 #content {
-	padding: 10px;
 	height: 100%;
 	height: calc(100% - 80px);
 }
@@ -303,6 +302,10 @@ body {
 
 /* HOME da qui in poi */
 /* cards */
+#home-view {
+	padding: 10px;
+}
+
 .card .card-content {
 	padding: 15px;
 }
@@ -362,6 +365,11 @@ body {
 	color: #707070;
 }
 
+/* Categorie */
+#categorie-view {
+	padding: 10px;
+}
+
 #categorie-lista li {
 	background-color: unset;
 	display: block;
@@ -389,12 +397,14 @@ body {
 
 /* Profilo */
 .input-field {
-	margin: 0;
-	margin-left: 10px !important;
+	/*margin: 0;
+	margin-left: 10px !important;*/
+	
 }
 
 .input-field>label {
 	font-size: 12px;
+	left: 0;
 }
 
 .input-field>select {
@@ -422,29 +432,105 @@ box-shadow: 0 1px 0 0 #4CAF50;
 	margin: 0;
 }
 
-.section-title {
-	margin-left: 0 !important;
-}
-
-.section-title>input {
-	border-bottom: 1px solid #707070 !important;
-}
-
-.section-title>label {
-	font-size: 14px;
-	font-weight: bold;
-	color: #707070 !important;
-}
-
 .switch-profilo {
 	margin-top: 8px;
 	margin-left: -32px !important;
 }
 
+/* ----------------profilo 2---------------- */
+#profilo-view {
+	background-color: rgb(238, 238, 238);
+	height: calc(100% - 7px);
+	padding: 0;
+}
+
+#profilo-view ul {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	box-shadow: 0 1px 2px #CCCCCC;
+	padding-bottom: 1px;
+}
+
+#profilo-view li {
+	display: block;
+	/*padding: 10px 0px 0px 0px;*/
+	border: 0;
+}
+
+#profilo-view .collection-header {
+	border: 0px none;
+	color: #388e3c;
+	font-weight: bold !important;
+	padding: 15px 0px 0px 30px;
+	font-size: 13px;
+}
+
+#profilo-view label {
+	left: 30px;
+}
+
+#profilo-view input {
+	padding-left: 30px;
+	border-color: #f2f2f2;
+}
+
+#profilo-view select {
+	display: block;
+	padding-left: 25px;
+}
+
+#profilo-view .select-list {
+	padding: 0;
+}
+
+#dati-personali li {
+	padding: 10px 0px 0px 0px;
+}
+
+#dati-spedizione li {
+	padding: 10px 0px 10px 30px;
+}
+
+#recapito-element {
+	padding: 10px 0 0 0 !important;
+}
+
+#modalita-pagamento-list {
+	margin-bottom: 0;
+}
+
+#modalita-pagamento-list select {
+	border: 0px;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+#credits-app {
+	color: #c2c2c2;
+	text-align: center;
+}
+
 /* Accedi */
+#accedi-view {
+	height: 100%;
+	background-color: #4caf50;
+	text-align: center;
+}
+
+#accedi-view form {
+	padding: 0px 30px 0px 30px;
+	text-align: left;
+}
+
+#accedi-view img {
+	height: 120px;
+}
+
 #accedi-view input {
 	border-bottom: 1px solid white !important;
 	color: white;
+	margin-left: 0;
+	padding-left: 43px;
 }
 
 #accedi-view label {
@@ -454,29 +540,55 @@ box-shadow: 0 1px 0 0 #4CAF50;
 #accedi-view .btn-flat {
 	color: #4caf50;
 	border: 0;
+	margin: 0 auto;
+	width: 50%;
+}
+
+#accedi-view i {
+	color: white;
 }
 
 #chiudi-accedi-view i {
-	margin-top: 24px;
+	margin-top: 40px;
+	margin-right: 16px;
 }
 
-.bottom-button {
-	position: fixed;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	border-radius: 0;
-	height: 56px;
-	padding-top: 12px;
-	padding-left: 0;
-	padding-right: 0;
-	border-top: 1px solid;
+#accedi-view label {
+	color: white !important;
+}
+
+#registrati-switch {
+	float: right;
+	margin: -35px 0px 0px;
+	font-size: 12px;
+	color: white;
+}
+
+#registrati-switch a {
+	color: white;
 }
 
 /* Registrazione */
+#registrazione-view {
+	height: 100%;
+	background-color: #4caf50;
+	text-align: center;
+}
+
+#registrazione-view form {
+	padding: 0px 30px 0px 30px;
+	text-align: left;
+}
+
+#registrazione-view img {
+	height: 120px;
+}
+
 #registrazione-view input {
 	border-bottom: 1px solid white !important;
 	color: white;
+	margin-left: 0;
+	padding-left: 43px;
 }
 
 #registrazione-view label {
@@ -486,10 +598,28 @@ box-shadow: 0 1px 0 0 #4CAF50;
 #registrazione-view .btn-flat {
 	color: #4caf50;
 	border: 0;
+	margin: 0 auto;
+	width: 50%;
+}
+
+#registrazione-view i {
+	color: white;
 }
 
 #chiudi-registrazione-view i {
-	margin-top: 24px;
+	margin-top: 40px;
+	margin-right: 16px;
+}
+
+#accedi-switch {
+	float: right;
+	margin: -35px 0px 0px;
+	font-size: 12px;
+	color: white;
+}
+
+#accedi-switch a {
+	color: white;
 }
 
 /* button */

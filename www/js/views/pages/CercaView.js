@@ -14,6 +14,13 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.cerca;
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
+			$("#content").css({
+				"height" : "calc(100% - 80px)",
+				"background-color": "white"
+			});
+			$(".drag-target").css("left", "0px");
 		},
 
 		// id : "",

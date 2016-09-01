@@ -14,9 +14,17 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.profilo;
 			document.getElementById("titolo").innerHTML = "Profilo";
+			$("#cerca").css("display", "inline-block");
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
+			$("#content").css({
+				"height" : "calc(100% - 80px)",
+				"background-color": "white"
+			});
+			$(".drag-target").css("left", "0px");
 		},
 
-		// id : "myview",
+		id : "profilo-view",
 		// className : "i-g page",
 
 		events : {

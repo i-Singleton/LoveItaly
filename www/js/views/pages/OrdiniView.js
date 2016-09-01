@@ -14,6 +14,13 @@ define(function(require) {
 			this.template = Utils.templates.ordini;
 			document.getElementById("titolo").innerHTML = "Ordini";
 			$("#cerca").css("display", "inline-block");
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
+			$("#content").css({
+				"height" : "calc(100% - 80px)",
+				"background-color": "white"
+			});
+			$(".drag-target").css("left", "0px");
 		},
 
 		// id : "myview",

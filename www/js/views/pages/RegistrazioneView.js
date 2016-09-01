@@ -25,6 +25,12 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template());
+			$("#statusbar").css("display", "none");
+			$("#headbar").css("display", "none");
+			$("#content").css({
+				"height" : "100%",
+				"background-color": "#4caf50"
+			});
 			return this;
 		},
 
@@ -32,9 +38,10 @@ define(function(require) {
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");
 			$("#content").css({
-				"background-color" : "white",
-				"height" : "calc(100% - 80px)"
+				"height" : "calc(100% - 80px)",
+				"background-color": "white"
 			});
+			$(".drag-target").css("left", "0px");
 		}
 
 	// goToMap : function(e) {

@@ -17,18 +17,26 @@ define(function(require) {
 			this.template = Utils.templates.home;
 			$("#titolo").html("Home");
 			$("#cerca").css("display", "inline-block");
-//			$(document).ready(function() {
-//				// in base al model che associo poi alla View, limito il ciclo
-//				for (i = 0; i < 3; i++) {
-//					var prodottoSX = new ProdottoCardView();
-//					var prodottoDX = new ProdottoCardView();
-//					$("#home-col-sx").append(prodottoSX.getTemplate());
-//					$("#home-col-dx").append(prodottoDX.getTemplate());
-//				}
-//			});
+			$("#statusbar").css("display", "block");
+			$("#headbar").css("display", "block");
+			$("#content").css({
+				"height" : "calc(100% - 80px)",
+				"background-color": "white"
+			});
+			$(".drag-target").css("left", "0px");
+			// $(document).ready(function() {
+			// // in base al model che associo poi alla View, limito il ciclo
+			// for (i = 0; i < 3; i++) {
+			// var prodottoSX = new ProdottoCardView();
+			// var prodottoDX = new ProdottoCardView();
+			// $("#home-col-sx").append(prodottoSX.getTemplate());
+			// $("#home-col-dx").append(prodottoDX.getTemplate());
+			// }
+			// });
 		},
 
-		// id : "home",
+		id : "home-view",
+
 		// className : "i-g page",
 
 		events : {},
@@ -40,8 +48,7 @@ define(function(require) {
 			// carico il preloader per il contenuto
 			var spinner = new PreloaderCircolareView();
 			spinner.render();
-			
-			
+
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {

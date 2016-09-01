@@ -11,8 +11,8 @@ define(function(require) {
 		id : "main",
 
 		events : {
-			"click #mobile-demo a" : "waitAndHideMenu",
-			//"click #menu-accedi a" : "accedi"
+			"click #menu-list a" : "waitAndHideMenu",
+			"click #menu-accedi a" : "hideAndDisableMenu",
 		},
 
 		initialize : function(options) {
@@ -43,7 +43,15 @@ define(function(require) {
 			setTimeout(function() {
 				$('.button-collapse').sideNav('hide');
 			}, 100);
-		}
+		},
+
+		hideAndDisableMenu : function() {
+			setTimeout(function() {
+				$('.button-collapse').sideNav('hide');
+				$(".drag-target").css("left", "-10px");
+			}, 100);
+		},
+
 	});
 
 	return StructureView;
