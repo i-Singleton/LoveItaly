@@ -33,6 +33,7 @@ define(function(require) {
 			// $("#home-col-dx").append(prodottoDX.getTemplate());
 			// }
 			// });
+			this.spinner = new PreloaderCircolareView();
 		},
 
 		id : "home-view",
@@ -46,16 +47,15 @@ define(function(require) {
 			this.el.innerHTML = this.template({});
 
 			// carico il preloader per il contenuto
-			var spinner = new PreloaderCircolareView();
-			spinner.render();
+			this.spinner.render();
 
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo
 				for (i = 0; i < 3; i++) {
 					var prodottoSX = new ProdottoCardView();
 					var prodottoDX = new ProdottoCardView();
-					$("#home-col-sx").append(prodottoSX.getTemplate());
-					$("#home-col-dx").append(prodottoDX.getTemplate());
+					$("#home-col-sx").append(prodottoSX.render().$el);
+					$("#home-col-dx").append(prodottoDX.render().$el);
 				}
 			});
 
