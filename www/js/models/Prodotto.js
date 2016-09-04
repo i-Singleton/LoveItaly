@@ -8,7 +8,8 @@ define(function(require) {
 
 		defaults : {
 			id : '',
-			nome : ''
+			nome : '',
+			quantita : '2'
 		},
 
 		initialize : function() {

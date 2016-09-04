@@ -671,6 +671,24 @@ select:focus {
 	border: 0px none;
 }
 
+#carrello-view .card-action a {
+	margin: 0px;
+	vertical-align: middle;
+	color: black;
+}
+
+#carrello-view .card-action i {
+	margin: 0px;
+	vertical-align: middle;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+
+#carrello-view .card-action span {
+	vertical-align: bottom;
+	margin: 0 20px;
+}
+
 #carrello-view #rimuovi-prodotto {
 	top: 0.5rem;
 	right: 0.5rem;
@@ -689,4 +707,9 @@ select:focus {
 	color: white;
 	width: 100%;
 	border-radius: 0px;
+}
+
+#carrello-view .btn-large span {
+	color: #1b5e20;
+	margin: 0px 10px;
 }
