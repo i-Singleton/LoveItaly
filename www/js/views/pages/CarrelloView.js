@@ -3,12 +3,14 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var ProdottoCarrelloView = require("views/ProdottoCarrelloView");
+	var Carrello = require("collections/Carrello");
+	var Prodotto = require("models/Prodotto");
 
 	var CarrelloView = Utils.Page.extend({
 
 		constructorName : "CarrelloView",
 
-		// model : MyModel,
+		collection : Carrello,
 
 		initialize : function() {
 			// load the precompiled template
@@ -22,6 +24,9 @@ define(function(require) {
 				"background-color" : "white"
 			});
 			$(".drag-target").css("left", "0px");
+
+			this.collection = new Carrello();
+			this.listenTo(this.collection, "change remove", this.render);
 		},
 
 		id : "carrello-view",
@@ -29,23 +34,45 @@ define(function(require) {
 		// className : "i-g page",
 
 		events : {
-		// "tap #goToMap" : "goToMap"
+			"click #rimuovi-prodotto" : "rimuovi",
+			"click #decrementa-quantita" : "decrementa",
+			"click #incrementa-quantita" : "incrementa"
 		},
 
 		render : function() {
-			$(this.el).html(this.template());
-			for (i = 0; i < 3; i++) {
-				var prodotto = new ProdottoCarrelloView();
-				this.$el.append(prodotto.render().$el);
-			}
+			$(this.el).html(this.template({
+				totale : this.collection.getTotale()
+			}));
+			this.collection.each(function(item) {
+				var prodottoCarrelloView = new ProdottoCarrelloView({
+					model : item
+				});
+				this.$el.append(prodottoCarrelloView.render().$el);
+			}, this);
 			return this;
 		},
 
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+		rimuovi : function(e) {
+			var id = $(e.currentTarget).data("id");
+			this.collection.remove(id);
+		},
+
+		decrementa : function(e) {
+			var id = $(e.currentTarget).data("id");
+			var prodotto = new Prodotto();
+			prodotto = this.collection.get(id);
+			prodotto = prodotto.decrementa();
+			this.collection.set(prodotto);
+		},
+
+		incrementa : function(e) {
+			var id = $(e.currentTarget).data("id");
+			var prodotto = new Prodotto();
+			prodotto = this.collection.get(id);
+			prodotto = prodotto.incrementa();
+			this.collection.set(prodotto);
+		},
+
 	});
 
 	return CarrelloView;

@@ -669,24 +669,32 @@ select:focus {
 #carrello-view .card-action {
 	padding: 0px;
 	border: 0px none;
+	margin: 0px;
 }
 
 #carrello-view .card-action a {
 	margin: 0px;
-	vertical-align: middle;
 	color: black;
 }
 
 #carrello-view .card-action i {
 	margin: 0px;
-	vertical-align: middle;
 	border: 1px solid gray;
 	border-radius: 50%;
+	margin-top: 8px;
 }
 
-#carrello-view .card-action span {
-	vertical-align: bottom;
-	margin: 0 20px;
+#carrello-view .card-action .info-prezzo {
+	text-align: center;
+}
+
+#carrello-view .card-action .info-prezzo .row {
+	padding: 0px;
+	margin: 0px;
+}
+
+#carrello-view #incrementa-quantita {
+	float: right;
 }
 
 #carrello-view #rimuovi-prodotto {

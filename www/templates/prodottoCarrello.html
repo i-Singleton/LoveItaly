@@ -7,14 +7,20 @@
 			<p>Prodotto</p>
 			<p>Azienda</p>
 			<p>Disponibile</p>
-			<p>20&#128;</p>
 		</div>
-		<div class="card-action">
-			<a id="decrementa-quantita"><i class="material-icons">remove</i></a>
-			<span id="quantita">{{ quantita }}</span> <a id="incrementa-quantita"><i
-				class="material-icons">add</i></a>
+		<div class="card-action row">
+			<div class="col s4">
+				<a data-id="{{id}}" id="decrementa-quantita"><i class="material-icons">remove</i></a>
+			</div>
+			<div class="col s4 info-prezzo">
+				<div class="row">{{quantita}} x {{prezzo}}&#128;</div>
+				<div class="row">{{totale}}&#128;</div>
+			</div>
+			<div class="col s4">
+				<a data-id="{{id}}" id="incrementa-quantita"><i class="material-icons">add</i></a>
+			</div>
 		</div>
 	</div>
 </div>
 
-<i id="rimuovi-prodotto" class="material-icons">close</i>
+<i data-id="{{id}}" id="rimuovi-prodotto" class="material-icons">close</i>
