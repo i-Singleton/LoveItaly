@@ -721,3 +721,93 @@ select:focus {
 	color: #1b5e20;
 	margin: 0px 10px;
 }
+
+/* Riepilogo */
+#riepilogo-view {
+	background-color: rgb(238, 238, 238);
+	padding: 0;
+}
+
+#riepilogo-view ul {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	box-shadow: 0 1px 2px #CCCCCC;
+	padding-bottom: 1px;
+}
+
+#riepilogo-view li {
+	display: block;
+	border: 0;
+}
+
+#riepilogo-view .collection-header {
+	border: 0px none;
+	color: #388e3c;
+	font-weight: bold !important;
+	padding: 15px 0px 0px 30px;
+	font-size: 13px;
+}
+
+#riepilogo-view label {
+	left: 30px;
+}
+
+#riepilogo-view input {
+	padding-left: 30px;
+	border-color: #f2f2f2;
+}
+
+#riepilogo-view select {
+	display: block;
+	padding-left: 25px;
+	border-top: 0;
+}
+
+select:focus {
+	outline: unset;
+}
+
+#riepilogo-view .select-list {
+	padding: 0;
+}
+
+#dati-personali li {
+	padding: 10px 0px 0px 0px;
+}
+
+#dati-spedizione li {
+	padding: 10px 0px 10px 30px;
+}
+
+#recapito-element {
+	padding: 10px 0 0 0 !important;
+}
+
+#modalita-pagamento-list {
+	margin-bottom: 0;
+}
+
+#modalita-pagamento-list select {
+	border: 0px;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+#riepilogo-view #btn-bottom-container {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	text-align: center;
+	z-index: 998;
+}
+
+#riepilogo-view .btn-large {
+	color: white;
+	width: 100%;
+	border-radius: 0px;
+}
+
+#riepilogo-view .btn-large span {
+	color: #1b5e20;
+	margin: 0px 10px;
+}

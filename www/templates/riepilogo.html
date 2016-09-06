@@ -1,0 +1,74 @@
+<ul id="dati-personali" class="collection with-header">
+	<li class="collection-header">Dati personali</li>
+	<li class="collection-item">
+		<div class="input-field">
+			<input id="first_name" type="text" class="validate"> <label
+				for="first_name">Nome</label>
+		</div>
+	</li>
+	<li class="collection-item">
+		<div class="input-field">
+			<input id="last_name" type="text" class="validate"> <label
+				for="last_name">Cognome</label>
+		</div>
+	</li>
+	<li class="collection-item">
+		<div class="input-field">
+			<input id="email" type="email" class="validate"> <label
+				for="email">Email</label>
+		</div>
+	</li>
+	<!-- <li class="collection-item">
+		<div class="input-field">
+			<input id="password" type="password" class="validate"> <label
+				for="password">Password</label>
+		</div>
+	</li> -->
+</ul>
+
+<ul id="dati-spedizione" class="collection with-header">
+	<li class="collection-header">Dati di spedizione</li>
+	<!-- <li class="collection-item waves-effect">GPS <span
+		class="switch right"> <label> <input type="checkbox">
+				<span class="lever"></span>
+		</label>
+	</span>
+	</li> -->
+	<li class="collection-item select-list"><select>
+			<option value="" disabled selected>Scegli una citt&agrave;</option>
+			<option value="castelfrentano">Castel Frentano (CH)</option>
+			<option value="fossacesia">Fossacesia (CH)</option>
+			<option value="frisa">Frisa (CH)</option>
+			<option value="lanciano">Lanciano (CH)</option>
+			<option value="mozzagrogna">Mozzagrogna (CH)</option>
+			<option value="ortona">Ortona (CH)</option>
+			<option value="roccasangiovanni">Rocca San Giovanni (CH)</option>
+			<option value="santamariaimbaro">Santa Maria Imbaro (CH)</option>
+			<option value="sanvito">San Vito Chietino (CH)</option>
+			<option value="treglio">Treglio (CH)</option>
+	</select></li>
+	<li id="recapito-element" class="collection-item">
+		<div class="input-field">
+			<input id="recapito" type="text" class="validate"> <label
+				for="recapito">Recapito</label>
+		</div>
+	</li>
+</ul>
+
+<ul id="modalita-pagamento-list" class="collection with-header">
+	<li class="collection-header">Dati di pagamento</li>
+	<li class="collection-item select-list"><select>
+			<option value="" disabled selected>Scegli una
+				modalit&agrave;</option>
+			<option value="1">Contanti</option>
+			<option value="2">Carta di credito</option>
+	</select></li>
+</ul>
+
+<div id="btn-bottom-container">
+	<a href="#riepilogo"
+		class="btn-large waves-effect waves-green green darken-2">Conferma
+		l'ordine <span>|</span> {{totale}}&#128; <i
+		class="material-icons right">keyboard_arrow_right</i>
+	</a>
+</div>

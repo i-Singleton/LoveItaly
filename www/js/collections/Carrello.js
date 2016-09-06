@@ -43,6 +43,7 @@ define(function(require) {
 		// metodo per caricare l'ultimo stato del Carrello
 		carica : function() {
 			// se contiene qualcosa, allora carica lo stato
+			return this;
 		},
 
 		getTotale : function() {
