@@ -1,3 +1,15 @@
+if (typeof(Hammer) === 'undefined') {
+	var Hammer;
+	if (typeof(require) === 'function') {
+		Hammer = require('hammerjs');
+	}
+}
+if (typeof(Vel) === 'undefined') {
+	var Vel;
+	if (typeof(require) === 'function') {
+		Vel = require('velocity');
+	}
+}
 /*!
  * Materialize v0.97.7 (http://materializecss.com)
  * Copyright 2014-2015 Materialize

@@ -15,7 +15,7 @@ require.config({
 		hammerjs : '../lib/hammer/hammer.min',
 		materialize : '../lib/materialize/js/materialize',
 //		'jquery.easing': '../lib/materialize/js/jquery.easing.1.3',
-//		'velocity': '../lib/materialize/velocity.min',
+		'velocity': '../lib/materialize/js/velocity.min',
 //		'picker': '../lib/materialize/date_picker/picker',
 //		'picker': '../lib/materialize/date_picker/picker.date',
 //		'picker.date': '../lib/materialize/js/date_picker/picker.date',
@@ -62,7 +62,7 @@ require.config({
 			exports : 'L'
 		},
 		'materialize' : {
-			deps : [ 'jquery', 'jquery.hammer', 'hammerjs', 'waves' ]
+			deps : [ 'jquery', 'jquery.hammer', 'hammerjs', 'waves', 'velocity' ]
 		}
 	}
 });

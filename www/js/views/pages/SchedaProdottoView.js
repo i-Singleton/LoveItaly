@@ -3,6 +3,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var Prodotto = require("models/Prodotto");
+	var Carrello = require("collections/Carrello");
 
 	var SchedaProdottoView = Utils.Page.extend({
 
@@ -36,7 +37,7 @@ define(function(require) {
 
 		id : "scheda-prodotto-view",
 
-		// className : "i-g page",
+		// className : "",
 
 		events : {
 			"click #decrementa-quantita" : "decrementa",
@@ -46,9 +47,7 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
-			// this.$el.css("display", "none");
-			// this.$el.fadeIn();
-			// initialize dello slider di immagini
+			// initialize del carousel di immagini
 			$(document).ready(function() {
 				$('.carousel.carousel-slider').carousel({
 					full_width : true,
@@ -67,7 +66,14 @@ define(function(require) {
 		},
 
 		aggiungiAlCarrello : function() {
-			// TODO - inserire un materialize toast "prodotto aggiunto"
+			var carrello = new Carrello();
+			carrello.setProdotto(this.model);
+			/**
+			 * html embedded in questo punto perche' cosi' 
+			 * impone la libreria per il componente Toast
+			 */ 
+			var toastContent = 'Aggiunto al carrello <i class="material-icons left">check</i>';
+			Materialize.toast(toastContent, 3000);
 		}
 
 	});

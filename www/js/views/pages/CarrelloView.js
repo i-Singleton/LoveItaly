@@ -54,7 +54,9 @@ define(function(require) {
 
 		rimuovi : function(e) {
 			var id = $(e.currentTarget).data("id");
-			this.collection.remove(id);
+			var prodotto = new Prodotto();
+			prodotto = this.collection.get(id);
+			this.collection.rimuoviProdotto(prodotto);
 		},
 
 		decrementa : function(e) {
@@ -62,7 +64,7 @@ define(function(require) {
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.decrementa();
-			this.collection.set(prodotto);
+			this.collection.setProdotto(prodotto);
 		},
 
 		incrementa : function(e) {
@@ -70,7 +72,7 @@ define(function(require) {
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.incrementa();
-			this.collection.set(prodotto);
+			this.collection.setProdotto(prodotto);
 		}
 
 	});
