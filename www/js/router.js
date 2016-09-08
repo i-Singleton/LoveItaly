@@ -19,6 +19,7 @@ define(function(require) {
 	var ProfiloView = require("views/pages/ProfiloView");
 	var RegistrazioneView = require("views/pages/RegistrazioneView");
 	var RiepilogoView = require("views/pages/RiepilogoView");
+	var SchedaProdottoView = require("views/pages/SchedaProdottoView");
 
 	var AppRouter = Backbone.Router.extend({
 
@@ -37,7 +38,8 @@ define(function(require) {
 			"ordini" : "ordini",
 			"profilo" : "profilo",
 			"registrazione" : "registrazione",
-			"riepilogo" : "riepilogo"
+			"riepilogo" : "riepilogo",
+			"schedaProdotto" : "schedaProdotto"
 		},
 
 		firstView : "home",
@@ -141,6 +143,12 @@ define(function(require) {
 			var page = new RiepilogoView();
 			this.changePage(page);
 		},
+
+		schedaProdotto : function() {
+			// create the view and show it
+			var page = new SchedaProdottoView();
+			this.changePage(page);
+		}
 
 	});
 

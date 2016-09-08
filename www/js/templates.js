@@ -32,5 +32,6 @@ define({
 	ordini : "templates/ordini.html",
 	profilo : "templates/profilo.html",
 	registrazione : "templates/registrazione.html",
-	riepilogo : "templates/riepilogo.html"
+	riepilogo : "templates/riepilogo.html",
+	schedaProdotto : "templates/schedaProdotto.html"
 });

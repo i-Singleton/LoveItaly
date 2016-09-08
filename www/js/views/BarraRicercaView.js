@@ -8,7 +8,7 @@ define(function(require) {
 
 		constructorName : "BarraRicercaView",
 
-		// id : "",
+		id : "barra-ricerca-view",
 
 		events : {
 			"click #barra-ricerca" : "focusInput",

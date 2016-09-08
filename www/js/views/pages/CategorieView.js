@@ -19,7 +19,7 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 			$("#content").css({
 				"height" : "calc(100% - 80px)",
-				"background-color": "white"
+				"background-color": "#f5f5f5"
 			});
 			$(".drag-target").css("left", "0px");
 		},
@@ -34,8 +34,8 @@ define(function(require) {
 			$(this.el).html(this.template());
 
 			// carico il preloader per il contenuto
-			var spinner = new PreloaderCircolareView();
-			spinner.render();
+			//var spinner = new PreloaderCircolareView();
+			//spinner.render();
 
 			return this;
 		}

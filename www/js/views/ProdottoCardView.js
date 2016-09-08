@@ -7,6 +7,8 @@ define(function(require) {
 	var ProdottoCardView = Backbone.View.extend({
 
 		constructorName : "ProdottoCardView",
+		
+		tagName: "a",
 
 		// id : "prodottoCard",
 
@@ -15,13 +17,12 @@ define(function(require) {
 		initialize : function(options) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottoCard;
+			this.$el.attr("href", "#schedaProdotto");
 		},
 
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
-			// cache a reference to the content element
-			this.contentElement = this.$el.find('#content')[0];
 			return this;
 		}
 

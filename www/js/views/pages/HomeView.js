@@ -21,7 +21,7 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 			$("#content").css({
 				"height" : "calc(100% - 80px)",
-				"background-color": "white"
+				"background-color": "#f5f5f5"
 			});
 			$(".drag-target").css("left", "0px");
 			// $(document).ready(function() {
@@ -33,7 +33,7 @@ define(function(require) {
 			// $("#home-col-dx").append(prodottoDX.getTemplate());
 			// }
 			// });
-			this.spinner = new PreloaderCircolareView();
+			//this.spinner = new PreloaderCircolareView();
 		},
 
 		id : "home-view",
@@ -47,7 +47,7 @@ define(function(require) {
 			this.el.innerHTML = this.template({});
 
 			// carico il preloader per il contenuto
-			this.spinner.render();
+			//this.spinner.render();
 
 			$(document).ready(function() {
 				// in base al model che associo poi alla View, limito il ciclo

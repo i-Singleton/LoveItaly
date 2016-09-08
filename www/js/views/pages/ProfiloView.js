@@ -34,8 +34,8 @@ define(function(require) {
 		render : function() {
 			$(this.el).html(this.template());
 			// carico il preloader per il contenuto
-			var spinner = new PreloaderCircolareView();
-			spinner.render();
+			//var spinner = new PreloaderCircolareView();
+			//spinner.render();
 			return this;
 		},
 
