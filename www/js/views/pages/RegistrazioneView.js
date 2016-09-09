@@ -16,11 +16,12 @@ define(function(require) {
 
 		id : "registrazione-view",
 
-		// className : "i-g page",
+		// className : "",
 
 		events : {
-			// "tap #goToMap" : "goToMap"
-			"click #chiudi-registrazione-view" : "chiudi"
+			"click #chiudi-registrazione-view" : "chiudi",
+			"focus input" : "focus",
+			"blur input" : "blur"
 		},
 
 		render : function() {
@@ -29,7 +30,7 @@ define(function(require) {
 			$("#headbar").css("display", "none");
 			$("#content").css({
 				"height" : "100%",
-				"background-color": "#4caf50"
+				"background-color" : "#4caf50"
 			});
 			return this;
 		},
@@ -39,16 +40,24 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 			$("#content").css({
 				"height" : "calc(100% - 80px)",
-				"background-color": "#f5f5f5"
+				"background-color" : "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
-		}
+		},
 
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+		focus : function(e) {
+			this.$("#logo").css("display", "none");
+			var offset = $(e.currentTarget).offset().top;
+			var error = 10;
+			var spostamento = offset - error;
+			$("#content").scrollTop(spostamento);
+		},
+
+		blur : function() {
+			this.$("#logo").css("display", "block");
+			$("#content").scrollTop(0);
+		}
+		
 	});
 
 	return RegistrazioneView;

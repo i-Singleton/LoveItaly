@@ -21,7 +21,7 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 			$("#content").css({
 				"height" : "calc(100% - 134px)",
-				"background-color" : "#f5f5f5"
+				"background-color" : "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
 

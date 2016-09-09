@@ -2339,6 +2339,7 @@ $(document).ready(function(){
                     $(this).remove();
                   }});
                 dragTarget.css({width: '10px', right: '', left: 0});
+                menuOut = false;
               }
             }
             else {

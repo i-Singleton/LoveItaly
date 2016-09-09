@@ -290,6 +290,13 @@ body {
 	#barra-ricerca input {
 		height: 63px !important;
 	}
+	#registrazione-view {
+		margin-bottom: 82px;
+		height: auto !important;
+	}
+	#logo {
+		display: none !important;
+	}
 }
 
 /* #cerca {
