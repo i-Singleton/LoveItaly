@@ -71,6 +71,7 @@ require.config({
 require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 	require([ 'preloader', 'router' ], function(PreLoader, AppRouter) {
 
+		// require di Materialize e inizializzazione di componenti grafici
 		require([ 'materialize' ], function(){
 			$('.button-collapse').sideNav({
 				menuWidth : 300,
@@ -80,7 +81,7 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 			Waves.displayEffect();
 			$('select').material_select();
 		});
-
+		
 		document.addEventListener("deviceready", run, false);
 
 		function run() {

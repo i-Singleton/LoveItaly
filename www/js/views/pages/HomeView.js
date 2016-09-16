@@ -21,24 +21,17 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 			$("#content").css({
 				"height" : "calc(100% - 80px)",
-				"background-color": "#eeeeee"
+				"background-color" : "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
-			// $(document).ready(function() {
-			// // in base al model che associo poi alla View, limito il ciclo
-			// for (i = 0; i < 3; i++) {
-			// var prodottoSX = new ProdottoCardView();
-			// var prodottoDX = new ProdottoCardView();
-			// $("#home-col-sx").append(prodottoSX.getTemplate());
-			// $("#home-col-dx").append(prodottoDX.getTemplate());
-			// }
-			// });
-			//this.spinner = new PreloaderCircolareView();
+			$("#content").scrollTop(0);
+
+			// this.spinner = new PreloaderCircolareView();
 		},
 
 		id : "home-view",
 
-		// className : "i-g page",
+		// className : "",
 
 		events : {},
 
@@ -47,17 +40,14 @@ define(function(require) {
 			this.el.innerHTML = this.template({});
 
 			// carico il preloader per il contenuto
-			//this.spinner.render();
+			// this.spinner.render();
 
-			$(document).ready(function() {
-				// in base al model che associo poi alla View, limito il ciclo
-				for (i = 0; i < 3; i++) {
-					var prodottoSX = new ProdottoCardView();
-					var prodottoDX = new ProdottoCardView();
-					$("#home-col-sx").append(prodottoSX.render().$el);
-					$("#home-col-dx").append(prodottoDX.render().$el);
-				}
-			});
+			for (i = 0; i < 3; i++) {
+				var prodottoSX = new ProdottoCardView();
+				var prodottoDX = new ProdottoCardView();
+				this.$("#home-col-sx").append(prodottoSX.render().$el);
+				this.$("#home-col-dx").append(prodottoDX.render().$el);
+			}
 
 			return this;
 		},

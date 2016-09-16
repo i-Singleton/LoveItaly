@@ -9,9 +9,11 @@ define(function(require) {
 		defaults : {
 			id : '',
 			nome : '',
+			azienda : '',
 			quantita : '',
 			prezzo : '',
-			totale : ''
+			totale : '',
+			disponibilita : ''
 		},
 
 		initialize : function() {

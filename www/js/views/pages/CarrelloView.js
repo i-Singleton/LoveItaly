@@ -24,6 +24,7 @@ define(function(require) {
 				"background-color" : "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 
 			this.collection = new Carrello();
 			this.listenTo(this.collection, "change remove", this.render);

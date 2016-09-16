@@ -21,6 +21,7 @@ define(function(require) {
 				"background-color": "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 		},
 
 		// id : "myview",

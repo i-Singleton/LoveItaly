@@ -23,6 +23,7 @@ define(function(require) {
 				"background-color" : "white"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 
 			this.model = new Prodotto({
 				id : '1',
@@ -47,7 +48,7 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
-			// initialize del carousel di immagini
+			// initialize del carousel di immagini, secondo la libreria
 			$(document).ready(function() {
 				$('.carousel.carousel-slider').carousel({
 					full_width : true,
@@ -69,7 +70,7 @@ define(function(require) {
 			var carrello = new Carrello();
 			carrello.setProdotto(this.model);
 			/**
-			 * html embedded in questo punto perche' cosi' 
+			 * "html embedded" in questo punto perche' cosi' 
 			 * impone la libreria per il componente Toast
 			 */ 
 			var toastContent = 'Aggiunto al carrello <i class="material-icons left">check</i>';

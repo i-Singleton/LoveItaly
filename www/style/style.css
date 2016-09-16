@@ -466,17 +466,15 @@ box-shadow: 0 1px 0 0 #4CAF50;
 
 /* ----------------profilo 2---------------- */
 #profilo-view {
-	background-color: rgb(238, 238, 238);
+	background-color: #eeeeee;
 	height: calc(100% - 7px);
 	padding: 0;
 }
 
 #profilo-view ul {
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-	box-shadow: 0 1px 2px #CCCCCC;
+	box-shadow: 0 2px 2px #aaaaaa;
 	padding-bottom: 1px;
+	border: 0;
 }
 
 #profilo-view li {
@@ -738,11 +736,12 @@ select:focus {
 }
 
 #carrello-view #rimuovi-prodotto {
-	top: 0.5rem;
-	right: 0.5rem;
+	top: 0;
+	right: 0;
 	position: absolute;
 	color: rgba(0, 0, 0, 0.54);
 	font-size: 20px;
+	padding: 0.5rem;
 }
 
 #carrello-view #btn-bottom-container {
@@ -771,11 +770,9 @@ select:focus {
 }
 
 #riepilogo-view ul {
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-	box-shadow: 0 1px 2px #CCCCCC;
+	box-shadow: 0 2px 2px #aaa;
 	padding-bottom: 1px;
+	border: 0;
 }
 
 #riepilogo-view li {

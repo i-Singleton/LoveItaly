@@ -2,7 +2,6 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Utils = require("utils");
-	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var ProfiloView = Utils.Page.extend({
 
@@ -22,28 +21,20 @@ define(function(require) {
 				"background-color": "white"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 		},
 
 		id : "profilo-view",
-		// className : "i-g page",
+		
+		// className : "",
 
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
+		events : {},
 
 		render : function() {
 			$(this.el).html(this.template());
-			// carico il preloader per il contenuto
-			//var spinner = new PreloaderCircolareView();
-			//spinner.render();
 			return this;
-		},
-
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+		}
+		
 	});
 
 	return ProfiloView;

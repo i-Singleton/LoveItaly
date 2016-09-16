@@ -2,7 +2,6 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Utils = require("utils");
-	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var CategorieView = Utils.Page.extend({
 
@@ -22,6 +21,7 @@ define(function(require) {
 				"background-color": "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 		},
 
 		id : "categorie-view",
@@ -32,11 +32,6 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template());
-
-			// carico il preloader per il contenuto
-			//var spinner = new PreloaderCircolareView();
-			//spinner.render();
-
 			return this;
 		}
 

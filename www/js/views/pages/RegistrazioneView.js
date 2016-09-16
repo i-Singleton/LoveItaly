@@ -43,6 +43,7 @@ define(function(require) {
 				"background-color" : "#eeeeee"
 			});
 			$(".drag-target").css("left", "0px");
+			$("#content").scrollTop(0);
 		},
 
 		focus : function(e) {
@@ -57,7 +58,7 @@ define(function(require) {
 			this.$("#logo").css("display", "block");
 			$("#content").scrollTop(0);
 		}
-		
+
 	});
 
 	return RegistrazioneView;
