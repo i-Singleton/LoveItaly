@@ -340,6 +340,10 @@ body {
 }
 
 /* CERCA */
+#cerca-view img {
+	width: 100%;
+}
+
 #barra-ricerca-view {
 	position: absolute;
 	left: 0px;

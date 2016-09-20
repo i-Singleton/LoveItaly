@@ -5,12 +5,14 @@ define(function(require) {
 	var Utils = require("utils");
 	var ProdottoCardView = require("views/ProdottoCardView");
 	var PreloaderCircolareView = require("views/PreloaderCircolareView");
+	var ListaProdotti = require("collections/ListaProdotti");
+	var Prodotto = require("models/Prodotto");
 
 	var HomeView = Utils.Page.extend({
 
 		constructorName : "HomeView",
 
-		// model : MyModel,
+		collection : ListaProdotti,
 
 		initialize : function() {
 			// load the precompiled template
@@ -27,30 +29,43 @@ define(function(require) {
 			$("#content").scrollTop(0);
 
 			// this.spinner = new PreloaderCircolareView();
+			this.collection = new ListaProdotti();
+			this.collection.getResult("Home");
+			this.listenTo(this.collection, "sync", this.render);
 		},
 
 		id : "home-view",
 
 		// className : "",
 
-		events : {},
+		events : {
+			"click .card" : "save"
+		},
 
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
 
-			// carico il preloader per il contenuto
-			// this.spinner.render();
-
-			for (i = 0; i < 3; i++) {
-				var prodottoSX = new ProdottoCardView();
-				var prodottoDX = new ProdottoCardView();
-				this.$("#home-col-sx").append(prodottoSX.render().$el);
-				this.$("#home-col-dx").append(prodottoDX.render().$el);
+			for (i = 0; i < this.collection.length; i++) {
+				var prodottoCardView = new ProdottoCardView({
+					model : this.collection.at(i)
+				});
+				if(i % 2 == 0)
+					this.$("#home-col-sx").append(prodottoCardView.render().$el);
+				else
+					this.$("#home-col-dx").append(prodottoCardView.render().$el);
 			}
 
 			return this;
 		},
+		
+		save : function(e) {
+			var id = $(e.currentTarget).data("id");
+			var prodotto = new Prodotto();
+			prodotto = this.collection.get(id);
+			prodotto.salva();
+		}
+		
 	});
 
 	return HomeView;

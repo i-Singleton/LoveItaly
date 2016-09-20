@@ -25,13 +25,8 @@ define(function(require) {
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
 
-			this.model = new Prodotto({
-				id : '1',
-				nome : '',
-				quantita : '1',
-				prezzo : '10',
-				totale : ''
-			});
+			this.model = new Prodotto();
+			this.model.carica();
 			this.listenTo(this.model, "change", this.render);
 
 		},

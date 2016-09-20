@@ -3,10 +3,13 @@ define(function(require) {
 	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var Prodotto = require("models/Prodotto");
 
 	var ProdottoCardView = Backbone.View.extend({
 
 		constructorName : "ProdottoCardView",
+		
+		model : Prodotto,
 		
 		tagName: "a",
 
@@ -22,7 +25,7 @@ define(function(require) {
 
 		render : function() {
 			// load the template
-			this.el.innerHTML = this.template({});
+			this.el.innerHTML = this.template(this.model.toJSON());
 			return this;
 		}
 

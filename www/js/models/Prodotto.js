@@ -13,7 +13,9 @@ define(function(require) {
 			quantita : '',
 			prezzo : '',
 			totale : '',
-			disponibilita : ''
+			disponibilita : '',
+			img : '',
+			descrizione : ''
 		},
 
 		initialize : function() {
@@ -26,26 +28,23 @@ define(function(require) {
 		/**
 		 * Salva il Prodotto nel db locale
 		 * 
-		 * @param id_ordine
 		 */
-		salva : function(id_ordine) {
-			/*
-			 * API JS o jQ che richiama il db locale per effettuare il
-			 * salvataggio
-			 */
-
-			// salvare l'id (auto-increment), il nome, l'id_ordine
+		salva : function() {
+			localStorage.setItem(this.constructorName, JSON.stringify(this));
 		},
 
 		/**
-		 * Restituisce i Prodotti relativi a un Ordine dal db locale
+		 * Carica il Prodotto dal db locale
 		 * 
-		 * @param id_ordine
-		 * 
-		 * @return Prodotti
+		 * @return this
 		 */
-		carica : function(id_ordine) {
-			//
+		carica : function() {
+			var prodottoJSONString = null;
+			if((prodottoJSONString = localStorage.getItem(this.constructorName)) != null){
+				this.set(JSON.parse(prodottoJSONString));				
+			}
+			this.setQuantitaETotale(1);
+			return this;
 		},
 
 		setQuantitaETotale : function(quantita) {
@@ -54,7 +53,7 @@ define(function(require) {
 				totale : this.get("quantita") * this.get("prezzo")
 			});
 		},
-		
+
 		incrementa : function() {
 			var q = this.get("quantita");
 			if (q > 0) {
@@ -62,7 +61,7 @@ define(function(require) {
 				this.setQuantitaETotale(q);
 			}
 		},
-		
+
 		decrementa : function() {
 			var q = this.get("quantita");
 			if (q > 1) {

@@ -28,7 +28,7 @@ define(function(require) {
 			this.barraRicerca = new BarraRicercaView();
 			this.collection = new ListaProdotti();
 
-			//this.listenTo(this.barraRicerca.collection, "change add remove", this.updateResults);
+			this.listenTo(this.barraRicerca.collection, "sync", this.updateResults);
 		},
 
 		id : "cerca-view",
@@ -53,19 +53,18 @@ define(function(require) {
 		
 		updateResults : function() {
 			// svuoto il div da eventuali risultati precedenti
-			this.$("#ricerca-risultati").empty();
+			this.$el.empty();
 			// aggiorno la lista risultati, se ce ne sono
 			this.collection = this.barraRicerca.collection;
-			alert("updateResults")
 			if (this.collection.length) {
 				this.collection.each(function(item) {
 					var prodottoListaView = new ProdottoListaView({
 						model : item
 					});
-					this.$("#ricerca-risultati").append(prodottoListaView.render().$el);
+					this.$el.append(prodottoListaView.render().$el);
 				}, this);
 			}else{
-				this.$("#ricerca-risultati").append("Nessun prodotto trovato");
+				this.$el.append("Nessun prodotto trovato");
 			}
 		}
 
