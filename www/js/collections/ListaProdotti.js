@@ -66,9 +66,12 @@ define(function(require) {
 				+ '&ws_key=' 
 				+ apiKey;
 			}else
-			if(factory == "Categorie"){
+			if(factory == "Categorie" && keyword.length){
+				var id = keyword;
 				this.url = baseUrl 
 				+ '/categories/?io_format=JSON&display=full'
+				+ '&filter[id_category_default]='
+				+ id
 				+ '&ws_key=' 
 				+ apiKey;
 			}
@@ -76,6 +79,10 @@ define(function(require) {
 	    		success: this.fetchSuccess,
 	    		error: this.fetchError
 	    	});	    	
+	    },
+	    
+	    save : function(nomeCategoria) {
+	    	localStorage.setItem(nomeCategoria, JSON.stringify(this));
 	    }
 
 	});

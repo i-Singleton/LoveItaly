@@ -388,14 +388,15 @@ body {
 
 /* Categorie */
 #categorie-view {
-	padding: 10px;
+	background-color: white;
+	margin: 1rem;
 }
 
 #categorie-view ul {
 	background-color: white;
 }
 
-#categorie-lista li {
+#categorie-view li {
 	background-color: unset;
 	display: block;
 	padding: 10px 20px 0px 20px;
@@ -702,7 +703,7 @@ select:focus {
 	padding: 0px;
 }
 
-#carrello-view .card-content .azienda, .disponibilita, .prezzo-cadauno {
+.card-content .azienda, .disponibilita, .prezzo-cadauno {
 	font-size: 12px;
 	color: rgba(0, 0, 0, 0.54) !important;
 }

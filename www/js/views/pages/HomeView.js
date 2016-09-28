@@ -28,7 +28,7 @@ define(function(require) {
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
 
-			// this.spinner = new PreloaderCircolareView();
+			this.spinner = new PreloaderCircolareView();
 			this.collection = new ListaProdotti();
 			this.collection.getResult("Home");
 			this.listenTo(this.collection, "sync", this.render);
@@ -45,6 +45,8 @@ define(function(require) {
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
+			
+			this.spinner.render();
 
 			for (i = 0; i < this.collection.length; i++) {
 				var prodottoCardView = new ProdottoCardView({
