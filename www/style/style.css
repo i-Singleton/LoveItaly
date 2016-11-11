@@ -340,8 +340,29 @@ body {
 }
 
 /* CERCA */
+#cerca-view .row{
+	margin-bottom: 0;
+}
+
+#cerca-view .row .col{
+	padding: 0;
+}
+
+#cerca-view .col.s4 {
+	line-height: 0;
+}
+
+#cerca-view .card {
+    margin: 0.5rem 0;
+}
+
+#cerca-view .card .card-content {
+    padding: 10px;
+}
+
 #cerca-view img {
 	width: 100%;
+	max-width: 100%;
 }
 
 #barra-ricerca-view {
@@ -401,6 +422,10 @@ body {
 	display: block;
 	padding: 10px 20px 0px 20px;
 	/* padding: 15px 20px 5px 20px; */
+}
+
+#categorie-view li a {
+	display: block;
 }
 
 /* Preloader Circolare */

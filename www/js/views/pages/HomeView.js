@@ -39,7 +39,7 @@ define(function(require) {
 		// className : "",
 
 		events : {
-			"click .card" : "save"
+			"click .card" : "cacheProdotto"
 		},
 
 		render : function() {
@@ -61,7 +61,11 @@ define(function(require) {
 			return this;
 		},
 		
-		save : function(e) {
+		/**
+		 * Salva nel db locale il prodotto per evitare una seconda richiesta
+		 * superflua verso il server; e' gia' in nostro possesso il prodotto
+		 */
+		cacheProdotto : function(e) {
 			var id = $(e.currentTarget).data("id");
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);

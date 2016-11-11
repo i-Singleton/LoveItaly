@@ -31,6 +31,7 @@ define({
 	copertina : "templates/copertina.html",
 	home : "templates/home.html",
 	ordini : "templates/ordini.html",
+	prodottiCategoria : "templates/prodottiCategoria.html",
 	profilo : "templates/profilo.html",
 	registrazione : "templates/registrazione.html",
 	riepilogo : "templates/riepilogo.html",

@@ -16,6 +16,7 @@ define(function(require) {
 	var CopertinaView = require("views/pages/CopertinaView");
 	var HomeView = require("views/pages/HomeView");
 	var OrdiniView = require("views/pages/OrdiniView");
+	var ProdottiCategoriaView = require("views/pages/ProdottiCategoriaView");
 	var ProfiloView = require("views/pages/ProfiloView");
 	var RegistrazioneView = require("views/pages/RegistrazioneView");
 	var RiepilogoView = require("views/pages/RiepilogoView");
@@ -36,6 +37,7 @@ define(function(require) {
 			"copertina" : "copertina",
 			"home" : "home",
 			"ordini" : "ordini",
+			"prodottiCategoria/:id_categoria" : "prodottiCategoria",
 			"profilo" : "profilo",
 			"registrazione" : "registrazione",
 			"riepilogo" : "riepilogo",
@@ -123,6 +125,12 @@ define(function(require) {
 		ordini : function() {
 			// create the view and show it
 			var page = new OrdiniView();
+			this.changePage(page);
+		},
+		
+		prodottiCategoria : function(id_categoria) {
+			// create the view and show it
+			var page = new ProdottiCategoriaView({id_categoria:id_categoria});
 			this.changePage(page);
 		},
 

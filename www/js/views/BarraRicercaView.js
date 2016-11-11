@@ -25,6 +25,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.barraRicerca;
 			this.collection = new ListaProdotti();	
+//			this.caricaUltimaRicerca();
 		},
 
 		render : function() {
@@ -56,8 +57,24 @@ define(function(require) {
 			if(event.which == 13) {
 				var stringa = $("#barra-ricerca input").val();
 				this.collection.getResult("Cerca", stringa);
+//				this.salvaStringaUltimaRicerca(stringa);				
 			}
-		}
+		},
+		
+//		salvaStringaUltimaRicerca : function(stringa){
+//			localStorage.setItem(this.constructorName, stringa);			
+//		},
+//		
+//		caricaUltimaRicerca : function(){
+//			// se contiene qualcosa, allora carica lo stringa
+//			var ricercaJSONString = null;
+//			var stringa = "";
+//			if((ricercaJSONString = localStorage.getItem(this.constructorName)) != null){
+//				stringa = JSON.parse(ricercaJSONString);
+//				$("#barra-ricerca input").val(stringa);				
+//			}
+//			this.collection.getResult("Cerca", stringa);
+//		}
 
 	});
 

@@ -5,15 +5,15 @@ define(function(require) {
 	var ListaCategorie = require("collections/ListaCategorie");
 	var CategoriaElementoListaView = require("views/CategoriaElementoListaView");
 	var PreloaderCircolareView = require("views/PreloaderCircolareView");
-	var ListaProdotti = require("collections/ListaProdotti");
+	var Categoria = require("models/Categoria");
 
 	var CategorieView = Utils.Page.extend({
 
 		constructorName : "CategorieView",
 		
 		tagName : "ul",
-		
-		id : "categorie-lista",
+
+		id : "categorie-view",
 		
 		className : "collection",
 		
@@ -39,12 +39,8 @@ define(function(require) {
 			this.listenTo(this.collection, "sync", this.render);
 		},
 
-		id : "categorie-view",
-
-		// className : "",
-
 		events : {
-			"click .collection-item" : "getProdotti"
+			"click li" : "cacheCategoria"
 		},
 
 		render : function() {
@@ -63,12 +59,15 @@ define(function(require) {
 			return this;
 		},
 		
-		getProdottiCategoria : function(e) {
+		/**
+		 * Salva nel db locale la Categoria per evitare una seconda richiesta
+		 * superflua verso il server; e' gia' in nostro possesso la Categoria
+		 */
+		cacheCategoria : function(e) {
 			var id = $(e.currentTarget).data("id");
-			var nome = $(e.currentTarget).data("nome");
-			var prodotti = new ListaProdotti();
-			prodotti.getResult("Categorie", id);
-			//prodotti.save(nome);
+			var categoria = new Categoria();
+			categoria = this.collection.get(id);
+			categoria.salva();
 		}
 
 	});

@@ -4,8 +4,8 @@ define(function(require) {
 	var Categoria = require("models/Categoria");
 	
 	// url e api key
-	var baseUrl = "http://192.168.56.101/loveitaly/api";
-//	var baseUrl = "http://loveitaly.altervista.org/api";
+//	var baseUrl = "http://192.168.56.101/loveitaly/api";
+	var baseUrl = "http://loveitaly.altervista.org/api";
 	var apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
 //	var productImageBaseUrl = baseUrl + "/images/products";
 
@@ -16,6 +16,7 @@ define(function(require) {
 		model : Categoria,
 		
 		initialize : function() {
+			// ordina le Categorie per nome
 			this.comparator = "nome";			
 		},
 		
@@ -29,6 +30,7 @@ define(function(require) {
 	    			id : array[i]['id'],
 	    			nome : array[i]['name']
 	    		});
+	    		// pulizia della risposta dal server
 	    		if(categoria.get("id") != 1 
 	    			&&	categoria.get("id") != 2
 	    			&&	categoria.get("id") != 31
@@ -44,6 +46,9 @@ define(function(require) {
 	    	console.log('fetch error');
 	    },
 	    
+	    /**
+	     * Metodo per recuperare le Categorie dal server
+	     */
 	    getResult : function() {
 			this.url = baseUrl 
 			+ '/categories/?io_format=JSON&display=full'

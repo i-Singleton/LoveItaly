@@ -4,8 +4,8 @@ define(function(require) {
 	var Prodotto = require("models/Prodotto");
 	
 	// url e api key
-	var baseUrl = "http://192.168.56.101/loveitaly/api";
-//	var baseUrl = "http://loveitaly.altervista.org/api";
+//	var baseUrl = "http://192.168.56.101/loveitaly/api";
+	var baseUrl = "http://loveitaly.altervista.org/api";
 	var apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
 	var productImageBaseUrl = baseUrl + "/images/products";
 
@@ -30,7 +30,7 @@ define(function(require) {
 	    			nome : array[i]['name'],
 	    			azienda : array[i]['manufacturer_name'] || '',
 	    			prezzo : parseFloat(array[i]['price']).toFixed(2),
-	    			disponibilita : array[i]['quantity'],
+	    			disponibilita : array[i]['available_for_order'],
 	    			img : productImageBaseUrl
 	    				+ '/' + array[i]['id']
 		    			+ '/' + array[i]['id_default_image']
@@ -69,7 +69,7 @@ define(function(require) {
 			if(factory == "Categorie" && keyword.length){
 				var id = keyword;
 				this.url = baseUrl 
-				+ '/categories/?io_format=JSON&display=full'
+				+ '/products/?io_format=JSON&display=full'
 				+ '&filter[id_category_default]='
 				+ id
 				+ '&ws_key=' 
@@ -79,10 +79,6 @@ define(function(require) {
 	    		success: this.fetchSuccess,
 	    		error: this.fetchError
 	    	});	    	
-	    },
-	    
-	    save : function(nomeCategoria) {
-	    	localStorage.setItem(nomeCategoria, JSON.stringify(this));
 	    }
 
 	});

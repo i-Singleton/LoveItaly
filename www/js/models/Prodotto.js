@@ -21,7 +21,7 @@ define(function(require) {
 		initialize : function() {
 			// 
 			this.set({
-				totale : this.get("quantita") * this.get("prezzo")
+				totale : this.getTotale()
 			});
 		},
 
@@ -46,11 +46,40 @@ define(function(require) {
 			this.setQuantitaETotale(1);
 			return this;
 		},
+		
+		/**
+		 * Ritorna la quantita
+		 * 
+		 * @return int
+		 */
+		getQuantita : function(){
+			return parseInt(this.get("quantita"));
+		},
+		
+		/**
+		 * Ritorna il prezzo con due cifre dopo la virgola
+		 * 
+		 * @return float
+		 */
+		getPrezzo : function(){
+			return parseFloat(this.get("prezzo")).toFixed(2);
+		},
+		
+		/**
+		 * Ritorna il totale con due cifre dopo la virgola
+		 * 
+		 * @return float
+		 */
+		getTotale : function(){
+			var quantita = this.getQuantita();
+			var prezzo = this.getPrezzo();
+			return parseFloat(quantita * prezzo).toFixed(2);
+		},
 
 		setQuantitaETotale : function(quantita) {
 			this.set("quantita", quantita);
 			this.set({
-				totale : this.get("quantita") * this.get("prezzo")
+				totale : this.getTotale()
 			});
 		},
 

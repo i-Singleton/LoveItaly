@@ -3,20 +3,22 @@ define(function(require) {
 	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Utils = require("utils");
-	var BarraRicercaView = require("views/BarraRicercaView");
 	var ProdottoListaView = require("views/ProdottoListaView");
 	var ListaProdotti = require("collections/ListaProdotti");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
+	var Categoria = require("models/Categoria");
 	var Prodotto = require("models/Prodotto");
 
-	var CercaView = Utils.Page.extend({
+	var ProdottiCategoriaView = Utils.Page.extend({
 
-		constructorName : "CercaView",
+		constructorName : "ProdottiCategoriaView",
 
 		collection : ListaProdotti,
 
-		initialize : function() {
+		initialize : function(options) {
 			// load the precompiled template
-			this.template = Utils.templates.cerca;
+			this.template = Utils.templates.prodottiCategoria;
+			document.getElementById("titolo").innerHTML = "Categorie";
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");
 			$("#content").css({
@@ -26,10 +28,14 @@ define(function(require) {
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
 
-			this.barraRicerca = new BarraRicercaView();
+//			var categoria = new Categoria();
+//			categoria.carica();
+//			document.getElementById("titolo").innerHTML = categoria.get("nome");
+			
+			this.spinner = new PreloaderCircolareView();
 			this.collection = new ListaProdotti();
-
-			this.listenTo(this.barraRicerca.collection, "sync", this.updateResults);
+			this.collection.getResult("Categorie", options.id_categoria);
+			this.listenTo(this.collection, "sync", this.render);
 		},
 
 		id : "cerca-view",
@@ -41,24 +47,15 @@ define(function(require) {
 		},
 
 		render : function() {
-			this.el.innerHTML = this.template({});
-			// Caricamento della Barra di Ricerca
-			// nascondo l'icona cerca
-			$("#cerca").css("display", "none");
-			// carico il template della barra di ricerca
-			$("#titolo").html(this.barraRicerca.render().$el);
-			// metto il focus sull'input
-			$("#barra-ricerca input").focus();
-			$("#barra-ricerca").css("background-color", "#4caf50");
-
-			return this;
-		},
-		
-		updateResults : function() {
-			// svuoto il div da eventuali risultati precedenti
-			this.$el.empty();
-			// aggiorno la lista risultati, se ce ne sono
-			this.collection = this.barraRicerca.collection;
+			var categoria = new Categoria();
+			categoria.carica();
+			
+			this.el.innerHTML = this.template({
+				nome : categoria.get("nome")
+			});
+			
+			this.spinner.render();
+			
 			if (this.collection.length) {
 				this.collection.each(function(item) {
 					var prodottoListaView = new ProdottoListaView({
@@ -69,6 +66,7 @@ define(function(require) {
 			}else{
 				this.$el.append("Nessun prodotto trovato");
 			}
+			return this;
 		},
 		
 		/**
@@ -84,6 +82,6 @@ define(function(require) {
 
 	});
 
-	return CercaView;
+	return ProdottiCategoriaView;
 
 });
