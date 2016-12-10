@@ -155,6 +155,11 @@ body {
 	float: left;
 	margin-left: 10px;
 }
+#sottotitolo {
+	position: absolute;
+	left: 65px;
+	line-height: 80px;
+}
 /* annullo il comportamento hover */
 #headbar a:hover {
 	background-color: unset;
@@ -335,29 +340,39 @@ body {
 	
 }
 
-#home-view #home-col-sx, #home-col-dx {
+#home-view #home-col-sx, #home-view #home-col-dx {
 	padding: 0 0.35rem 0 0.35rem;
 }
 
 /* CERCA */
-#cerca-view .row{
-	margin-bottom: 0;
-}
-
-#cerca-view .row .col{
-	padding: 0;
-}
-
-#cerca-view .col.s4 {
-	line-height: 0;
-}
-
-#cerca-view .card {
-    margin: 0.5rem 0;
+#cerca-view {
+	padding: 10px;
 }
 
 #cerca-view .card .card-content {
-    padding: 10px;
+	padding: 15px;
+}
+
+#cerca-view .card .card-content .azienda {
+	font-size: 12px;
+}
+
+#cerca-view .card .card-content .card-title {
+	line-height: unset;
+}
+
+#cerca-view .card .card-title {
+	font-size: unset;
+	/* font-weight: bold; */
+}
+
+#cerca-view #cerca-row {
+	/*padding-bottom: 50px;*/
+	
+}
+
+#cerca-view #col-sx, #cerca-view #col-dx {
+	padding: 0 0.35rem 0 0.35rem;
 }
 
 #cerca-view img {
@@ -943,7 +958,7 @@ select:focus {
 
 #scheda-prodotto-view .btn-large {
 	width: 100%;
-	padding: 0px 15px;
+	padding: 0px 10px;
 }
 
 #scheda-prodotto-view .btn-large span {

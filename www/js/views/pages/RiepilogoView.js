@@ -14,6 +14,8 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.riepilogo;
 			document.getElementById("titolo").innerHTML = "Riepilogo";
+			$("#titolo").css("line-height", "unset");
+			document.getElementById("sottotitolo").innerHTML = "";
 			$("#cerca").css("display", "inline-block");
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");

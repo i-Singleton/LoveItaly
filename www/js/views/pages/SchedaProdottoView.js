@@ -15,6 +15,8 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.schedaProdotto;
 			document.getElementById("titolo").innerHTML = "Scheda prodotto";
+			$("#titolo").css("line-height", "unset");
+			document.getElementById("sottotitolo").innerHTML = "";
 			$("#cerca").css("display", "inline-block");
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");

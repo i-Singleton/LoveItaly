@@ -18,6 +18,8 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.home;
 			$("#titolo").html("Home");
+			$("#titolo").css("line-height", "unset");
+			document.getElementById("sottotitolo").innerHTML = "";
 			$("#cerca").css("display", "inline-block");
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");

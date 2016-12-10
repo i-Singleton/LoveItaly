@@ -40,37 +40,38 @@ define(function(require) {
 		 */
 		carica : function() {
 			var prodottoJSONString = null;
-			if((prodottoJSONString = localStorage.getItem(this.constructorName)) != null){
-				this.set(JSON.parse(prodottoJSONString));				
+			if ((prodottoJSONString = localStorage
+					.getItem(this.constructorName)) != null) {
+				this.set(JSON.parse(prodottoJSONString));
 			}
 			this.setQuantitaETotale(1);
 			return this;
 		},
-		
+
 		/**
 		 * Ritorna la quantita
 		 * 
 		 * @return int
 		 */
-		getQuantita : function(){
+		getQuantita : function() {
 			return parseInt(this.get("quantita"));
 		},
-		
+
 		/**
 		 * Ritorna il prezzo con due cifre dopo la virgola
 		 * 
 		 * @return float
 		 */
-		getPrezzo : function(){
+		getPrezzo : function() {
 			return parseFloat(this.get("prezzo")).toFixed(2);
 		},
-		
+
 		/**
 		 * Ritorna il totale con due cifre dopo la virgola
 		 * 
 		 * @return float
 		 */
-		getTotale : function(){
+		getTotale : function() {
 			var quantita = this.getQuantita();
 			var prezzo = this.getPrezzo();
 			return parseFloat(quantita * prezzo).toFixed(2);

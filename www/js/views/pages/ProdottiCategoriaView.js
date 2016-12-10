@@ -3,7 +3,7 @@ define(function(require) {
 	var $ = require("jquery");
 	var Backbone = require("backbone");
 	var Utils = require("utils");
-	var ProdottoListaView = require("views/ProdottoListaView");
+	var ProdottoCardView = require("views/ProdottoCardView");
 	var ListaProdotti = require("collections/ListaProdotti");
 	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 	var Categoria = require("models/Categoria");
@@ -18,7 +18,14 @@ define(function(require) {
 		initialize : function(options) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottiCategoria;
+			
+			$("#titolo").css("line-height", "40px");
 			document.getElementById("titolo").innerHTML = "Categorie";
+			
+			var categoria = new Categoria();
+			categoria.carica();
+			document.getElementById("sottotitolo").innerHTML = categoria.get("nome");
+			
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");
 			$("#content").css({
@@ -40,29 +47,32 @@ define(function(require) {
 
 		id : "cerca-view",
 
-		// className : "",
+		className : "row",
 
 		events : {
 			"click .card" : "cacheProdotto"
 		},
 
 		render : function() {
-			var categoria = new Categoria();
-			categoria.carica();
+//			var categoria = new Categoria();
+//			categoria.carica();
 			
 			this.el.innerHTML = this.template({
-				nome : categoria.get("nome")
+//				nome : categoria.get("nome")
 			});
 			
 			this.spinner.render();
 			
 			if (this.collection.length) {
-				this.collection.each(function(item) {
-					var prodottoListaView = new ProdottoListaView({
-						model : item
+				for (i = 0; i < this.collection.length; i++) {
+					var prodottoCardView = new ProdottoCardView({
+						model : this.collection.at(i)
 					});
-					this.$el.append(prodottoListaView.render().$el);
-				}, this);
+					if(i % 2 == 0)
+						this.$("#col-sx").append(prodottoCardView.render().$el);
+					else
+						this.$("#col-dx").append(prodottoCardView.render().$el);
+				}
 			}else{
 				this.$el.append("Nessun prodotto trovato");
 			}

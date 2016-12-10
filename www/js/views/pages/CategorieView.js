@@ -23,6 +23,8 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.categorie;
 			document.getElementById("titolo").innerHTML = "Categorie";
+			$("#titolo").css("line-height", "unset");
+			document.getElementById("sottotitolo").innerHTML = "";
 			$("#cerca").css("display", "inline-block");
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");

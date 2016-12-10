@@ -1,6 +1,7 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
+	var $ = require("jquery");
 	var Prodotto = require("models/Prodotto");
 	
 	// url e api key
@@ -36,7 +37,7 @@ define(function(require) {
 		    			+ '/' + array[i]['id_default_image']
 			    		+ '/?&ws_key=' 
 						+ apiKey,
-					descrizione : array[i]['description']
+					descrizione : $(array[i]['description']).text()
 	    		});
 	    		if(prodotto.get("id") != 64)
 	    			res.push(prodotto);
