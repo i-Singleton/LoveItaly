@@ -14,8 +14,9 @@ define(function(require) {
 			prezzo : '',
 			totale : '',
 			disponibilita : '',
-			img : '',
-			descrizione : ''
+			immagine_default : '',
+			descrizione : '',
+			immagini : []
 		},
 
 		initialize : function() {
@@ -72,6 +73,20 @@ define(function(require) {
 			var quantita = this.getQuantita();
 			var prezzo = this.getPrezzo();
 			return parseFloat(quantita * prezzo).toFixed(2);
+		},
+
+		/**
+		 * Ritorna l'array di url di immagini
+		 * 
+		 * @return array
+		 */
+		getImmagini : function() {
+			// abilito solo l'immagine di default, in quanto le altre
+			// spesso sono immagini correlate e non del prodotto stesso
+//			if (this.get("immagini").length){
+//				return this.get("immagini");
+//			}
+			return [this.get("immagine_default")];
 		},
 
 		/**

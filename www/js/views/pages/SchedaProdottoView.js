@@ -4,6 +4,7 @@ define(function(require) {
 	var Utils = require("utils");
 	var Prodotto = require("models/Prodotto");
 	var Carrello = require("collections/Carrello");
+	var CarouselView = require("views/CarouselView");
 
 	var SchedaProdottoView = Utils.Page.extend({
 
@@ -29,7 +30,7 @@ define(function(require) {
 
 			this.model = new Prodotto();
 			this.model.carica();
-			this.listenTo(this.model, "change", this.render);
+			this.carousel = new CarouselView();
 
 		},
 
@@ -45,22 +46,25 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
-			// initialize del carousel di immagini, secondo la libreria
-			$(document).ready(function() {
-				$('.carousel.carousel-slider').carousel({
-					full_width : true,
-					indicators : true
-				});
-			});
+			this.$el.prepend(
+					this.carousel.render(this.model.getImmagini()).$el
+			);
 			return this;
+		},
+		
+		setQuantitaETotale : function() {
+			this.$("#quantita").html(this.model.getQuantita());
+			this.$("#totale").html(this.model.getTotale());
 		},
 
 		decrementa : function() {
 			this.model.decrementa();
+			this.setQuantitaETotale();
 		},
 
 		incrementa : function() {
 			this.model.incrementa();
+			this.setQuantitaETotale();
 		},
 
 		aggiungiAlCarrello : function() {

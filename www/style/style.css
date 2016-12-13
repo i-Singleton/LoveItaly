@@ -155,6 +155,7 @@ body {
 	float: left;
 	margin-left: 10px;
 }
+
 #sottotitolo {
 	position: absolute;
 	left: 65px;
@@ -749,7 +750,7 @@ select:focus {
 	color: rgba(0, 0, 0, 0.54) !important;
 }
 
-#carrello-view .nome-prodotto{
+#carrello-view .nome-prodotto {
 	margin-right: 27px;
 }
 
@@ -969,4 +970,10 @@ select:focus {
 #scheda-prodotto-view .btn-large span {
 	color: #1b5e20;
 	margin: 0px 10px;
+}
+
+#scheda-prodotto-view #totale {
+	color: white;
+	display: inline;
+	margin: 0;
 }
