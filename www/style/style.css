@@ -714,10 +714,11 @@ select:focus {
 
 /* Carrello */
 #carrello-view {
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 #carrello-view .card {
+	margin-bottom: 0.25rem;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }
@@ -746,6 +747,10 @@ select:focus {
 .card-content .azienda, .disponibilita, .prezzo-cadauno {
 	font-size: 12px;
 	color: rgba(0, 0, 0, 0.54) !important;
+}
+
+#carrello-view .nome-prodotto{
+	margin-right: 27px;
 }
 
 #carrello-view .card-action {

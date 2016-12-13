@@ -11,15 +11,16 @@ define(function(require) {
 
 		model : Prodotto,
 
-		// id : "prodottoCarrello",
+		tagName : "a",
 
-		className : "card",
+		// id : "prodottoCarrello",
 
 		events : {},
 
 		initialize : function(options) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottoCarrello;
+			this.$el.attr("href", "#schedaProdotto");
 		},
 
 		render : function() {

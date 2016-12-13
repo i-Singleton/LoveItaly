@@ -10,7 +10,7 @@ define(function(require) {
 			id : '',
 			nome : '',
 			azienda : '',
-			quantita : '',
+			quantita : 1,
 			prezzo : '',
 			totale : '',
 			disponibilita : '',
@@ -19,10 +19,7 @@ define(function(require) {
 		},
 
 		initialize : function() {
-			// 
-			this.set({
-				totale : this.getTotale()
-			});
+
 		},
 
 		/**
@@ -77,23 +74,33 @@ define(function(require) {
 			return parseFloat(quantita * prezzo).toFixed(2);
 		},
 
+		/**
+		 * Metodo a cui viene passata una quantita' e aggiorna lo stato del
+		 * Prodotto impostandone la quantita' e ne calcola il prezzo totale
+		 * 
+		 * @param quantita
+		 */
 		setQuantitaETotale : function(quantita) {
 			this.set("quantita", quantita);
-			this.set({
-				totale : this.getTotale()
-			});
+			this.set("totale", this.getTotale());
 		},
 
+		/**
+		 * Incrementa la quantita' del Prodotto
+		 */
 		incrementa : function() {
-			var q = this.get("quantita");
+			var q = this.getQuantita();
 			if (q > 0) {
 				q++;
 				this.setQuantitaETotale(q);
 			}
 		},
 
+		/**
+		 * Decrementa la quantita' del Prodotto
+		 */
 		decrementa : function() {
-			var q = this.get("quantita");
+			var q = this.getQuantita();
 			if (q > 1) {
 				q--;
 				this.setQuantitaETotale(q);

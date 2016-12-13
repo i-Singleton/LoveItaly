@@ -29,7 +29,8 @@ define(function(require) {
 			$("#content").scrollTop(0);
 
 			this.collection = new Carrello();
-			this.listenTo(this.collection, "change remove", this.render);
+			this.collection.carica();
+			this.listenTo(this.collection, "add change remove", this.render);
 		},
 
 		id : "carrello-view",
@@ -39,7 +40,8 @@ define(function(require) {
 		events : {
 			"click #rimuovi-prodotto" : "rimuovi",
 			"click #decrementa-quantita" : "decrementa",
-			"click #incrementa-quantita" : "incrementa"
+			"click #incrementa-quantita" : "incrementa",
+			"click .card" : "cacheProdotto"
 		},
 
 		render : function() {
@@ -56,6 +58,8 @@ define(function(require) {
 		},
 
 		rimuovi : function(e) {
+			e.preventDefault();
+			e.stopPropagation();
 			var id = $(e.currentTarget).data("id");
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
@@ -63,19 +67,34 @@ define(function(require) {
 		},
 
 		decrementa : function(e) {
+			e.preventDefault();
+			e.stopPropagation();
 			var id = $(e.currentTarget).data("id");
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.decrementa();
-			this.collection.setProdotto(prodotto);
+			this.collection.aggiungiProdotto(prodotto);
 		},
 
 		incrementa : function(e) {
+			e.preventDefault();
+			e.stopPropagation();
 			var id = $(e.currentTarget).data("id");
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.incrementa();
-			this.collection.setProdotto(prodotto);
+			this.collection.aggiungiProdotto(prodotto);
+		},
+
+		/**
+		 * Salva nel db locale il prodotto per evitare una seconda richiesta
+		 * superflua verso il server; e' gia' in nostro possesso il prodotto
+		 */
+		cacheProdotto : function(e) {
+			var id = $(e.currentTarget).data("id");
+			var prodotto = new Prodotto();
+			prodotto = this.collection.get(id);
+			prodotto.salva();
 		}
 
 	});

@@ -1,29 +1,30 @@
-<div class="row">
-	<div class="col s4">
-		<img src="img/office.jpg">
-	</div>
-	<div class="col s8">
-		<div class="card-content">
-			<p>Prodotto</p>
-			<p class="azienda">Azienda</p>
-			<p class="disponibilita">Disponibilit&agrave;: {{disponibilita}}</p>
+<div data-id="{{id}}" class="card waves-effect">
+	<i data-id="{{id}}" id="rimuovi-prodotto" class="material-icons">close</i>
+	<div class="row">
+		<div class="col s4">
+			<img src="{{img}}">
 		</div>
-		<div class="card-action row">
-			<div class="col s4">
-				<a data-id="{{id}}" id="decrementa-quantita" class="left"><i
-					class="material-icons">remove</i></a>
+		<div class="col s8">
+			<div class="card-content">
+				<p class="nome-prodotto grey-text text-darken-4">{{nome}}</p>
+				<p class="azienda">{{azienda}}</p>
+				<p class="disponibilita">Disponibilit&agrave;: {{disponibilita}}</p>
 			</div>
-			<div class="col s4 info-prezzo">
-				<div class="row prezzo-cadauno">{{quantita}} x
-					{{prezzo}}&#128;</div>
-				<div class="row">{{totale}}&#128;</div>
-			</div>
-			<div class="col s4">
-				<a data-id="{{id}}" id="incrementa-quantita" class="right"><i
-					class="material-icons">add</i></a>
+			<div class="card-action row">
+				<div class="col s4">
+					<a data-id="{{id}}" id="decrementa-quantita" class="left"><i
+						class="material-icons">remove</i></a>
+				</div>
+				<div class="col s4 info-prezzo">
+					<div class="row prezzo-cadauno">{{quantita}} x
+						{{prezzo}}&#128;</div>
+					<div class="row grey-text text-darken-4">{{totale}}&#128;</div>
+				</div>
+				<div class="col s4">
+					<a data-id="{{id}}" id="incrementa-quantita" class="right"><i
+						class="material-icons">add</i></a>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<i data-id="{{id}}" id="rimuovi-prodotto" class="material-icons">close</i>

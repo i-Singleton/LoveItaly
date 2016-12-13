@@ -65,7 +65,7 @@ define(function(require) {
 
 		aggiungiAlCarrello : function() {
 			var carrello = new Carrello();
-			carrello.setProdotto(this.model);
+			carrello.aggiungiProdotto(this.model);
 			/**
 			 * "html embedded" in questo punto perche' cosi' 
 			 * impone la libreria per il componente Toast

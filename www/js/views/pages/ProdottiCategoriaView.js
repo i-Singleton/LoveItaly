@@ -64,7 +64,7 @@ define(function(require) {
 			this.spinner.render();
 			
 			if (this.collection.length) {
-				for (i = 0; i < this.collection.length; i++) {
+				for (var i = 0; i < this.collection.length; i++) {
 					var prodottoCardView = new ProdottoCardView({
 						model : this.collection.at(i)
 					});

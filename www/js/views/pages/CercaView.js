@@ -66,7 +66,7 @@ define(function(require) {
 			// aggiorno la lista risultati, se ce ne sono
 			this.collection = this.barraRicerca.collection;
 			if (this.collection.length) {
-				for (i = 0; i < this.collection.length; i++) {
+				for (var i = 0; i < this.collection.length; i++) {
 					var prodottoCardView = new ProdottoCardView({
 						model : this.collection.at(i)
 					});

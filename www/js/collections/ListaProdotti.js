@@ -32,6 +32,7 @@ define(function(require) {
 	    			azienda : array[i]['manufacturer_name'] || '',
 	    			prezzo : parseFloat(array[i]['price']).toFixed(2),
 	    			disponibilita : array[i]['available_for_order'],
+	    			totale : parseFloat(array[i]['price']).toFixed(2),
 	    			img : productImageBaseUrl
 	    				+ '/' + array[i]['id']
 		    			+ '/' + array[i]['id_default_image']
