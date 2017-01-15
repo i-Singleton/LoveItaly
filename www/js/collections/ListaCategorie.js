@@ -4,10 +4,9 @@ define(function(require) {
 	var Categoria = require("models/Categoria");
 	
 	// url e api key
-//	var baseUrl = "http://192.168.56.101/loveitaly/api";
-	var baseUrl = "http://loveitaly.altervista.org/api";
+	var baseUrl = "http://192.168.56.101/loveitaly/api";
+//	var baseUrl = "http://loveitaly.altervista.org/api";
 	var apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
-//	var productImageBaseUrl = baseUrl + "/images/products";
 
 	var ListaCategorie = Backbone.Collection.extend({
 

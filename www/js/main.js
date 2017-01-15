@@ -47,6 +47,8 @@ require.config({
 //		'init': '../lib/materialize/js/init',
 //		'initial': '../lib/materialize/js/initial',
 //		'prism': '../lib/materialize/js/prism',
+		'xml2json' : '../lib/xml2json/xml2json',
+		'validator' : '../lib/validator/validator',
 	},
 	shim : {
 		'jquery' : {
@@ -72,7 +74,7 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 	require([ 'preloader', 'router' ], function(PreLoader, AppRouter) {
 
 		// require di Materialize e inizializzazione di componenti grafici
-		require([ 'materialize' ], function(){
+		require([ 'materialize', 'validator' ], function(){
 			$('.button-collapse').sideNav({
 				menuWidth : 300,
 				edge: 'left',

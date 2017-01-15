@@ -9,30 +9,39 @@
 </div>
 
 <div class="row">
-	<form>
+	<form id="registrazione-form">
 		<div class="row">
 			<div class="row">
 				<div class="input-field">
 					<i class="material-icons prefix">person</i> <input id="first_name"
-						type="text" class="validate"> <label for="first_name">Nome</label>
+						type="text" required> <label
+						for="first_name">Nome</label>
+					<div id="nome-error" class="form-error">Solo lettere</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field">
 					<i class="material-icons prefix">person</i> <input id="last_name"
-						type="text" class="validate"> <label for="last_name">Cognome</label>
+						type="text" required> <label
+						for="last_name">Cognome</label>
+					<div id="cognome-error" class="form-error">Solo lettere</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field">
 					<i class="material-icons prefix">email</i> <input id="email"
-						type="email" class="validate"> <label for="email">Email</label>
+						type="email" required> <label
+						for="email">Email</label>
+					<div id="email-usata" class="form-error">Indirizzo email gi&#224; usato</div>
+					<div id="email-error" class="form-error">Indirizzo email non valido</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field">
 					<i class="material-icons prefix">lock</i> <input id="password"
-						type="password" class="validate"> <label for="password">Password</label>
+						type="password" required> <label
+						for="password">Password</label>
+					<div id="password-error" class="form-error">Almeno 6 caratteri</div>
 				</div>
 			</div>
 		</div>
@@ -44,6 +53,6 @@
 
 <div class="row">
 	<div class="input-field">
-		<a class="waves-effect btn-flat green lighten-5">Registrati</a>
+		<a id="registrati" class="waves-effect btn-flat green lighten-5">Registrati</a>
 	</div>
 </div>

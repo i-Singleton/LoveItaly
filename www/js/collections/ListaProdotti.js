@@ -5,8 +5,8 @@ define(function(require) {
 	var Prodotto = require("models/Prodotto");
 	
 	// url e api key
-//	var baseUrl = "http://192.168.56.101/loveitaly/api";
-	var baseUrl = "http://loveitaly.altervista.org/api";
+	var baseUrl = "http://192.168.56.101/loveitaly/api";
+//	var baseUrl = "http://loveitaly.altervista.org/api";
 	var apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
 	var productImageBaseUrl = baseUrl + "/images/products";
 
@@ -30,7 +30,7 @@ define(function(require) {
 	    		var immagini = [];
 	    		// se c'e' piu' di un'immagine, oltre quella di default,
 	    		// popolo l'array di url di immagini
-	    		if(array_id_immagini.length > 1){
+	    		if(array_id_immagini != undefined && array_id_immagini.length > 1){
 		    		var id_prodotto = array[i]['id'];
 		    		for(var k = 0; k < array_id_immagini.length; k++){
 		    			var id_immagine = array_id_immagini[k]['id'];

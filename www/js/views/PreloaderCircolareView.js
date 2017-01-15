@@ -30,6 +30,11 @@ define(function(require) {
 				//$("#content").css("display", "block");
 			}, 1000);
 			return this;
+		},
+		
+		trasparente : function() {
+			$(this).css("background-color", "rgba(220, 220, 220, 0.2)");
+			return this;
 		}
 
 	});

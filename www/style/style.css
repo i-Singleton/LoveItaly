@@ -688,6 +688,15 @@ select:focus {
 	margin-right: 16px;
 }
 
+#registrazione-view .form-error {
+	color: yellow;
+	font-size: 11px;
+	position: absolute;
+	right: 0px;
+	margin-top: -17px;
+	display: none;
+}
+
 #accedi-switch {
 	float: right;
 	margin: -35px 0px 0px;
