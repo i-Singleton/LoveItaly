@@ -44,8 +44,7 @@
 <div class="side-nav" id="mobile-demo">
 	<div id="menu-header" class="green darken-2">
 		<img src="res/logo.png"
-			style="vertical-align: middle; height: 80px; margin: 10px;"> <span>Love
-			Italy</span>
+			style="vertical-align: middle; height: 80px; margin: 10px;"> <span>{{nome}}</span>
 	</div>
 	<ul id="menu-list">
 		<li><a class="waves-effect" href="#home"><i
@@ -54,20 +53,17 @@
 				class="material-icons md-dark left">&#xE896;</i>Categorie</a></li>
 		<li><a class="waves-effect" href="#aziende"><i
 				class="material-icons md-dark left">&#xE7FB;</i>Aziende</a></li>
-		<li class="border-top"><a class="waves-effect" href="#profilo"><i
+		<li class="border-top"><a id="profilo" class="waves-effect" href="#profilo"><i
 				class="material-icons md-dark left">&#xE7FD;</i>Profilo</a></li>
 		<li><a class="waves-effect" href="#ordini"><i
 				class="material-icons md-dark left">&#xE558;</i>Ordini</a></li>
 	</ul>
 	<ul id="menu-accedi">
-		<li class="border-top"><a class="waves-effect" href="#accedi"><i
-				class="material-icons">&#xE879;</i><span>Accedi</span></a></li>
+		<li class="border-top"><a id="accedi" class="waves-effect"
+			href="#accedi"><i class="material-icons">&#xE879;</i><span>Accedi</span></a><a
+			id="disconnetti" class="waves-effect"><i class="material-icons">&#xE879;</i><span>Disconnetti</span></a></li>
 	</ul>
 </div>
 
 <!-- contenuto delle pagine -->
 <div id="content" class="content"></div>
-
-<!-- <span class="new badge green darken-2" data-badge-caption=""
-	style="position: fixed; top: 39px; font-size: 8px; right: 22px; min-width: 10px; padding: 0px; z-index: 998; font-weight: bold;">14</span>
-	 -->

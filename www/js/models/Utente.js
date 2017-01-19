@@ -2,6 +2,7 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var X2JS = require("xml2json");
+	var md5 = require("md5");
 
 	// url e api key
 	var baseUrl = "http://192.168.56.101/loveitaly/api";
@@ -64,10 +65,92 @@ define(function(require) {
 			password : '',
 			zona : '',
 			recapito : '',
-			registrato : ''
+			registrato : '',
+			loggato : ''
 		},
 
 		initialize : function() {
+			this.load();
+		},
+		
+		/**
+		 * Metodo per effettuare l'accesso.
+		 * Ritorna true se e' stato autenticato, altrimenti false
+		 * 
+		 * @return boolean
+		 */
+		login : function(email, password) {
+			this.url = baseUrl
+			+ '/customers/?io_format=JSON&filter[email]='
+			+ '[' + email + ']&display=full'
+			+ '&ws_key=' 
+			+ apiKey;
+			
+			var encrypted_password = md5('7j3EQiXxwscCNaOIORd8YqmvkjfEmDVxs4EcihNJNVNyCG4bHA3ThTnk'
+					+ password);
+			
+			var t = this;
+			var logged;
+			$.get(this.url)
+			.done(function(response) {
+				if (response.length == 0) {
+					// loggato false
+					logged = false;
+					t.set("loggato", logged);
+				} else {
+					// loggato true
+					if(encrypted_password == response['customers'][0]['passwd']){
+						logged = true;
+						t.set({
+							id : response['customers'][0]['id'],
+							nome : response['customers'][0]['firstname'],
+							cognome : response['customers'][0]['lastname'],
+							email : response['customers'][0]['email'],
+							password : response['customers'][0]['passwd']
+						});
+						localStorage.setItem(t.constructorName, JSON.stringify(t));
+						t.set("loggato", logged);
+					}
+				}
+				return logged;
+			});
+		},
+		
+		loginAfterRegistration : function() {
+			localStorage.setItem(this.constructorName, JSON.stringify(this));
+		},
+		
+		/**
+		 * Metodo per effettuare la disconnessione
+		 */
+		logout : function() {
+			localStorage.removeItem(this.constructorName);
+			this.clear();
+		},
+		
+		/**
+		 * Ritorna true se l'Utente e' loggato, altrimenti false
+		 * 
+		 * @return boolean
+		 */
+		isLogged : function() {
+			if(localStorage.getItem(this.constructorName) != null)
+				return true;
+			return false;
+		},
+		
+		/**
+		 * Carica l'Utente
+		 */
+		load : function() {
+			if(this.isLogged()){
+				var JSONString = localStorage.getItem(this.constructorName);
+				this.set(JSON.parse(JSONString));
+			}
+		},
+		
+		update : function(key, value) {
+			
 		},
 		
 		/**
@@ -132,7 +215,7 @@ define(function(require) {
 					t.set(factory, false);
 					available = false;
 				}
-				console.log("(ajax) email disponibile: ", t.get("email"));
+				//console.log("(ajax) email disponibile: ", t.get("email"));
 				return available;
 			});
 		},		
@@ -155,46 +238,7 @@ define(function(require) {
 //			.done(function() {
 //				if(id != null && id.toString().length > 0){
 //					console.log("current id: " + id);
-//				    t.customer = {
-//				    		"customer" : {
-//				    			"id" : "",
-//				    			"id_default_group" : "3",
-//				    			"id_lang" : "1",
-//				    			"newsletter_date_add" : "",
-//				    			"ip_registration_newsletter" : "0",
-//				    			"last_passwd_gen" : "",
-//				    			"secure_key" : "",
-//				    			"deleted" : "0",
-//				    			"passwd" : t.get("password"),
-//				    			"lastname" : t.get("cognome"),
-//				    			"firstname" : t.get("nome"),
-//				    			"email" : t.get("email"),
-//				    			"id_gender" : "",
-//				    			"birthday" : "",
-//				    			"newsletter" : "",
-//				    			"optin" : "0",
-//				    			"website" : null,
-//				    			"company" : null,
-//				    			"siret" : null,
-//				    			"ape" : null,
-//				    			"outstanding_allow_amount" : "0",
-//				    			"show_public_prices" : "0",
-//				    			"id_risk" : "0",
-//				    			"max_payment_days" : "0",
-//				    			"active" : "1",
-//				    			"note" : null,
-//				    			"is_guest" : "0",
-//				    			"id_shop" : "1",
-//				    			"id_shop_group" : "1",
-//				    			"date_add" : "",
-//				    			"date_upd" : "",
-//				    			"associations" : {
-//				    				"groups" : [ {
-//				    					"id" : "3"
-//				    				} ]
-//				    			}
-//				    		}
-//				    };
+//				    
 //				    t.saveCustomer();
 //				}
 //			})
@@ -214,16 +258,16 @@ define(function(require) {
 		saveCustomer : function() {
 			this.setCustomerInfo();
 			
-			console.log('customer model: ' + JSON.stringify(this.customer));
-			console.log('customer email: ' + this.customer["customer"]["email"]);			
+			//console.log('customer model: ' + JSON.stringify(this.customer));
+			//console.log('customer email: ' + this.customer["customer"]["email"]);			
 			
 			// uso il convertitore json xml
-			// perche' in POST accetta solo xml
+			// perche' accetta solo xml
 			var x2js = new X2JS();
 			var xml_customer = x2js.json2xml_str( this.customer );
 			xml_customer = '<prestashop>' + xml_customer + '</prestashop>';
 			
-			console.log('customer xml: ' + xml_customer);			
+			//console.log('customer xml: ' + xml_customer);			
 			
 	    	this.url = baseUrl 
 	    	+ '/customers/?xml=content' 
@@ -237,13 +281,13 @@ define(function(require) {
 	    	.done(function() {
 	    		salvato = true;
 	    		t.set("registrato", salvato);
-	    		console.log("salvato: ", salvato);
+	    		//console.log("salvato: ", salvato);
 	    		return salvato;
 			})
-			.fail(function(){
+			.fail(function() {
 				salvato = false;
 				t.set("registrato", salvato);
-				console.log("salvato: ", salvato);
+				//console.log("salvato: ", salvato);
 				return salvato;
 			});
 		},

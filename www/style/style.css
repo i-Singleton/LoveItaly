@@ -241,6 +241,10 @@ body {
 	
 }
 
+#disconnetti, #profilo {
+	display: none;
+}
+
 .border-top {
 	border-top: 1px solid #e9e9e9;
 }
@@ -706,6 +710,15 @@ select:focus {
 
 #accedi-switch a {
 	color: white;
+}
+
+#accedi-view .form-error {
+	color: yellow;
+	font-size: 11px;
+	position: absolute;
+	right: 0px;
+	margin-top: -17px;
+	display: none;
 }
 
 /* button */

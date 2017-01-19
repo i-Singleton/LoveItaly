@@ -81,13 +81,15 @@ define(function(require) {
 		},
 		
 		conferma : function() {
-			//console.log("this model registrato: ", this.model.get("registrato"));
 			if (this.model.get("registrato") == true) {
 				var toastContent = 'Registrazione effettuata';
 				Materialize.toast(toastContent, 5000);
 				Backbone.history.navigate("home", {
 					trigger : true
 				});
+				this.model.loginAfterRegistration();
+				$("#accedi").css("display", "none");
+				$("#disconnetti").css("display", "block");
 			} else if(this.model.get("registrato") == false) {
 				var toastContent = 'Registrazione non effettuata, riprovare';
 				Materialize.toast(toastContent, 5000);
