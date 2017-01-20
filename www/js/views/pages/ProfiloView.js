@@ -38,6 +38,7 @@ define(function(require) {
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
 			
+			//this.model = utenteSingletonInstance;
 			this.model = new Utente();
 		},
 

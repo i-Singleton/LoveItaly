@@ -19,6 +19,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.accedi;
+			//this.model = utenteSingletonInstance;
 			this.model = new Utente();
 			this.listenTo(this.model, "change:loggato", this.conferma);
 		},
@@ -75,7 +76,9 @@ define(function(require) {
 				});
 				$("#accedi").css("display", "none");
 				$("#disconnetti").css("display", "block");
-				$("#profilo").css("display", "block");
+				$("#profilo").attr("href", "#profilo");
+				$("#ordini").attr("href", "#ordini");
+				//$("#utente-info").html(this.model.get("nome"));
 			} else if (this.model.get("loggato") == false)
 				this.$("#accedi-error").css("display", "block");
 			

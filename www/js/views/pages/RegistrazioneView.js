@@ -25,6 +25,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.registrazione;
 			this.spinner = new PreloaderCircolareView();
+			//this.model = utenteSingletonInstance;
 			this.model = new Utente();
 			this.listenTo(this.model, "change:email", this.emailUsata);
 			this.listenTo(this.model, "change:registrato", this.conferma);
@@ -90,6 +91,9 @@ define(function(require) {
 				this.model.loginAfterRegistration();
 				$("#accedi").css("display", "none");
 				$("#disconnetti").css("display", "block");
+				$("#profilo").attr("href", "#profilo");
+				$("#ordini").attr("href", "#ordini");
+				//$("#utente-info").html(this.model.get("nome"));
 			} else if(this.model.get("registrato") == false) {
 				var toastContent = 'Registrazione non effettuata, riprovare';
 				Materialize.toast(toastContent, 5000);

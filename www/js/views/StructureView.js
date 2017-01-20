@@ -4,7 +4,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var Utente = require("models/Utente");
-//	var MenuLateraleView = require("views/MenuLateraleView");
+	// var MenuLateraleView = require("views/MenuLateraleView");
 
 	var StructureView = Backbone.View.extend({
 
@@ -25,29 +25,29 @@ define(function(require) {
 			this.template = Utils.templates.structure;
 			$("#statusbar").css("display", "block");
 			$("#headbar").css("display", "block");
-			
+
 			this.model = new Utente();
-//			this.menu = new MenuLateraleView();
-			this.listenTo(this.model, "change", this.render);
+			// this.menu = new MenuLateraleView();
+			// this.listenTo(this.model, "change", this.render);
 		},
 
 		render : function() {
 			// load the template
-			this.el.innerHTML = this.template(this.model.toJSON());
-			this.loadIfLogged();
+			this.el.innerHTML = this.template({});
+			this.checkLogged();
 			// cache a reference to the content element
 			this.contentElement = this.$el.find('#content')[0];
 			return this;
 		},
-		
-//		render : function() {
-//			// load the template
-//			this.el.innerHTML = this.template();
-//			this.menu.render();
-//			// cache a reference to the content element
-//			this.contentElement = this.$el.find('#content')[0];
-//			return this;
-//		},
+
+		// render : function() {
+		// // load the template
+		// $("#headbar").after(this.menu.render().$el);
+		// this.el.innerHTML = this.template();
+		// // cache a reference to the content element
+		// this.contentElement = this.$el.find('#content')[0];
+		// return this;
+		// },
 
 		/**
 		 * 
@@ -59,16 +59,26 @@ define(function(require) {
 		 * 
 		 */
 		waitAndHideMenu : function() {
+			var t = this;
 			setTimeout(function() {
 				$('.button-collapse').sideNav('hide');
+				var attr1 = $("#profilo").attr("href");
+				var attr2 = $("#ordini").attr("href");
+				if(attr1 == "#accedi" || attr2 == "#accedi")
+					t.disableMenu();
 			}, 100);
 		},
 
 		hideAndDisableMenu : function() {
+			var t = this;
 			setTimeout(function() {
 				$('.button-collapse').sideNav('hide');
-				$(".drag-target").css("left", "-10px");
+				t.disableMenu();
 			}, 100);
+		},
+		
+		disableMenu : function() {			
+			$(".drag-target").css("left", "-10px");
 		},
 
 		logout : function() {
@@ -79,20 +89,27 @@ define(function(require) {
 				trigger : true
 			});
 			setTimeout(function() {
-				this.$("#profilo").css("display", "none");
+				this.$("#profilo").attr("href", "#accedi");
+				this.$("#ordini").attr("href", "#accedi");
 				this.$("#disconnetti").css("display", "none");
 				this.$("#accedi").css("display", "block");
+				//this.$("#utente-info").html("");
 			}, 100);
 		},
-		
-		loadIfLogged : function() {
+
+		checkLogged : function() {
 			if (this.model.isLogged()) {
 				this.$("#accedi").css("display", "none");
 				this.$("#disconnetti").css("display", "block");
-				this.$("#profilo").css("display", "block");
-			}			
+				this.$("#profilo").attr("href", "#profilo");
+				this.$("#ordini").attr("href", "#ordini");
+			} else {
+				this.$("#accedi").css("display", "block");
+				this.$("#disconnetti").css("display", "none");
+				this.$("#profilo").attr("href", "#accedi");
+				this.$("#ordini").attr("href", "#accedi");
+			}
 		}
-
 	});
 
 	return StructureView;

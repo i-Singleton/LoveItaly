@@ -28,14 +28,13 @@ define(function(require) {
 			this.template = Utils.templates.menuLaterale;
 			
 			this.model = new Utente();
-			this.listenTo(this.model, "change", this.render);
+			//this.listenTo(this.model, "change", this.render);
 		},
 
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template(this.model.toJSON());
-			$("#headbar").after(this.el);
-			this.loadIfLogged();			
+			this.loadIfLogged();
 			return this;
 		},
 
@@ -50,13 +49,13 @@ define(function(require) {
 		 */
 		waitAndHideMenu : function() {
 			setTimeout(function() {
-				$('.button-collapse').sideNav('hide');
+				this.$('.button-collapse').sideNav('hide');
 			}, 100);
 		},
 
 		hideAndDisableMenu : function() {
 			setTimeout(function() {
-				$('.button-collapse').sideNav('hide');
+				this.$('.button-collapse').sideNav('hide');
 				$(".drag-target").css("left", "-10px");
 			}, 100);
 		},
@@ -77,9 +76,9 @@ define(function(require) {
 		
 		loadIfLogged : function() {
 			if (this.model.isLogged()) {
-				$("#accedi").css("display", "none");
-				$("#disconnetti").css("display", "block");
-				$("#profilo").css("display", "block");
+				this.$("#accedi").css("display", "none");
+				this.$("#disconnetti").css("display", "block");
+				this.$("#profilo").css("display", "block");
 			}			
 		}
 
