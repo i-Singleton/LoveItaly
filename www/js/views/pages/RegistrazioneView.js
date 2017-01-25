@@ -25,7 +25,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.registrazione;
 			this.spinner = new PreloaderCircolareView();
-			//this.model = utenteSingletonInstance;
+			
 			this.model = new Utente();
 			this.listenTo(this.model, "change:email", this.emailUsata);
 			this.listenTo(this.model, "change:registrato", this.conferma);
@@ -157,7 +157,7 @@ define(function(require) {
 		},
 
 		emailUsata : function() {
-			console.log("model get email: ", this.model.get("email"));
+			//console.log("model get email: ", this.model.get("email"));
 			var usata;
 			if(this.model.get("email") == false){
 				this.$("#email-error").css("display", "none");
@@ -175,7 +175,7 @@ define(function(require) {
 			var email = this.$("#email").val();
 			var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var correct = regex.test(email);
-			console.log("email regex validation: ", correct);
+			//console.log("email regex validation: ", correct);
 			if (correct) {
 				this.$("#email-error").css("display", "none");
 				this.model.emailAvailable(email);

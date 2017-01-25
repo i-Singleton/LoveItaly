@@ -73,7 +73,7 @@ require.config({
 require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 	require([ 'preloader', 'router' ], function(PreLoader, AppRouter) {
 
-		// require di Materialize e inizializzazione di componenti grafici
+		// Inizializzazione dei componenti grafici di Materialize
 		require([ 'materialize' ], function(){
 			$('.button-collapse').sideNav({
 				menuWidth : 300,
@@ -83,6 +83,21 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 			Waves.displayEffect();
 			$('select').material_select();
 		});
+		
+		// Costanti
+		window.baseUrl = "http://loveitaly.altervista.org/api";
+//		window.baseUrl = "http://192.168.56.101/loveitaly/api";
+		window.apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
+		window.encryptionKey = "7j3EQiXxwscCNaOIORd8YqmvkjfEmDVxs4EcihNJNVNyCG4bHA3ThTnk";
+		
+		document.addEventListener("offline", function(e) { 
+			var toastContent = 'Connessione dati assente';
+			Materialize.toast(toastContent, 5000);
+		}, false);
+
+		document.addEventListener("online", function(e) { 
+			Backbone.history.loadUrl(Backbone.history.fragment);
+		}, false);
 		
 		document.addEventListener("deviceready", run, false);
 

@@ -4,11 +4,6 @@ define(function(require) {
 	var X2JS = require("xml2json");
 	var md5 = require("md5");
 
-	// url e api key
-	var baseUrl = "http://192.168.56.101/loveitaly/api";
-	// var baseUrl = "http://loveitaly.altervista.org/api";
-	var apiKey = "IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H";
-
 	var Utente = Backbone.Model.extend({
 
 		constructorName : "Utente",
@@ -63,6 +58,7 @@ define(function(require) {
 			cognome : '',
 			email : '',
 			password : '',
+			password_oscurata : '',
 			zona : '',
 			recapito : '',
 			registrato : '',
@@ -80,14 +76,13 @@ define(function(require) {
 		 * @return boolean
 		 */
 		login : function(email, password) {
-			this.url = baseUrl
+			this.url = window.baseUrl
 			+ '/customers/?io_format=JSON&filter[email]='
 			+ '[' + email + ']&display=full'
 			+ '&ws_key=' 
-			+ apiKey;
+			+ window.apiKey;
 			
-			var encrypted_password = md5('7j3EQiXxwscCNaOIORd8YqmvkjfEmDVxs4EcihNJNVNyCG4bHA3ThTnk'
-					+ password);
+			var encrypted_password = md5(window.encryptionKey + password);
 			
 			var t = this;
 			var logged;
@@ -108,6 +103,7 @@ define(function(require) {
 							email : response['customers'][0]['email'],
 							password : response['customers'][0]['passwd']
 						});
+						t.setPasswordOscurata(password.length);
 						localStorage.setItem(t.constructorName, JSON.stringify(t));
 						t.set("loggato", logged);
 					}
@@ -117,6 +113,9 @@ define(function(require) {
 		},
 		
 		loginAfterRegistration : function() {
+			var encrypted_password = md5(window.encryptionKey + this.get("password"));
+			this.set("password", encrypted_password);
+			this.setPasswordOscurata(this.get("password").length);
 			localStorage.setItem(this.constructorName, JSON.stringify(this));
 		},
 		
@@ -185,22 +184,22 @@ define(function(require) {
 		 */
 		customerAvailable : function(factory, keyword) {
 			if (factory == "email" && keyword.length) {
-				this.url = baseUrl 
+				this.url = window.baseUrl 
 				+ '/customers/?io_format=JSON&filter'
 				+ '[' + factory + ']='
 				+ '[' + keyword + ']' 
 				+ '&ws_key=' 
-				+ apiKey;
+				+ window.apiKey;
 			}
 			// non si andra' a usarla, fondamentalmente
 			// serve solo la factory tramite email
 			if (factory == "id" && keyword.length) {
-				this.url = baseUrl 
+				this.url = window.baseUrl 
 				+ '/customers/?io_format=JSON&filter'
 				+ '[' + factory + ']='
 				+ '[' + keyword + ']' 
 				+ '&ws_key=' 
-				+ apiKey;
+				+ window.apiKey;
 			}
 			
 			this.set("email", "");
@@ -221,10 +220,10 @@ define(function(require) {
 		},		
 		
 //		getLastCustomerId : function() {
-//			this.url = baseUrl
+//			this.url = window.baseUrl
 //			+ '/customers/?io_format=JSON&limit=1&sort=[id_DESC]'
 //			+ '&ws_key=' 
-//			+ apiKey;
+//			+ window.apiKey;
 //			
 //			var id = null;
 //			var t = this;
@@ -269,10 +268,10 @@ define(function(require) {
 			
 			//console.log('customer xml: ' + xml_customer);			
 			
-	    	this.url = baseUrl 
+	    	this.url = window.baseUrl 
 	    	+ '/customers/?xml=content' 
 	    	+ '&ws_key='
-	    	+ apiKey;
+	    	+ window.apiKey;
 	    	
 	    	this.set("registrato", "");
 	    	var t = this;
@@ -300,6 +299,13 @@ define(function(require) {
 			this.customer["customer"]["lastname"] = this.get("cognome");
 			this.customer["customer"]["firstname"] = this.get("nome");
 			this.customer["customer"]["email"] = this.get("email");			
+		},
+		
+		setPasswordOscurata : function(length) {
+			var stringa_oscurata = "";
+			for(var i = 0; i < length; i++)
+				stringa_oscurata = stringa_oscurata + "*"; 
+			this.set("password_oscurata", stringa_oscurata);
 		}
 
 	});

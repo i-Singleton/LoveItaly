@@ -27,8 +27,6 @@ define(function(require) {
 			$("#headbar").css("display", "block");
 
 			this.model = new Utente();
-			// this.menu = new MenuLateraleView();
-			// this.listenTo(this.model, "change", this.render);
 		},
 
 		render : function() {
@@ -39,15 +37,6 @@ define(function(require) {
 			this.contentElement = this.$el.find('#content')[0];
 			return this;
 		},
-
-		// render : function() {
-		// // load the template
-		// $("#headbar").after(this.menu.render().$el);
-		// this.el.innerHTML = this.template();
-		// // cache a reference to the content element
-		// this.contentElement = this.$el.find('#content')[0];
-		// return this;
-		// },
 
 		/**
 		 * 

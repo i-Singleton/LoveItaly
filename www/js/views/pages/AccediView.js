@@ -19,7 +19,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.accedi;
-			//this.model = utenteSingletonInstance;
+			
 			this.model = new Utente();
 			this.listenTo(this.model, "change:loggato", this.conferma);
 		},
