@@ -307,6 +307,9 @@ body {
 	#logo {
 		display: none !important;
 	}
+	#carrello-view .s4 {
+		min-width: 125px;
+	}
 }
 
 /* #cerca {
@@ -471,7 +474,7 @@ body {
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 6px 0
 		rgba(0, 0, 0, 0.12);
 	margin: 0.4rem 0 0.4rem 0;
-	/*width: 100%;*/
+	width: 100%;
 }
 
 /* Profilo */
@@ -746,6 +749,7 @@ select:focus {
 	margin-bottom: 0.25rem;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
+	width: unset;
 }
 
 #carrello-view .row {
@@ -763,6 +767,7 @@ select:focus {
 
 #carrello-view img {
 	width: 100%;
+	min-width: 103px;
 }
 
 #carrello-view .card-content {
@@ -790,7 +795,8 @@ select:focus {
 	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	/*background-color: #f8f8f8;*/
 }
 
 #carrello-view .card-action i {
@@ -798,6 +804,7 @@ select:focus {
 	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*border-radius: 50%;*/
 	/*margin-top: 6px;*/
+	
 }
 
 #carrello-view .card-action .info-prezzo {
@@ -811,6 +818,7 @@ select:focus {
 
 #carrello-view #incrementa-quantita {
 	/*float: right;*/
+	
 }
 
 #carrello-view #rimuovi-prodotto {
@@ -954,7 +962,7 @@ select:focus {
 #scheda-prodotto-view .carousel-item {
 	display: block;
 	min-height: auto;
-	background-image: url("../img/prodotto-errore.png");
+	background-image: url("img/prodotto-errore.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: auto 100%; /* 100% in altezza */
@@ -965,7 +973,8 @@ select:focus {
 	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	/*background-color: #f8f8f8;*/
 }
 
 #scheda-prodotto-view #modifica-quantita i {
@@ -973,6 +982,7 @@ select:focus {
 	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*border-radius: 50%;*/
 	/*margin-top: 8px;*/
+	
 }
 
 #scheda-prodotto-view #info-prodotto {

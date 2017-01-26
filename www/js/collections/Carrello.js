@@ -26,36 +26,47 @@ define(function(require) {
 		carica : function() {
 			// se contiene qualcosa, allora carica lo stato
 			var carrelloJSONString = null;
-			if((carrelloJSONString = localStorage.getItem(this.constructorName)) != null){
-				this.set(JSON.parse(carrelloJSONString));				
+			if ((carrelloJSONString = localStorage
+					.getItem(this.constructorName)) != null) {
+				this.set(JSON.parse(carrelloJSONString));
 			}
 			return this;
 		},
 
 		/**
-		 * Aggiunge un Prodotto al Carrello e ne aggiorna lo
-		 * stato chiamando il metodo per salvare
+		 * Aggiunge un Prodotto se non e' presente; ne aggiunge la quantita' se
+		 * e' gia' presente
 		 */
 		aggiungiProdotto : function(prodotto) {
 			var id = prodotto.getId();
 			var prodotto_aggiornato = this.get(id);
-			var quantita = prodotto.getQuantita() + prodotto_aggiornato.getQuantita();
-			prodotto_aggiornato.setQuantitaETotale(quantita);
-			this.push(prodotto_aggiornato, {merge: true});
+			// se non e' presente nel carrello lo aggiunge
+			if (prodotto_aggiornato == undefined) {
+				this.push(prodotto);
+			} else {
+				var quantita = prodotto.getQuantita()
+						+ prodotto_aggiornato.getQuantita();
+				prodotto_aggiornato.setQuantitaETotale(quantita);
+				this.push(prodotto_aggiornato, {
+					merge : true
+				});
+			}
 			this.salva();
 		},
-		
+
 		/**
-		 * Aggiunge un prodotto e con merge true lo aggiorna se esiste
+		 * Aggiorna un prodotto eistente
 		 */
 		aggiornaProdotto : function(prodotto) {
-			this.push(prodotto, {merge: true});
+			this.push(prodotto, {
+				merge : true
+			});
 			this.salva();
 		},
-		
+
 		/**
-		 * Rimuove un Prodotto dal Carrello e ne aggiorna lo
-		 * stato chiamando il metodo per salvare
+		 * Rimuove un Prodotto dal Carrello e ne aggiorna lo stato chiamando il
+		 * metodo per salvare
 		 */
 		rimuoviProdotto : function(prodotto) {
 			this.remove(prodotto);
@@ -63,8 +74,8 @@ define(function(require) {
 		},
 
 		/**
-		 * Metodo che ritorna il prezzo totale dei Prodotti presenti
-		 * nel Carrello, per uso esterno a questa classe
+		 * Metodo che ritorna il prezzo totale dei Prodotti presenti nel
+		 * Carrello, per uso esterno a questa classe
 		 * 
 		 * @return float
 		 */
@@ -73,7 +84,8 @@ define(function(require) {
 			// selezioni tutti i totali parziali mettendoli in un array
 			var array_totali_parziali = this.pluck("totale");
 			for (var i = 0; i < array_totali_parziali.length; i++) {
-				var totale_parziale = parseFloat(array_totali_parziali[i]).toFixed(2);
+				var totale_parziale = parseFloat(array_totali_parziali[i])
+						.toFixed(2);
 				// converto con l'operatore + in un numero,
 				// altrimenti verrebbero trattati come stringhe
 				totale = +totale + +totale_parziale;

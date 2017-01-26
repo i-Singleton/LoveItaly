@@ -7,13 +7,13 @@ define(function(require) {
 	var CarouselImmagineView = Backbone.View.extend({
 
 		constructorName : "CarouselImmagineView",
-		
+
 		// model : Prodotto,
-		
-		tagName: "div",
+
+		tagName : "div",
 
 		// id : "prodottoCard",
-		
+
 		className : "carousel-item",
 
 		events : {},
@@ -26,6 +26,11 @@ define(function(require) {
 		render : function(url_immagine) {
 			// load the template
 			this.el.innerHTML = this.template();
+			var t = this;
+			$.get(url_immagine, function() {
+			}).fail(function() {
+				t.$el.css('background-image', 'url(img/prodotto-errore.png)');
+			});			
 			this.$el.css('background-image', 'url(' + url_immagine + ')');
 			return this;
 		}
