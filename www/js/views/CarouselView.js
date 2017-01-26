@@ -29,10 +29,10 @@ define(function(require) {
 			// load the template
 			this.el.innerHTML = this.template();
 
-			var carouselImmagineView = new CarouselImmagineView();
-			for (var i = 0; i < array_url_immagini.length; i++)
-				this.$el.append(carouselImmagineView
-						.render(array_url_immagini[i]).$el);
+			for (var i = 0; i < array_url_immagini.length; i++){
+				var carouselImmagineView = new CarouselImmagineView();
+				this.$el.append(carouselImmagineView.render(array_url_immagini[i]).$el);
+			}
 
 			// initialize del carousel di immagini, secondo la libreria
 			$(document).ready(function() {

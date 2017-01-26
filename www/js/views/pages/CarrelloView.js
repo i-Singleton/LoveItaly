@@ -73,7 +73,7 @@ define(function(require) {
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.decrementa();
-			this.collection.aggiungiProdotto(prodotto);
+			this.collection.aggiornaProdotto(prodotto);
 		},
 
 		incrementa : function(e) {
@@ -83,7 +83,7 @@ define(function(require) {
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto = prodotto.incrementa();
-			this.collection.aggiungiProdotto(prodotto);
+			this.collection.aggiornaProdotto(prodotto);
 		},
 
 		/**

@@ -37,7 +37,18 @@ define(function(require) {
 		 * stato chiamando il metodo per salvare
 		 */
 		aggiungiProdotto : function(prodotto) {
-			// aggiunge un prodotto e con merge true lo aggiorna se esiste
+			var id = prodotto.getId();
+			var prodotto_aggiornato = this.get(id);
+			var quantita = prodotto.getQuantita() + prodotto_aggiornato.getQuantita();
+			prodotto_aggiornato.setQuantitaETotale(quantita);
+			this.push(prodotto_aggiornato, {merge: true});
+			this.salva();
+		},
+		
+		/**
+		 * Aggiunge un prodotto e con merge true lo aggiorna se esiste
+		 */
+		aggiornaProdotto : function(prodotto) {
 			this.push(prodotto, {merge: true});
 			this.salva();
 		},

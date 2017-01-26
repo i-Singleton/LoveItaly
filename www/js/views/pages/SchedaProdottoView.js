@@ -5,6 +5,7 @@ define(function(require) {
 	var Prodotto = require("models/Prodotto");
 	var Carrello = require("collections/Carrello");
 	var CarouselView = require("views/CarouselView");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var SchedaProdottoView = Utils.Page.extend({
 
@@ -31,6 +32,7 @@ define(function(require) {
 			this.model = new Prodotto();
 			this.model.carica();
 			this.carousel = new CarouselView();
+			this.spinner = new PreloaderCircolareView();
 
 		},
 
@@ -46,6 +48,7 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
+			this.spinner.render();
 			this.$el.prepend(
 					this.carousel.render(this.model.getImmagini()).$el
 			);

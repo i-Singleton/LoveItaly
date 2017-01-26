@@ -787,14 +787,17 @@ select:focus {
 
 #carrello-view .card-action a {
 	margin: 0px;
-	color: rgba(0, 0, 0, 0.87);
+	/*color: rgba(0, 0, 0, 0.54);*/
+	color: #343434;
+	padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #carrello-view .card-action i {
-	margin: 0px;
-	border: 1px solid rgba(0, 0, 0, 0.54);
-	border-radius: 50%;
-	margin-top: 8px;
+	/*margin: 0px;*/
+	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
+	/*border-radius: 50%;*/
+	/*margin-top: 6px;*/
 }
 
 #carrello-view .card-action .info-prezzo {
@@ -807,7 +810,7 @@ select:focus {
 }
 
 #carrello-view #incrementa-quantita {
-	float: right;
+	/*float: right;*/
 }
 
 #carrello-view #rimuovi-prodotto {
@@ -951,7 +954,7 @@ select:focus {
 #scheda-prodotto-view .carousel-item {
 	display: block;
 	min-height: auto;
-	background-image: url("../img/office.jpg");
+	background-image: url("../img/prodotto-errore.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: auto 100%; /* 100% in altezza */
@@ -959,14 +962,17 @@ select:focus {
 
 #scheda-prodotto-view #modifica-quantita a {
 	margin: 0px;
-	color: rgba(0, 0, 0, 0.87);
+	/*color: rgba(0, 0, 0, 0.54);*/
+	color: #343434;
+	padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #scheda-prodotto-view #modifica-quantita i {
-	margin: 0px;
-	border: 1px solid rgba(0, 0, 0, 0.54);
-	border-radius: 50%;
-	margin-top: 8px;
+	/*margin: 0px;*/
+	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
+	/*border-radius: 50%;*/
+	/*margin-top: 8px;*/
 }
 
 #scheda-prodotto-view #info-prodotto {

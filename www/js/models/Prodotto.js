@@ -45,6 +45,15 @@ define(function(require) {
 			this.setQuantitaETotale(1);
 			return this;
 		},
+		
+		/**
+		 * Ritorna l'id
+		 * 
+		 * @return int
+		 */
+		getId : function() {
+			return parseInt(this.get("id"));
+		},
 
 		/**
 		 * Ritorna la quantita
@@ -83,10 +92,11 @@ define(function(require) {
 		getImmagini : function() {
 			// abilito solo l'immagine di default, in quanto le altre
 			// spesso sono immagini correlate e non del prodotto stesso
-//			if (this.get("immagini").length){
-//				return this.get("immagini");
-//			}
-			return [this.get("immagine_default")];
+			if (this.get("immagini").length > 1) {
+//				console.log("immagini: ", this.get("immagini"));
+				return this.get("immagini");
+			}
+			return [ this.get("immagine_default") ];
 		},
 
 		/**
