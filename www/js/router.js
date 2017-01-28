@@ -6,6 +6,11 @@ define(function(require) {
 	 */
 	var StructureView = require("views/StructureView");
 	/**
+	 * Errore View
+	 * 
+	 */
+	var ErroreView = require("views/ErroreView");
+	/**
 	 * Tutte le pagine di LoveItaly
 	 */
 	var AccediView = require("views/pages/AccediView");
@@ -90,11 +95,19 @@ define(function(require) {
 			// create the view and show it
 			var page = new AziendeView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		carrello : function() {
 			// create the view and show it
 			var page = new CarrelloView();
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.clear();					
+			}
 			this.changePage(page);
 		},
 
@@ -102,12 +115,20 @@ define(function(require) {
 			// create the view and show it
 			var page = new CategorieView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		cerca : function() {
 			// create the view and show it
 			var page = new CercaView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		copertina : function() {
@@ -120,24 +141,40 @@ define(function(require) {
 			// create the view and show it
 			var page = new HomeView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		ordini : function() {
 			// create the view and show it
 			var page = new OrdiniView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 		
 		prodottiCategoria : function(id_categoria) {
 			// create the view and show it
 			var page = new ProdottiCategoriaView({id_categoria:id_categoria});
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		profilo : function() {
 			// create the view and show it
 			var page = new ProfiloView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		registrazione : function() {
@@ -150,6 +187,10 @@ define(function(require) {
 			// create the view and show it
 			var page = new RiepilogoView();
 			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
 		},
 
 		schedaProdotto : function() {

@@ -8,6 +8,7 @@ define(function(require) {
 	var ListaProdotti = require("collections/ListaProdotti");
 	var Prodotto = require("models/Prodotto");
 	var PreloaderCircolareView = require("views/PreloaderCircolareView");
+	var ErroreView = require("views/ErroreView");
 
 	var CercaView = Utils.Page.extend({
 
@@ -30,6 +31,7 @@ define(function(require) {
 			$("#content").scrollTop(0);
 
 			this.spinner = new PreloaderCircolareView();
+			this.error = new ErroreView();
 			this.barraRicerca = new BarraRicercaView();
 			this.collection = new ListaProdotti();
 
@@ -59,6 +61,8 @@ define(function(require) {
 		},
 		
 		updateResults : function() {
+			// jquery remove, rimuove l'eventuale ErroreView residua
+			this.error.remove();
 			this.spinner.render();
 			// svuoto il div da eventuali risultati precedenti
 			this.$("#col-sx").empty();
@@ -76,7 +80,8 @@ define(function(require) {
 						this.$("#col-dx").append(prodottoCardView.render().$el);
 				}
 			}else{
-				this.$el.append("Nessun prodotto trovato");
+				var error = this.error.render("risultato").$el;
+				this.$el.append(error);
 			}
 		},
 		

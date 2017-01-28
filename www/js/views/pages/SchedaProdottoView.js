@@ -79,6 +79,9 @@ define(function(require) {
 			 */ 
 			var toastContent = 'Aggiunto al carrello <i class="material-icons left">check</i>';
 			Materialize.toast(toastContent, 3000);
+			// piccola vibrazione di 125 millisecondi, 
+			// come feedback sensoriale di aggiunta del prodotto
+			navigator.vibrate(125);	
 		}
 
 	});

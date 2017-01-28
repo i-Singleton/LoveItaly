@@ -18,6 +18,7 @@ define({
 	categoriaElementoLista : "templates/categoriaElementoLista.html",
 	carousel : "templates/carousel.html",
 	carouselImmagine : "templates/carouselImmagine.html",
+	errore : "templates/errore.html",
 	menuLaterale : "templates/menuLaterale.html",
 	preloaderCircolare : "templates/preloaderCircolare.html",
 	prodottoCard : "templates/prodottoCard.html",

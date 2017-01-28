@@ -8,6 +8,7 @@ define(function(require) {
 	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 	var Categoria = require("models/Categoria");
 	var Prodotto = require("models/Prodotto");
+	var ErroreView = require("views/ErroreView");
 
 	var ProdottiCategoriaView = Utils.Page.extend({
 
@@ -15,6 +16,14 @@ define(function(require) {
 
 		collection : ListaProdotti,
 
+		id : "cerca-view",
+		
+		className : "row",
+		
+		events : {
+			"click .card" : "cacheProdotto"
+		},
+		
 		initialize : function(options) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottiCategoria;
@@ -34,32 +43,16 @@ define(function(require) {
 			});
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
-
-//			var categoria = new Categoria();
-//			categoria.carica();
-//			document.getElementById("titolo").innerHTML = categoria.get("nome");
 			
 			this.spinner = new PreloaderCircolareView();
+			this.error = new ErroreView();
 			this.collection = new ListaProdotti();
 			this.collection.getResult("Categorie", options.id_categoria);
 			this.listenTo(this.collection, "sync", this.render);
 		},
 
-		id : "cerca-view",
-
-		className : "row",
-
-		events : {
-			"click .card" : "cacheProdotto"
-		},
-
 		render : function() {
-//			var categoria = new Categoria();
-//			categoria.carica();
-			
-			this.el.innerHTML = this.template({
-//				nome : categoria.get("nome")
-			});
+			this.el.innerHTML = this.template({});
 			
 			this.spinner.render();
 			
@@ -74,7 +67,8 @@ define(function(require) {
 						this.$("#col-dx").append(prodottoCardView.render().$el);
 				}
 			}else{
-				this.$el.append("Nessun prodotto trovato");
+				var error = this.error.render("risultato").$el;
+				this.$el.append(error);
 			}
 			return this;
 		},

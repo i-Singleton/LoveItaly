@@ -461,7 +461,8 @@ body {
 	height: 100%;
 	padding: 0px;
 	left: 0px;
-	background-color: white;
+	/*background-color: white;*/
+	background-color: rgb(238, 238, 238);
 	z-index: 997;
 }
 
@@ -795,8 +796,10 @@ select:focus {
 	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*background-color: #f8f8f8;*/
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 #carrello-view .card-action i {
@@ -973,8 +976,10 @@ select:focus {
 	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*background-color: #f8f8f8;*/
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 #scheda-prodotto-view #modifica-quantita i {
@@ -1016,4 +1021,14 @@ select:focus {
 	color: white;
 	display: inline;
 	margin: 0;
+}
+
+/* Errore View */
+#errore-view {
+	margin-top: 20%;
+	color: #707070;
+}
+
+#errore-view img {
+	width: 50%;
 }

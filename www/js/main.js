@@ -95,7 +95,8 @@ require([ 'backbone', 'utils' ], function(Backbone, Utils) {
 			Materialize.toast(toastContent, 5000);
 		}, false);
 
-		document.addEventListener("online", function(e) { 
+		document.addEventListener("online", function(e) {
+			$("#content").empty();
 			Backbone.history.loadUrl(Backbone.history.fragment);
 		}, false);
 		
