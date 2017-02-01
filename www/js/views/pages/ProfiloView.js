@@ -15,11 +15,8 @@ define(function(require) {
 		// className : "",
 
 		events : {
-//			"blur #nome" : "updateNome",
-//			"blur #cognome" : "updateCognome",
-//			"blur #email" : "updateEmail",
-//			"blur #password" : "updatePassword",
 			"blur input" : "update",
+			"blur select" : "update",
 		},
 		
 		initialize : function() {
@@ -43,43 +40,20 @@ define(function(require) {
 
 		render : function() {
 			$(this.el).html(this.template(this.model.toJSON()));
+			// imposto graficamente il valore corrispondente
+			var index = this.model.get("citta");
+			this.$("#citta").val(index);
 			return this;
 		},
 		
-		update : function(e) {
-			var id = e.currentTarget;
-			console.log("id: ", id);
-			var value = $(id).val();
-			console.log("value: ", value);
-			this.model.update(id, value);
-		},
-
-//		updateNome : function() {
-//			var nome = this.$("#nome").val();
-//			if(nome != this.model.get("nome"))
-//				this.model.set("nome", nome);
-//		},
-//		
-//
-//		updateCognome : function() {
-//			var cognome = this.$("#cognome").val();
-//			if(cognome != this.model.get("cognome"))
-//				this.model.set("cognome", cognome);
-//		},
-//		
-//
-//		updateEmail : function() {
-//			var email = this.$("#email").val();
-//			if(email != this.model.get("email"))
-//				this.model.set("email", email);
-//		},
-//		
-//
-//		updatePassword : function() {
-//			var password = this.$("#password").val();
-//			if(password != this.model.get("password"))
-//				this.model.set("password", password);
-//		},
+		update : function() {
+			this.model.set({
+				indirizzo : $("#indirizzo").val(),
+				citta : $("#citta option:selected").val(),
+				pagamento : $("#pagamento option:selected").text()
+			});
+			this.model.update();
+		}
 
 	});
 

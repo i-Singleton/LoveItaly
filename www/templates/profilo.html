@@ -1,67 +1,55 @@
-<ul id="dati-personali" class="collection with-header">
-	<li class="collection-header">Dati personali</li>
+<ul id="dati-personali" class="collection">
 	<li class="collection-item">
-		<div class="input-field">
-			<input id="first_name" type="text" value="{{nome}}"> <label
-				class="active" for="first_name">Nome</label>
+		<div class="row">
+			<div class="input-field col s6">
+				<i class="material-icons prefix">person</i> <input id="first_name"
+					type="text" value="{{nome}}" disabled> <label
+					class="active" for="first_name">Nome</label>
+			</div>
+			<div class="input-field col s6" style="padding-left: 10px;">
+				<input id="last_name" type="text" value="{{cognome}}" disabled>
+				<label class="active" for="last_name" style="left: 32px;">Cognome</label>
+			</div>
 		</div>
 	</li>
+
 	<li class="collection-item">
 		<div class="input-field">
-			<input id="last_name" type="text" value="{{cognome}}"> <label
-				class="active" for="last_name">Cognome</label>
-		</div>
-	</li>
-	<li class="collection-item">
-		<div class="input-field">
-			<input id="email" type="email" value="{{email}}"> <label
+			<i class="material-icons prefix">email</i> <input id="email"
+				type="email" value="{{email}}" disabled> <label
 				class="active" for="email">Email</label>
 		</div>
 	</li>
+
 	<li class="collection-item">
 		<div class="input-field">
-			<input id="password" type="password" value="{{password_oscurata}}"> <label
+			<i class="material-icons prefix">lock</i> <input id="password"
+				type="password" value="{{password_oscurata}}" disabled> <label
 				class="active" for="password">Password</label>
 		</div>
 	</li>
-</ul>
 
-<ul id="dati-spedizione" class="collection with-header">
-	<li class="collection-header">Dati di spedizione</li>
-	<!-- <li class="collection-item waves-effect">GPS <span
-		class="switch right"> <label> <input type="checkbox">
-				<span class="lever"></span>
-		</label>
-	</span>
-	</li> -->
-	<li class="collection-item select-list"><select>
-			<option value="" disabled selected>Scegli una citt&agrave;</option>
-			<option value="castelfrentano">Castel Frentano (CH)</option>
-			<option value="fossacesia">Fossacesia (CH)</option>
-			<option value="frisa">Frisa (CH)</option>
-			<option value="lanciano">Lanciano (CH)</option>
-			<option value="mozzagrogna">Mozzagrogna (CH)</option>
-			<option value="ortona">Ortona (CH)</option>
-			<option value="roccasangiovanni">Rocca San Giovanni (CH)</option>
-			<option value="santamariaimbaro">Santa Maria Imbaro (CH)</option>
-			<option value="sanvito">San Vito Chietino (CH)</option>
-			<option value="treglio">Treglio (CH)</option>
-	</select></li>
-	<li id="recapito-element" class="collection-item">
+	<li class="collection-item">
 		<div class="input-field">
-			<input id="recapito" type="text" value="{{recapito}}"> <label
-				class="active" for="recapito">Recapito</label>
+			<i class="material-icons prefix">location_on</i> <input
+				id="indirizzo" type="text" value="{{indirizzo}}"
+				placeholder="Inserisci l'indirizzo"> <label class="active"
+				for="indirizzo">Indirizzo</label>
 		</div>
 	</li>
-</ul>
 
-<ul id="modalita-pagamento-list" class="collection with-header">
-	<li class="collection-header">Dati di pagamento</li>
-	<li class="collection-item select-list"><select>
-			<option value="" disabled selected>Scegli una
-				modalit&agrave;</option>
-			<option value="1">Contanti</option>
-			<option value="2">Carta di credito</option>
+	<li class="collection-item select-list"><select id="citta">
+			{{#each lista_citta}}
+			<option value="{{@index}}">{{this}}</option> 
+			{{/each}}
 	</select></li>
+
+	<li class="collection-item select-list"><i class="material-icons"
+		style="margin-top: 8px; position: absolute;">payment</i> <select
+		id="pagamento">
+			<option selected>Pagamento in contrassegno</option>
+			<option disabled>Pagamento con carta di credito</option>
+	</select></li>
+
 	<li id="credits-app" class="collection-item">LoveItaly App v1.0</li>
 </ul>

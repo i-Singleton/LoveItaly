@@ -59,8 +59,22 @@ define(function(require) {
 			email : '',
 			password : '',
 			password_oscurata : '',
-			zona : '',
-			recapito : '',
+			lista_citta : [
+				'Scegli una città',
+				'Castel Frentano (CH)',
+				'Fossacesia (CH)',
+				'Frisa (CH)',
+				'Lanciano (CH)',
+				'Mozzagrogna (CH)',
+				'Ortona (CH)',
+				'Rocca San Giovanni (CH)',
+				'Santa Maria Imbaro (CH)',
+				'San Vito Chietino (CH)',
+				'Treglio (CH)',
+			],
+			citta : '',
+			indirizzo : '',
+			pagamento : 'Pagamento in contrassegno',
 			registrato : '',
 			loggato : ''
 		},
@@ -148,9 +162,74 @@ define(function(require) {
 			}
 		},
 		
-		update : function(key, value) {
-			
+		update : function() {
+			localStorage.setItem(this.constructorName, JSON.stringify(this));
 		},
+		
+//		updateCustomer : function(utente) {
+//			if (this.get("nome") == utente.get("nome") &&
+//				this.get("cognome") == utente.get("cognome") &&
+//				this.get("email") == utente.get("email") &&
+//				this.get("password") == utente.get("password") &&
+//				this.get("indirizzo") == utente.get("indirizzo") &&
+//				this.get("citta") == utente.get("citta") &&
+//				this.get("pagamento") == utente.get("pagamento")) {
+//				return false;
+//			} else {
+//				var old = {
+//					nome : this.get("nome"),
+//					cognome : this.get("cognome"),
+//					email : this.get("email"),
+//					password : this.get("password"),
+//					indirizzo : this.get("indirizzo"),
+//					citta : this.get("citta"),
+//					pagamento : this.get("pagamento"),
+//				};
+//				this.set({
+//					nome : utente.get("nome"),
+//					cognome : utente.get("cognome"),
+//					email : utente.get("email"),
+//					password : utente.get("password"),
+//					indirizzo : utente.get("indirizzo"),
+//					citta : utente.get("citta"),
+//					pagamento : utente.get("pagamento"),
+//				});
+//				
+//				this.setCustomerInfo();
+//				
+//				// uso il convertitore json xml
+//				// perche' accetta solo xml
+//				var x2js = new X2JS();
+//				var xml_customer = x2js.json2xml_str( this.customer );
+//				xml_customer = '<prestashop>' + xml_customer + '</prestashop>';
+//				
+//				this.url = window.baseUrl 
+//		    	+ '/customers/' 
+//		    	+ this.getId() 
+//		    	+ '/?xml=content' 
+//		    	+ '&ws_key='
+//		    	+ window.apiKey;
+//		    	
+//		    	this.set("registrato", "");
+//		    	var t = this;
+//		    	var salvato;
+//		    	$.put(this.url, xml_customer)
+//		    	.done(function() {
+//		    		salvato = true;
+//		    		// la put e' andata a buon fine, aggiorno in locale
+//		    		localStorage.setItem(t.constructorName, JSON.stringify(t));
+//		    		t.set("registrato", salvato);
+//		    		//console.log("salvato: ", salvato);
+//		    		return salvato;
+//				})
+//				.fail(function() {
+//					salvato = false;
+//					t.set("registrato", salvato);
+//					//console.log("salvato: ", salvato);
+//					return salvato;
+//				});
+//			}
+//		},
 		
 		/**
 		 * Effettua la registrazione di un Utente.

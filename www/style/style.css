@@ -522,23 +522,31 @@ box-shadow: 0 1px 0 0 #4CAF50;
 
 /* ----------------profilo 2---------------- */
 #profilo-view {
-	background-color: #eeeeee;
+	/* background-color: #eeeeee; */
 	height: calc(100% - 7px);
 	padding: 0;
 }
 
+#profilo-view .row {
+	margin: 0;
+}
+
+#profilo-view .col {
+	padding: 0;
+}
+
 #profilo-view ul {
-	box-shadow: 0 2px 2px #aaaaaa;
+	/*box-shadow: 0 2px 2px #aaaaaa;*/
 	padding-bottom: 1px;
 	border: 0;
 }
 
 #profilo-view li {
 	display: block;
-	/*padding: 10px 0px 0px 0px;*/
+	padding: 10px 20px 0px 0px;
 	border: 0;
 }
-
+/*
 #profilo-view .collection-header {
 	border: 0px none;
 	color: #388e3c;
@@ -546,19 +554,34 @@ box-shadow: 0 1px 0 0 #4CAF50;
 	padding: 15px 0px 0px 30px;
 	font-size: 13px;
 }
+*/
+#profilo-view i {
+	margin-left: 12px;
+	color: rgba(0, 0, 0, 0.54);
+}
 
 #profilo-view label {
-	left: 30px;
+	left: 22px;
 }
 
 #profilo-view input {
-	padding-left: 30px;
+	/*padding-left: 12px;*/
 	border-color: #f2f2f2;
+	margin-left: 64px;
+}
+
+#profilo-view #last_name {
+	margin-left: 22px;
 }
 
 #profilo-view select {
 	display: block;
-	padding-left: 25px;
+	padding: 0;
+	margin-left: 62px;
+	width: calc(100% - 62px);
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 }
 
 select:focus {
@@ -567,27 +590,6 @@ select:focus {
 
 #profilo-view .select-list {
 	padding: 0;
-}
-
-#dati-personali li {
-	padding: 10px 0px 0px 0px;
-}
-
-#dati-spedizione li {
-	padding: 10px 0px 10px 30px;
-}
-
-#recapito-element {
-	padding: 10px 0 0 0 !important;
-}
-
-#modalita-pagamento-list {
-	margin-bottom: 0;
-}
-
-#modalita-pagamento-list select {
-	border: 0px;
-	border-bottom: 1px solid #f2f2f2;
 }
 
 #credits-app {
@@ -854,21 +856,30 @@ select:focus {
 
 /* Riepilogo */
 #riepilogo-view {
-	background-color: rgb(238, 238, 238);
+	/*background-color: rgb(238, 238, 238);*/
+	padding: 0;
+}
+
+#riepilogo-view .row {
+	margin: 0;
+}
+
+#riepilogo-view .col {
 	padding: 0;
 }
 
 #riepilogo-view ul {
-	box-shadow: 0 2px 2px #aaa;
+	/*box-shadow: 0 2px 2px #aaaaaa;*/
 	padding-bottom: 1px;
 	border: 0;
 }
 
 #riepilogo-view li {
 	display: block;
+	padding: 10px 20px 0px 0px;
 	border: 0;
 }
-
+/*
 #riepilogo-view .collection-header {
 	border: 0px none;
 	color: #388e3c;
@@ -876,20 +887,34 @@ select:focus {
 	padding: 15px 0px 0px 30px;
 	font-size: 13px;
 }
+*/
+#riepilogo-view i {
+	margin-left: 12px;
+	color: rgba(0, 0, 0, 0.54);
+}
 
 #riepilogo-view label {
-	left: 30px;
+	left: 22px;
 }
 
 #riepilogo-view input {
-	padding-left: 30px;
+	/*padding-left: 12px;*/
 	border-color: #f2f2f2;
+	margin-left: 64px;
+}
+
+#riepilogo-view #last_name {
+	margin-left: 22px;
 }
 
 #riepilogo-view select {
 	display: block;
-	padding-left: 25px;
+	padding: 0;
+	margin-left: 62px;
+	width: calc(100% - 62px);
 	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 }
 
 select:focus {
@@ -900,33 +925,16 @@ select:focus {
 	padding: 0;
 }
 
-#dati-personali li {
-	padding: 10px 0px 0px 0px;
-}
-
-#dati-spedizione li {
-	padding: 10px 0px 10px 30px;
-}
-
-#recapito-element {
-	padding: 10px 0 0 0 !important;
-}
-
-#modalita-pagamento-list {
-	margin-bottom: 0;
-}
-
-#modalita-pagamento-list select {
-	border: 0px;
-	border-bottom: 1px solid #f2f2f2;
-}
-
 #riepilogo-view #btn-bottom-container {
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
 	text-align: center;
 	z-index: 998;
+}
+
+#riepilogo-view #btn-bottom-container i {
+	color: white;
 }
 
 #riepilogo-view .btn-large {

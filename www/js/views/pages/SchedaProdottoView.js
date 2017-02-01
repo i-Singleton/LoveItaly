@@ -73,12 +73,10 @@ define(function(require) {
 		aggiungiAlCarrello : function() {
 			var carrello = new Carrello();
 			carrello.aggiungiProdotto(this.model);
-			/**
-			 * "html embedded" in questo punto perche' cosi' 
-			 * impone la libreria per il componente Toast
-			 */ 
-			var toastContent = 'Aggiunto al carrello <i class="material-icons left">check</i>';
+			
+			var toastContent = 'Aggiunto al carrello';
 			Materialize.toast(toastContent, 3000);
+			
 			// piccola vibrazione di 125 millisecondi, 
 			// come feedback sensoriale di aggiunta del prodotto
 			navigator.vibrate(125);	
