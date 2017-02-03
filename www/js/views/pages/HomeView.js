@@ -33,7 +33,13 @@ define(function(require) {
 			this.spinner = new PreloaderCircolareView();
 			this.collection = new ListaProdotti();
 			this.collection.getResult("Home");
-			this.listenTo(this.collection, "sync", this.render);
+			this.listenTo(this.collection, "sync", this.append);
+			var t = this;
+			$("#content").scroll(function(){
+				if($("#content").height() + $("#content").scrollTop() == $("#home-view").height() + 20){
+					t.collection.getResult("Home");
+				}
+			});
 		},
 
 		id : "home-view",
@@ -50,6 +56,10 @@ define(function(require) {
 			
 			this.spinner.render();
 
+			return this;
+		},
+		
+		append : function() {
 			for (var i = 0; i < this.collection.length; i++) {
 				var prodottoCardView = new ProdottoCardView({
 					model : this.collection.at(i)
@@ -59,8 +69,6 @@ define(function(require) {
 				else
 					this.$("#home-col-dx").append(prodottoCardView.render().$el);
 			}
-
-			return this;
 		},
 		
 		/**

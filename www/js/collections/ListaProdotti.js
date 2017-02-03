@@ -10,6 +10,8 @@ define(function(require) {
 
 		model : Prodotto,
 		
+		limit : 1,
+		
 		initialize : function() {
 			
 		},
@@ -82,8 +84,16 @@ define(function(require) {
 			if(factory == "Home"){
 				this.url = window.baseUrl 
 				+ '/products/?io_format=JSON&display=full&orderby=position&orderway=desc'
-				+ '&limit='
-				+ '8'
+				+ '&limit=';
+				if(this.limit > 1){
+					this.url = this.url 
+					+ (this.limit*10) + ',10';
+				}else if(this.limit == 1){
+					this.url = this.url 
+					+ '10';
+				}
+				this.limit++;
+				this.url = this.url 
 				+ '&ws_key=' 
 				+ window.apiKey;
 			}else
