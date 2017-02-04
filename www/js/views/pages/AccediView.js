@@ -20,6 +20,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.accedi;
 			
+			$("#content").empty();
 			this.model = new Utente();
 			this.listenTo(this.model, "change:loggato", this.conferma);
 		},

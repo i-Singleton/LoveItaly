@@ -15,6 +15,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.carrello;
+			
+			$("#content").empty();
 			document.getElementById("titolo").innerHTML = "Carrello";
 			$("#titolo").css("line-height", "unset");
 			document.getElementById("sottotitolo").innerHTML = "";

@@ -24,6 +24,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.registrazione;
+			
+			$("#content").empty();
 			this.spinner = new PreloaderCircolareView();
 			
 			this.model = new Utente();

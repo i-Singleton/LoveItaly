@@ -110,6 +110,11 @@ define(function(require) {
 	    		success: this.fetchSuccess,
 	    		error: this.fetchError
 	    	});	    	
+	    },
+	    
+	    sortByPriceAsc : function() {
+	    	this.comparator = "prezzo";
+	    	this.sort();
 	    }
 
 	});

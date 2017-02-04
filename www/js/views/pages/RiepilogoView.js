@@ -23,6 +23,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.riepilogo;
+			
+			$("#content").empty();
 			document.getElementById("titolo").innerHTML = "Riepilogo";
 			$("#titolo").css("line-height", "unset");
 			document.getElementById("sottotitolo").innerHTML = "";

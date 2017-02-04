@@ -28,6 +28,7 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottiCategoria;
 			
+			$("#content").empty();
 			$("#titolo").css("line-height", "40px");
 			document.getElementById("titolo").innerHTML = "Categorie";
 			
@@ -43,6 +44,7 @@ define(function(require) {
 			});
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
+			this.$el.css("margin-top", "0");
 			
 			this.spinner = new PreloaderCircolareView();
 			this.error = new ErroreView();

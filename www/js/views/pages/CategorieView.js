@@ -22,6 +22,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.categorie;
+			
+			$("#content").empty();
 			document.getElementById("titolo").innerHTML = "Categorie";
 			$("#titolo").css("line-height", "unset");
 			document.getElementById("sottotitolo").innerHTML = "";

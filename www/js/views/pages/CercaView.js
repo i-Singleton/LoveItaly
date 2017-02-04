@@ -19,6 +19,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.cerca;
+			
+			$("#content").empty();
 			$("#titolo").css("line-height", "unset");
 			document.getElementById("sottotitolo").innerHTML = "";
 			$("#statusbar").css("display", "block");
@@ -43,7 +45,9 @@ define(function(require) {
 		className : "row",
 
 		events : {
-			"click .card" : "cacheProdotto"
+			"click .card" : "cacheProdotto",
+			"click #prezzo-crescente" : "filtra",
+			"click #prezzo-decrescente" : "filtraDesc",
 		},
 
 		render : function() {
@@ -69,20 +73,33 @@ define(function(require) {
 			this.$("#col-dx").empty();
 			// aggiorno la lista risultati, se ce ne sono
 			this.collection = this.barraRicerca.collection;
+			this.el.innerHTML = this.template({
+				quantita_risultati : this.collection.length
+			});
 			if (this.collection.length) {
+				this.$("#barra-filtraggio").css("display", "block");
+				var sx = true;
 				for (var i = 0; i < this.collection.length; i++) {
 					var prodottoCardView = new ProdottoCardView({
 						model : this.collection.at(i)
 					});
-					if(i % 2 == 0)
+					if(sx){
 						this.$("#col-sx").append(prodottoCardView.render().$el);
-					else
+						sx = false;
+					}else{
 						this.$("#col-dx").append(prodottoCardView.render().$el);
+						sx = true;
+					}
 				}
 			}else{
+				this.$("#barra-filtraggio").css("display", "none");
 				var error = this.error.render("risultato").$el;
 				this.$el.append(error);
 			}
+			// inclusione secondo la libreria
+			$(document).ready(function() {
+				$('.dropdown-button').dropdown();
+			});
 		},
 		
 		/**
@@ -94,6 +111,58 @@ define(function(require) {
 			var prodotto = new Prodotto();
 			prodotto = this.collection.get(id);
 			prodotto.salva();
+		},
+		
+		filtra : function() {
+			this.collection.sortByPriceAsc();
+			this.updateAfterFilter();
+		},
+		
+		filtraDesc : function() {
+			this.filtra();
+			this.updateAfterFilter(true);
+		},
+		
+		updateAfterFilter : function(desc) {
+			this.$("#col-sx").empty();
+			this.$("#col-dx").empty();
+			// aggiorno la lista risultati, se ce ne sono
+			this.collection = this.barraRicerca.collection;
+			this.el.innerHTML = this.template({
+				quantita_risultati : this.collection.length
+			});
+			this.$("#barra-filtraggio").css("display", "block");
+			var sx = true;
+			if(desc)
+				for (var i = this.collection.length - 1; i >= 0; i--) {
+					var prodottoCardView = new ProdottoCardView({
+						model : this.collection.at(i)
+					});
+					if(sx){
+						this.$("#col-sx").append(prodottoCardView.render().$el);
+						sx = false;
+					}else{
+						this.$("#col-dx").append(prodottoCardView.render().$el);
+						sx = true;
+					}
+				}
+			else
+				for (var i = 0; i < this.collection.length; i++) {
+					var prodottoCardView = new ProdottoCardView({
+						model : this.collection.at(i)
+					});
+					if(sx){
+						this.$("#col-sx").append(prodottoCardView.render().$el);
+						sx = false;
+					}else{
+						this.$("#col-dx").append(prodottoCardView.render().$el);
+						sx = true;
+					}
+				}
+			// inclusione secondo la libreria
+			$(document).ready(function() {
+				$('.dropdown-button').dropdown();
+			});
 		}
 
 	});

@@ -17,6 +17,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.home;
+			
+			$("#content").empty();
 			$("#titolo").html("Home");
 			$("#titolo").css("line-height", "unset");
 			document.getElementById("sottotitolo").innerHTML = "";

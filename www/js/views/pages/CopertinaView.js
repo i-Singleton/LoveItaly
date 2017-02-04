@@ -12,6 +12,8 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.copertina;
+			
+			$("#content").empty();
 		},
 
 		// id : "myview",
