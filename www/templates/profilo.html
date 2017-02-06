@@ -1,55 +1,52 @@
-<ul id="dati-personali" class="collection">
-	<li class="collection-item">
-		<div class="row">
-			<div class="input-field col s6">
-				<i class="material-icons prefix">person</i> <input id="first_name"
-					type="text" value="{{nome}}" disabled> <label
-					class="active" for="first_name">Nome</label>
-			</div>
-			<div class="input-field col s6" style="padding-left: 10px;">
-				<input id="last_name" type="text" value="{{cognome}}" disabled>
-				<label class="active" for="last_name" style="left: 32px;">Cognome</label>
-			</div>
-		</div>
-	</li>
+<div class="row">
+	<div class="input-field col s6">
+		<i class="material-icons prefix">person</i> <input id="first_name"
+			type="text" value="{{nome}}" placeholder="Inserisci nome" disabled>
+		<label class="active" for="first_name">Nome</label>
+	</div>
+	<div class="input-field col s6" style="padding-left: 10px;">
+		<input id="last_name" type="text" value="{{cognome}}"
+			placeholder="Inserisci cognome" disabled> <label
+			class="active" for="last_name" style="left: 32px;">Cognome</label>
+	</div>
+</div>
 
-	<li class="collection-item">
-		<div class="input-field">
-			<i class="material-icons prefix">email</i> <input id="email"
-				type="email" value="{{email}}" disabled> <label
-				class="active" for="email">Email</label>
-		</div>
-	</li>
+<div class="row">
+	<div class="input-field">
+		<i class="material-icons prefix">email</i> <input id="email"
+			type="email" value="{{email}}" placeholder="Inserisci email" disabled>
+		<label class="active" for="email">Email</label>
+	</div>
+</div>
 
-	<li class="collection-item">
-		<div class="input-field">
-			<i class="material-icons prefix">lock</i> <input id="password"
-				type="password" value="{{password_oscurata}}" disabled> <label
-				class="active" for="password">Password</label>
-		</div>
-	</li>
+<div class="row">
+	<div class="input-field">
+		<i class="material-icons prefix">lock</i> <input id="password"
+			type="password" value="{{password_oscurata}}" disabled> <label
+			class="active" for="password">Password</label>
+	</div>
+</div>
 
-	<li class="collection-item">
-		<div class="input-field">
-			<i class="material-icons prefix">location_on</i> <input
-				id="indirizzo" type="text" value="{{indirizzo}}"
-				placeholder="Inserisci l'indirizzo"> <label class="active"
-				for="indirizzo">Indirizzo</label>
-		</div>
-	</li>
+<div class="row">
+	<div class="input-field">
+		<i class="material-icons prefix">location_on</i> <input id="indirizzo"
+			type="text" value="{{indirizzo}}" placeholder="Inserisci indirizzo">
+		<label class="active" for="indirizzo">Indirizzo</label>
+	</div>
+</div>
 
-	<li class="collection-item select-list"><select id="citta">
-			{{#each lista_citta}}
-			<option value="{{@index}}">{{this}}</option> 
-			{{/each}}
-	</select></li>
+<div class="row">
+	<select id="citta"> {{#each lista_citta}}
+		<option value="{{@index}}">{{this}}</option> {{/each}}
+	</select>
+</div>
 
-	<li class="collection-item select-list"><i class="material-icons"
-		style="margin-top: 8px; position: absolute;">payment</i> <select
-		id="pagamento">
-			<option selected>Pagamento in contrassegno</option>
-			<option disabled>Pagamento con carta di credito</option>
-	</select></li>
+<div class="row">
+	<i class="material-icons" style="margin-top: 8px; position: absolute;">payment</i>
+	<select id="pagamento">
+		<option selected>Pagamento in contrassegno</option>
+		<option disabled>Pagamento con carta di credito</option>
+	</select>
+</div>
 
-	<li id="credits-app" class="collection-item">LoveItaly App v1.0</li>
-</ul>
+<div id="credits-app" class="row">LoveItaly App v1.0</div>

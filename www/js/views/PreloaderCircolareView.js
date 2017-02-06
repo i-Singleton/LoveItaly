@@ -39,7 +39,7 @@ define(function(require) {
 				t.$el.fadeOut(250, function() {
 					t.$el.remove();
 				});
-			}, 500);
+			}, 1000);
 		}
 
 	});

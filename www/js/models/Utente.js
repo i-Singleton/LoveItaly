@@ -72,7 +72,7 @@ define(function(require) {
 				'San Vito Chietino (CH)',
 				'Treglio (CH)',
 			],
-			citta : '',
+			citta : 0,
 			indirizzo : '',
 			pagamento : 'Pagamento in contrassegno',
 			registrato : '',
@@ -159,11 +159,24 @@ define(function(require) {
 			if(this.isLogged()){
 				var JSONString = localStorage.getItem(this.constructorName);
 				this.set(JSON.parse(JSONString));
+			}else{
+				var JSONString = localStorage.getItem("Guest");
+				this.set(JSON.parse(JSONString));
 			}
 		},
 		
+		/**
+		 * Aggiorna i dati dell'Utente dopo modifiche in Profilo o Riepilogo
+		 */
 		update : function() {
-			localStorage.setItem(this.constructorName, JSON.stringify(this));
+			if(this.isLogged())
+				localStorage.setItem(this.constructorName, JSON.stringify(this));
+			else
+				localStorage.setItem("Guest", JSON.stringify(this));
+		},
+		
+		removeGuest : function() {
+			localStorage.removeItem("Guest");
 		},
 		
 //		updateCustomer : function(utente) {

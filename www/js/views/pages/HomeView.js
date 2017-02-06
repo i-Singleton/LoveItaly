@@ -17,7 +17,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.home;
-			
+
 			$("#content").empty();
 			$("#titolo").html("Home");
 			$("#titolo").css("line-height", "unset");
@@ -37,11 +37,15 @@ define(function(require) {
 			this.collection.getResult("Home");
 			this.listenTo(this.collection, "sync", this.append);
 			var t = this;
-			$("#content").scroll(function(){
-				if($("#content").height() + $("#content").scrollTop() == $("#home-view").height() + 20){
-					t.collection.getResult("Home");
-				}
-			});
+			$("#content")
+					.scroll(
+							function() {
+								if ($("#content").height()
+										+ $("#content").scrollTop() == $(
+										"#home-view").height() + 20) {
+									t.collection.getResult("Home");
+								}
+							});
 		},
 
 		id : "home-view",
@@ -55,25 +59,29 @@ define(function(require) {
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
-			
+
 			this.spinner.render();
 
 			return this;
 		},
-		
+
 		append : function() {
+			var sx = true;
 			for (var i = 0; i < this.collection.length; i++) {
 				var prodottoCardView = new ProdottoCardView({
 					model : this.collection.at(i)
 				});
-				if(i % 2 == 0)
+				if (sx) {
 					this.$("#home-col-sx").append(prodottoCardView.render().$el);
-				else
+					sx = false;
+				} else {
 					this.$("#home-col-dx").append(prodottoCardView.render().$el);
+					sx = true;
+				}
 			}
 			this.spinner.rimuovi();
 		},
-		
+
 		/**
 		 * Salva nel db locale il prodotto per evitare una seconda richiesta
 		 * superflua verso il server; e' gia' in nostro possesso il prodotto
@@ -84,7 +92,7 @@ define(function(require) {
 			prodotto = this.collection.get(id);
 			prodotto.salva();
 		}
-		
+
 	});
 
 	return HomeView;

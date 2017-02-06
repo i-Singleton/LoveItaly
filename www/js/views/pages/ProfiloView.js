@@ -36,6 +36,10 @@ define(function(require) {
 			});
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
+			// inizializzazione select secondo libreria
+			$(document).ready(function() {
+				$('select').material_select();
+			});
 			
 			this.model = new Utente();
 		},

@@ -5,6 +5,7 @@ define(function(require) {
 	var ProdottoCarrelloView = require("views/ProdottoCarrelloView");
 	var Carrello = require("collections/Carrello");
 	var Prodotto = require("models/Prodotto");
+	var ErroreView = require("views/ErroreView");
 
 	var CarrelloView = Utils.Page.extend({
 
@@ -15,7 +16,7 @@ define(function(require) {
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.carrello;
-			
+
 			$("#content").empty();
 			document.getElementById("titolo").innerHTML = "Carrello";
 			$("#titolo").css("line-height", "unset");
@@ -32,6 +33,7 @@ define(function(require) {
 
 			this.collection = new Carrello();
 			this.collection.carica();
+			this.errore = new ErroreView();
 			this.listenTo(this.collection, "add change remove", this.render);
 		},
 
@@ -50,12 +52,19 @@ define(function(require) {
 			$(this.el).html(this.template({
 				totale : this.collection.getTotale()
 			}));
-			this.collection.each(function(item) {
-				var prodottoCarrelloView = new ProdottoCarrelloView({
-					model : item
-				});
-				this.$el.append(prodottoCarrelloView.render().$el);
-			}, this);
+			if (this.collection.length == 0) {
+				this.$("#btn-bottom-container").css("display", "none");
+				$("#content").css("height", "calc(100% - 80px)");
+				this.$el.append(this.errore.render("carrello").el);
+			} else {
+				this.$("#btn-bottom-container").css("display", "block");
+				this.collection.each(function(item) {
+					var prodottoCarrelloView = new ProdottoCarrelloView({
+						model : item
+					});
+					this.$el.append(prodottoCarrelloView.render().$el);
+				}, this);
+			}
 			return this;
 		},
 

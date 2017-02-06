@@ -59,14 +59,18 @@ define(function(require) {
 			this.spinner.render();
 			
 			if (this.collection.length) {
+				var sx = true;
 				for (var i = 0; i < this.collection.length; i++) {
 					var prodottoCardView = new ProdottoCardView({
 						model : this.collection.at(i)
 					});
-					if(i % 2 == 0)
+					if (sx) {
 						this.$("#col-sx").append(prodottoCardView.render().$el);
-					else
+						sx = false;
+					} else {
 						this.$("#col-dx").append(prodottoCardView.render().$el);
+						sx = true;
+					}
 				}
 			}else{
 				var error = this.error.render("risultato").$el;

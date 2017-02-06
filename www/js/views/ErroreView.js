@@ -30,6 +30,11 @@ define(function(require) {
 					url : "img/nessun-risultato.png",
 					testo : "Nessun risultato"
 				}
+			} else if (string == "carrello") {
+				params = {
+					url : "img/nessun-risultato.png",
+					testo : "Il carrello è vuoto"
+				}
 			} else if (string == "connessione") {
 				params = {
 					url : "img/nessuna-connessione.png",
@@ -42,7 +47,7 @@ define(function(require) {
 				$("#content").empty().append(this.$el);
 			return this;
 		},
-		
+
 		clear : function() {
 			$("#content").empty();
 		}

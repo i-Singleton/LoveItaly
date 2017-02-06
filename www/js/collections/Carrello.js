@@ -14,14 +14,14 @@ define(function(require) {
 		},
 
 		/**
-		 * Metodo per salvare (e aggiornare) lo stato corrente del Carrello
+		 * Salva (e aggiorna) lo stato corrente del Carrello
 		 */
 		salva : function() {
 			localStorage.setItem(this.constructorName, JSON.stringify(this));
 		},
 
 		/**
-		 * Metodo per caricare l'ultimo stato del Carrello
+		 * Carica l'ultimo stato del Carrello
 		 */
 		carica : function() {
 			// se contiene qualcosa, allora carica lo stato
@@ -31,6 +31,14 @@ define(function(require) {
 				this.set(JSON.parse(carrelloJSONString));
 			}
 			return this;
+		},
+
+		/**
+		 * Svuota il Carrello e lo elimina dal db locale
+		 */
+		svuota : function() {
+			this.reset();
+			localStorage.removeItem(this.constructorName);
 		},
 
 		/**
@@ -55,7 +63,7 @@ define(function(require) {
 		},
 
 		/**
-		 * Aggiorna un prodotto eistente
+		 * Aggiorna un prodotto esistente nel Carrello
 		 */
 		aggiornaProdotto : function(prodotto) {
 			this.push(prodotto, {
@@ -74,8 +82,8 @@ define(function(require) {
 		},
 
 		/**
-		 * Metodo che ritorna il prezzo totale dei Prodotti presenti nel
-		 * Carrello, per uso esterno a questa classe
+		 * Ritorna il prezzo totale dei Prodotti presenti nel Carrello, per uso
+		 * esterno a questa classe
 		 * 
 		 * @return float
 		 */
