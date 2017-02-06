@@ -36,8 +36,9 @@ define(function(require) {
 			this.error = new ErroreView();
 			this.barraRicerca = new BarraRicercaView();
 			this.collection = new ListaProdotti();
+			this.collection = this.barraRicerca.collection;
 
-			this.listenTo(this.barraRicerca.collection, "sync", this.updateResults);
+			this.listenTo(this.collection, "sync", this.updateResults);
 		},
 
 		id : "cerca-view",
@@ -72,7 +73,7 @@ define(function(require) {
 			this.$("#col-sx").empty();
 			this.$("#col-dx").empty();
 			// aggiorno la lista risultati, se ce ne sono
-			this.collection = this.barraRicerca.collection;
+			//this.collection = this.barraRicerca.collection;
 			this.el.innerHTML = this.template({
 				quantita_risultati : this.collection.length
 			});
@@ -96,6 +97,7 @@ define(function(require) {
 				var error = this.error.render("risultato").$el;
 				this.$el.append(error);
 			}
+			this.spinner.rimuovi();
 			// inclusione secondo la libreria
 			$(document).ready(function() {
 				$('.dropdown-button').dropdown();
@@ -127,7 +129,7 @@ define(function(require) {
 			this.$("#col-sx").empty();
 			this.$("#col-dx").empty();
 			// aggiorno la lista risultati, se ce ne sono
-			this.collection = this.barraRicerca.collection;
+			//this.collection = this.barraRicerca.collection;
 			this.el.innerHTML = this.template({
 				quantita_risultati : this.collection.length
 			});

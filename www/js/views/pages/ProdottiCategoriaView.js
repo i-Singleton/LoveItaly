@@ -72,6 +72,9 @@ define(function(require) {
 				var error = this.error.render("risultato").$el;
 				this.$el.append(error);
 			}
+			
+			this.spinner.rimuovi();
+			
 			return this;
 		},
 		

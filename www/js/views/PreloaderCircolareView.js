@@ -22,19 +22,24 @@ define(function(require) {
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
-			//$("#content").css("display", "none");
 			$("#main").append(this.el);
-			setTimeout(function() {
-				$("#preloader-circolare").fadeOut();
-				$("#preloader-circolare-container").remove();
-				//$("#content").css("display", "block");
-			}, 1000);
 			return this;
 		},
-		
+
 		trasparente : function() {
-			$(this).css("background-color", "rgba(220, 220, 220, 0.2)");
+			this.$el.css("background-color", "rgba(220, 220, 220, 0.2)");
 			return this;
+		},
+
+		rimuovi : function() {
+			// imposto block per eventuali precedenti fadeOut che impostano none
+			this.$el.css("display", "block");
+			var t = this;
+			setTimeout(function() {
+				t.$el.fadeOut(250, function() {
+					t.$el.remove();
+				});
+			}, 500);
 		}
 
 	});

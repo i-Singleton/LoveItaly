@@ -71,6 +71,7 @@ define(function(require) {
 				else
 					this.$("#home-col-dx").append(prodottoCardView.render().$el);
 			}
+			this.spinner.rimuovi();
 		},
 		
 		/**

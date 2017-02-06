@@ -54,6 +54,7 @@ define(function(require) {
 			this.$el.prepend(
 					this.carousel.render(this.model.getImmagini()).$el
 			);
+			this.spinner.rimuovi();
 			return this;
 		},
 		

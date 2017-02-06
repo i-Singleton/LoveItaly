@@ -59,6 +59,8 @@ define(function(require) {
 				});
 				this.$el.append(categoriaElementoListaView.render().$el);
 			}
+			
+			this.spinner.rimuovi();
 
 			return this;
 		},
