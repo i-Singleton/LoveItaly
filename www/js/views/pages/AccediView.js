@@ -3,6 +3,7 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var Utente = require("models/Utente");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
 
 	var AccediView = Utils.Page.extend({
 
@@ -21,6 +22,7 @@ define(function(require) {
 			this.template = Utils.templates.accedi;
 			
 			$("#content").empty();
+			this.spinner = new PreloaderCircolareView();
 			this.model = new Utente();
 			this.listenTo(this.model, "change:loggato", this.conferma);
 		},
@@ -28,7 +30,7 @@ define(function(require) {
 		events : {
 			"click #chiudi-accedi-view" : "chiudi",
 			"focus input" : "focus",
-			"blur input" : "blur",
+			//"blur input" : "blur",
 			"blur #email" : "validaEmail",
 			"click #accedi" : "login"
 		},
@@ -82,15 +84,19 @@ define(function(require) {
 				//$("#utente-info").html(this.model.get("nome"));
 			} else if (this.model.get("loggato") == false)
 				this.$("#accedi-error").css("display", "block");
+			this.spinner.rimuovi();
 			
 		},
 
 		login : function() {
+			this.blur();
 			this.$("#accedi-error").css("display", "none");
 			var email = this.$("#email").val();
 			var password = this.$("#password").val();
-			if (email.length > 0 && password.length > 0 && this.validaEmail())
+			if (email.length > 0 && password.length > 0 && this.validaEmail()) {
+				this.spinner.trasparente().render();
 				this.model.login(email, password);
+			}
 		},
 		
 		validaEmail : function() {

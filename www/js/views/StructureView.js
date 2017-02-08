@@ -4,7 +4,6 @@ define(function(require) {
 	var Backbone = require("backbone");
 	var Utils = require("utils");
 	var Utente = require("models/Utente");
-	// var MenuLateraleView = require("views/MenuLateraleView");
 
 	var StructureView = Backbone.View.extend({
 

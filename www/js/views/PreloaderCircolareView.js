@@ -19,10 +19,22 @@ define(function(require) {
 			this.template = Utils.templates.preloaderCircolare;
 		},
 
+		/**
+		 * Lo renderizza in automatico in cover-full per le pagine
+		 */
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
 			$("#main").append(this.el);
+			return this;
+		},
+		
+		renderForMoreItem : function() {
+			// load the template
+			this.el.innerHTML = this.template({});
+			this.$el.css("position", "relative");
+			this.$el.css("top", "0");
+			this.$("#preloader-circolare").removeClass("top50");
 			return this;
 		},
 

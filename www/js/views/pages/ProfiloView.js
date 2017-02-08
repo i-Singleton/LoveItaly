@@ -15,8 +15,8 @@ define(function(require) {
 		// className : "",
 
 		events : {
-			"blur input" : "update",
-			"blur select" : "update",
+			"change input" : "update",
+			"change select" : "update",
 		},
 		
 		initialize : function() {

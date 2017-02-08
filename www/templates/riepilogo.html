@@ -3,11 +3,13 @@
 		<i class="material-icons prefix">person</i> <input id="first_name"
 			type="text" value="{{nome}}" placeholder="Inserisci nome" disabled>
 		<label class="active" for="first_name">Nome</label>
+		<div id="nome-error" class="form-error">Solo lettere</div>
 	</div>
 	<div class="input-field col s6" style="padding-left: 10px;">
 		<input id="last_name" type="text" value="{{cognome}}"
 			placeholder="Inserisci cognome" disabled> <label
 			class="active" for="last_name" style="left: 32px;">Cognome</label>
+			<div id="cognome-error" class="form-error">Solo lettere</div>
 	</div>
 </div>
 
@@ -16,6 +18,8 @@
 		<i class="material-icons prefix">email</i> <input id="email"
 			type="email" value="{{email}}" placeholder="Inserisci email" disabled>
 		<label class="active" for="email">Email</label>
+		<div id="email-usata" class="form-error">Indirizzo email gi&#224; usato</div>
+		<div id="email-error" class="form-error">Indirizzo email non valido</div>
 	</div>
 </div>
 
@@ -43,7 +47,7 @@
 
 <div id="btn-bottom-container">
 	<a id="conferma-ordine"
-		class="btn-large waves-effect waves-green green darken-2">Conferma
+		class="btn-large disabled waves-effect waves-green green darken-2">Conferma
 		l'ordine <span>|</span> {{totale}}&#128; <i
 		class="material-icons right">keyboard_arrow_right</i>
 	</a>

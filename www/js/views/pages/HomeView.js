@@ -32,7 +32,8 @@ define(function(require) {
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
 
-			this.spinner = new PreloaderCircolareView();
+			this.spinnerFull = new PreloaderCircolareView();
+			this.spinnerItems = new PreloaderCircolareView();
 			this.collection = new ListaProdotti();
 			this.collection.getResult("Home");
 			this.listenTo(this.collection, "sync", this.append);
@@ -60,7 +61,9 @@ define(function(require) {
 			// load the template
 			this.el.innerHTML = this.template({});
 
-			this.spinner.render();
+			this.spinnerFull.render();
+			
+			this.$el.append(this.spinnerItems.renderForMoreItem().$el);
 
 			return this;
 		},
@@ -79,7 +82,7 @@ define(function(require) {
 					sx = true;
 				}
 			}
-			this.spinner.rimuovi();
+			this.spinnerFull.rimuovi();
 		},
 
 		/**

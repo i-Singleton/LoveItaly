@@ -40,7 +40,7 @@ define(function(require) {
 		events : {
 			"click #chiudi-registrazione-view" : "chiudi",
 			"focus input" : "focus",
-			"blur input" : "blur",
+			//"blur input" : "blur",
 			"click #registrati" : "registra",
 			"blur #first_name" : "validaNome",
 			"blur #last_name" : "validaCognome",
@@ -99,13 +99,15 @@ define(function(require) {
 			} else if(this.model.get("registrato") == false) {
 				var toastContent = 'Registrazione non effettuata, riprovare';
 				Materialize.toast(toastContent, 5000);
-			}			
+			}
+			this.spinner.rimuovi();
 		},
 
 		registra : function() {
+			this.blur();
 			if (this.formIsValid()) {
-				this.model.registra();
 				this.spinner.trasparente().render();				
+				this.model.registra();
 			}
 		},
 		
