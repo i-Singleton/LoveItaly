@@ -927,8 +927,12 @@ select:focus {
 	font-size: 11px;
 	position: absolute;
 	right: 0px;
-	margin-top: -17px;
+	/*margin-top: -17px;*/
 	display: none;
+}
+
+/*#riepilogo-view*/ .caret {
+	right: 14px !important;
 }
 
 #riepilogo-view ul {

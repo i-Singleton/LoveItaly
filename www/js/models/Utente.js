@@ -80,6 +80,8 @@ define(function(require) {
 		},
 
 		initialize : function() {
+			// rimuove l'eventuale guest residuo
+			this.removeGuest();
 			this.load();
 		},
 		
@@ -89,7 +91,7 @@ define(function(require) {
 		 * 
 		 * @return boolean
 		 */
-		login : function(email, password) {
+		login : function(email, password) {			
 			this.url = window.baseUrl
 			+ '/customers/?io_format=JSON&filter[email]='
 			+ '[' + email + ']&display=full'
@@ -110,6 +112,7 @@ define(function(require) {
 					// loggato true
 					if(encrypted_password == response['customers'][0]['passwd']){
 						logged = true;
+						t.clear();
 						t.set({
 							id : response['customers'][0]['id'],
 							nome : response['customers'][0]['firstname'],
@@ -160,7 +163,7 @@ define(function(require) {
 				var JSONString = localStorage.getItem(this.constructorName);
 				this.set(JSON.parse(JSONString));
 			}else{
-				var JSONString = localStorage.getItem("Guest");
+				var JSONString = sessionStorage.getItem("Guest");
 				this.set(JSON.parse(JSONString));
 			}
 		},
@@ -172,11 +175,11 @@ define(function(require) {
 			if(this.isLogged())
 				localStorage.setItem(this.constructorName, JSON.stringify(this));
 			else
-				localStorage.setItem("Guest", JSON.stringify(this));
+				sessionStorage.setItem("Guest", JSON.stringify(this));
 		},
 		
 		removeGuest : function() {
-			localStorage.removeItem("Guest");
+			sessionStorage.removeItem("Guest");
 		},
 		
 //		updateCustomer : function(utente) {

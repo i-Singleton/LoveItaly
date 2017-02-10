@@ -14,10 +14,10 @@ define(function(require) {
 		form : {
 			nome : null,
 			cognome : null,
-			email : {
-				usata : null,
-				valida : null,
-			}
+			email : null,
+			indirizzo : null,
+			citta : null,
+			pagamento : true
 		},
 
 		id : "riepilogo-view",
@@ -25,12 +25,13 @@ define(function(require) {
 		// className : "",
 
 		events : {
-			"change input" : "update",
-			"change select" : "update",
 			"click #conferma-ordine" : "confermaOrdine",
 			"change #first_name" : "validaNome",
 			"change #last_name" : "validaCognome",
-			"change #email" : "validaEmail"
+			"change #email" : "validaEmail",
+			"change #indirizzo" : "validaIndirizzo",
+			"change #citta" : "validaCitta",
+			"change #pagamento" : "validaPagamento",
 		},
 
 		initialize : function() {
@@ -57,7 +58,6 @@ define(function(require) {
 
 			this.model = new Utente();
 			this.carrello = new Carrello();
-			this.listenTo(this.model, "change:email", this.emailUsata);
 		},
 
 		render : function() {
@@ -69,128 +69,167 @@ define(function(require) {
 				lista_citta : this.model.get("lista_citta"),
 				totale : this.carrello.getTotale()
 			}));
-			// rimuovo disabled se si tratta di un guest
+			// abilito gli input per il guest
 			if (!this.model.isLogged())
 				this.$("input").removeAttr("disabled");
-			else
-				this.$("#conferma-ordine").removeClass("disabled");
 			// imposto graficamente il valore corrispondente
 			var index = this.model.get("citta");
 			this.$("#citta").val(index);
+			// controllo se la form e' valida e abilito il pulsante
+			this.validaForm();
 			return this;
 		},
 
-		update : function() {
-			// imposto anche gli altri valori se si tratta di un guest
-			if (!this.model.isLogged())
-				this.model.set({
-					nome : $("#first_name").val(),
-					cognome : $("#last_name").val(),
-					email : $("#email").val()
-				});
-			this.model.set({
-				indirizzo : $("#indirizzo").val(),
-				citta : $("#citta option:selected").val(),
-				pagamento : $("#pagamento option:selected").text()
-			});
-			this.model.update();
-		},
-
 		confermaOrdine : function() {
-			if (this.formIsValid()) {
-				this.update();
-				// confermo l'ordine
+			if (!this.$("#conferma-ordine").hasClass("disabled")) {
+				// qui va l'inoltro dell'ordine, ma non e' da implementare in quanto 
+				// non presente nelle features del documento di progetto...
 				// ordine.qualcosa();
 				var toastContent = 'Ordine effettuato';
 				Materialize.toast(toastContent, 5000);
-				// rimuovo il guest (se esiste) e svuoto il carrello
+				// rimuovo l'eventuale guest, svuoto il carrello e resetto la form
 				this.model.removeGuest();
 				this.carrello.svuota();
+				this.resetForm();
 				Backbone.history.navigate("ordini", {
 					trigger : true
 				});
-			}
-		},
-		
-		formIsValid : function() {
-			if(!this.model.isLogged()){
-				if (	this.form.nome == true 
-						&& this.form.cognome == true
-						&& this.form.email.usata == false
-						&& this.form.email.valida == true){
-					var nome = this.$("#first_name").val();
-					var cognome = this.$("#last_name").val();
-					var email = this.$("#email").val();
-					
-					this.model.set({
-						nome : nome,
-						cognome : cognome,
-						email : email
-					});
-					
-					this.$("#conferma-ordine").removeClass("disabled");
-					
-					return true;
-				}else
-					return false;
-			}
+			}else
+				this.validaForm();				
 		},
 
 		validaNome : function() {
 			var nome = this.$("#first_name").val();			
 			var regex = /^[a-zA-Z]+$/;
 			var correct = regex.test(nome);
-			if (correct)
+			if (correct){
+				this.model.set("nome", nome);
+				this.model.update();
 				this.$("#nome-error").css("display", "none");
-			else
+			}else
 				this.$("#nome-error").css("display", "block");
 			
-			this.formIsValid();
-			return this.form.nome = correct;
+			this.form.nome = correct;
+			//this.update();
+			this.checkConfermaButton();
+			//return correct;
 		},
 
 		validaCognome : function() {
 			var cognome = this.$("#last_name").val();
 			var regex = /^[a-zA-Z]+$/;
 			var correct = regex.test(cognome);
-			if (correct)
+			if (correct){
+				this.model.set("cognome", cognome);
+				this.model.update();
 				this.$("#cognome-error").css("display", "none");
-			else
+			}else
 				this.$("#cognome-error").css("display", "block");
 			
-			this.formIsValid();
-			return this.form.cognome = correct;
+			this.form.cognome = correct;
+			//this.update();
+			this.checkConfermaButton();
+			//return correct;
 		},
 
-		emailUsata : function() {
-			var usata;
-			if(this.model.get("email") == false){
-				this.$("#email-error").css("display", "none");
-				this.$("#email-usata").css("display", "block");
-				usata = true;
-			}else{
-				this.$("#email-error").css("display", "none");
-				this.$("#email-usata").css("display", "none");
-				usata = false;
-			}
-			this.formIsValid();
-			return this.form.email.usata = usata;
-		},
-		
 		validaEmail : function() {
 			var email = this.$("#email").val();
 			var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var correct = regex.test(email);
 			if (correct) {
+				this.model.set("email", email);
+				this.model.update();
 				this.$("#email-error").css("display", "none");
-				this.model.emailAvailable(email);
-			}else {
+			}else
 				this.$("#email-error").css("display", "block");
-			}
 			this.$("#email-usata").css("display", "none");
-			this.formIsValid();
-			return this.form.email.valida = correct;
+			this.form.email = correct;
+			//this.update();
+			this.checkConfermaButton();
+			//return correct;
 		},
+		
+		validaIndirizzo : function() {
+			var indirizzo = this.$("#indirizzo").val();			
+			var regex1 = /^[a-zA-Z0-9 ]+$/;
+			var regex2 = /^[ ]+$/;
+			var correct1 = regex1.test(indirizzo);
+			var correct2 = !regex2.test(indirizzo);
+			if (correct1 && correct2){
+				this.model.set("indirizzo", indirizzo);
+				this.model.update();
+				this.$("#indirizzo-error").css("display", "none");
+			}else
+				this.$("#indirizzo-error").css("display", "block");
+			this.form.indirizzo = correct1 && correct2;
+			//this.update();
+			this.checkConfermaButton();
+			//return correct1 && correct2;
+		},
+		
+		validaCitta : function() {
+			var citta = $("#citta option:selected").val() || this.model.get("citta");
+			var correct = false;
+			if(citta > 0){
+				this.model.set("citta", citta);
+				this.model.update();
+				correct = true;
+			}
+			else
+				correct = false;
+			this.form.citta = correct;
+			console.log("citta "+citta+": ", this.form.citta)
+			this.checkConfermaButton();
+			//this.update();
+			//return correct;
+		},
+		
+		validaPagamento : function() {
+			// Non c'e necessita', la modalita' richiesta e' solo il
+			// pagamento in contrassegno, che e' impostato di default.
+			// Quindi assegno true.
+			var correct = true;
+			var pagamento = $("#pagamento option:selected").text();
+			this.model.set("pagamento", pagamento);
+			this.model.update();
+			this.form.pagamento = correct;
+			//this.update();
+			this.checkConfermaButton();
+			//return correct;
+		},
+		
+		resetForm : function() {
+			this.form.nome = null; 
+			this.form.cognome = null;
+			this.form.email = null;
+			this.form.indirizzo = null;
+			this.form.citta = null;
+			this.form.pagamento = true;
+		},
+		
+		validaForm : function() {
+			this.validaNome(); 
+			this.validaCognome();
+			this.validaEmail();
+			this.validaIndirizzo();
+			this.validaCitta();
+			this.validaPagamento();
+			
+			this.checkConfermaButton();
+		},
+		
+		checkConfermaButton : function() {
+			if(	this.form.nome == true
+					&& this.form.cognome == true
+					&& this.form.email == true
+					&& this.form.indirizzo == true
+					&& this.form.citta == true
+					&& this.form.pagamento == true){				
+				this.$("#conferma-ordine").removeClass("disabled");
+			}else{
+				this.$("#conferma-ordine").addClass("disabled");
+			}			
+		}
 
 	});
 
