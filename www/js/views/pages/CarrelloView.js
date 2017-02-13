@@ -13,10 +13,21 @@ define(function(require) {
 
 		collection : Carrello,
 
+		id : "carrello-view",
+
+		// className : "i-g page",
+
+		events : {
+			"click #rimuovi-prodotto" : "rimuovi",
+			"click #decrementa-quantita" : "decrementa",
+			"click #incrementa-quantita" : "incrementa",
+			"click .card" : "cacheProdotto"
+		},
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.carrello;
-
+			
 			$("#content").empty();
 			document.getElementById("titolo").innerHTML = "Carrello";
 			$("#titolo").css("line-height", "unset");
@@ -30,22 +41,11 @@ define(function(require) {
 			});
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
-
+			
 			this.collection = new Carrello();
 			this.collection.carica();
 			this.errore = new ErroreView();
 			this.listenTo(this.collection, "add change remove", this.render);
-		},
-
-		id : "carrello-view",
-
-		// className : "i-g page",
-
-		events : {
-			"click #rimuovi-prodotto" : "rimuovi",
-			"click #decrementa-quantita" : "decrementa",
-			"click #incrementa-quantita" : "incrementa",
-			"click .card" : "cacheProdotto"
 		},
 
 		render : function() {
@@ -68,6 +68,9 @@ define(function(require) {
 			return this;
 		},
 
+		/**
+		 * Rimuove il Prodotto dal Carrello
+		 */
 		rimuovi : function(e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -77,6 +80,9 @@ define(function(require) {
 			this.collection.rimuoviProdotto(prodotto);
 		},
 
+		/**
+		 * Decrementa la quantita' del Prodotto in questione
+		 */
 		decrementa : function(e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -87,6 +93,9 @@ define(function(require) {
 			this.collection.aggiornaProdotto(prodotto);
 		},
 
+		/**
+		 * Incrementa la quantita' del Prodotto in questione
+		 */
 		incrementa : function(e) {
 			e.preventDefault();
 			e.stopPropagation();

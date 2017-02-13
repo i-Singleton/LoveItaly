@@ -23,6 +23,10 @@ define(function(require) {
 			this.$el.attr("href", "#schedaProdotto");
 		},
 
+		/**
+		 * Se non e' disponibile l'immagine o si verifica un errore,
+		 * mostra un'immagine di errore da locale
+		 */
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template(this.model.toJSON());

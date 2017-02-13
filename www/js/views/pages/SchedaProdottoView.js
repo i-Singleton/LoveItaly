@@ -13,6 +13,16 @@ define(function(require) {
 
 		model : Prodotto,
 
+		id : "scheda-prodotto-view",
+		
+		// className : "",
+		
+		events : {
+			"click #decrementa-quantita" : "decrementa",
+			"click #incrementa-quantita" : "incrementa",
+			"click #aggiungi-al-carrello" : "aggiungiAlCarrello"
+		},
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.schedaProdotto;
@@ -36,16 +46,6 @@ define(function(require) {
 			this.carousel = new CarouselView();
 			this.spinner = new PreloaderCircolareView();
 
-		},
-
-		id : "scheda-prodotto-view",
-
-		// className : "",
-
-		events : {
-			"click #decrementa-quantita" : "decrementa",
-			"click #incrementa-quantita" : "incrementa",
-			"click #aggiungi-al-carrello" : "aggiungiAlCarrello"
 		},
 
 		render : function() {

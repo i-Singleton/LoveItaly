@@ -22,7 +22,6 @@ define(function(require) {
 		initialize : function(options) {
 			// load the precompiled template
 			this.template = Utils.templates.prodottoLista;
-//			this.$el.attr("data-id", this.model.get("id"));
 			this.$el.attr("href", "#schedaProdotto");
 		},
 

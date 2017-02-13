@@ -23,6 +23,10 @@ define(function(require) {
 			this.template = Utils.templates.carouselImmagine;
 		},
 
+		/**
+		 * Effettua un controllo e nel caso in cui l'immagine non viene ricevuta,
+		 * carica da locale un'immagine placeholder
+		 */
 		render : function(url_immagine) {
 			// load the template
 			this.el.innerHTML = this.template();

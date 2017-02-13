@@ -56,15 +56,14 @@ define(function(require) {
 			// Caricamento della Barra di Ricerca
 			// nascondo l'icona cerca
 			$("#cerca").css("display", "none");
-			// carico il template della barra di ricerca
-			$("#titolo").html(this.barraRicerca.render().$el);
-			// metto il focus sull'input
-			$("#barra-ricerca input").focus();
-			$("#barra-ricerca").css("background-color", "#4caf50");
+			this.barraRicerca.render();
 
 			return this;
 		},
 		
+		/**
+		 * Aggiorna graficamente i risultati dopo un sync
+		 */
 		updateResults : function() {
 			// jquery remove, rimuove l'eventuale ErroreView residua
 			this.error.remove();
@@ -73,7 +72,6 @@ define(function(require) {
 			this.$("#col-sx").empty();
 			this.$("#col-dx").empty();
 			// aggiorno la lista risultati, se ce ne sono
-			//this.collection = this.barraRicerca.collection;
 			this.el.innerHTML = this.template({
 				quantita_risultati : this.collection.length
 			});
@@ -115,16 +113,30 @@ define(function(require) {
 			prodotto.salva();
 		},
 		
+		/**
+		 * Filtra per prezzo crescente
+		 */
 		filtra : function() {
 			this.collection.sortByPriceAsc();
 			this.updateAfterFilter();
 		},
 		
+		/**
+		 * Filtra per prezzo decrescente
+		 */
 		filtraDesc : function() {
 			this.filtra();
 			this.updateAfterFilter(true);
 		},
 		
+		/**
+		 * Aggiorna graficamente i risultati dopo un filtro
+		 * 
+		 * @param desc bool, di default non impostato.
+		 * 
+		 * Se si passa false, la Collection viene scandita da length - 1
+		 * a 0, altrimenti di default scandisce normalmente da 0 a length - 1
+		 */
 		updateAfterFilter : function(desc) {
 			this.$("#col-sx").empty();
 			this.$("#col-dx").empty();

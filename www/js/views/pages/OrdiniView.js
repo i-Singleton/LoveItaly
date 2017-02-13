@@ -8,7 +8,13 @@ define(function(require) {
 		constructorName : "OrdiniView",
 
 		// model : MyModel,
+		
+		// id : "",
+		
+		// className : "",
 
+		events : {},
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.ordini;
@@ -28,23 +34,11 @@ define(function(require) {
 			$("#content").scrollTop(0);
 		},
 
-		// id : "myview",
-		// className : "i-g page",
-
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
-
 		render : function() {
 			$(this.el).html(this.template());
 			return this;
-		},
-
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+		}
+		
 	});
 
 	return OrdiniView;

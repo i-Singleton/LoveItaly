@@ -80,6 +80,10 @@ define(function(require) {
 			return this;
 		},
 
+		/**
+		 * Conferma la spesa (ordine) effettuata, e ripristina allo stato neutro
+		 * il Carrello e la form
+		 */
 		confermaOrdine : function() {
 			if (!this.$("#conferma-ordine").hasClass("disabled")) {
 				// qui va l'inoltro dell'ordine, ma non e' da implementare in quanto 
@@ -91,13 +95,16 @@ define(function(require) {
 				this.model.removeGuest();
 				this.carrello.svuota();
 				this.resetForm();
-				Backbone.history.navigate("ordini", {
+				Backbone.history.navigate("home", {
 					trigger : true
 				});
 			}else
 				this.validaForm();				
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 */
 		validaNome : function() {
 			var nome = this.$("#first_name").val();			
 			var regex = /^[a-zA-Z]+$/;
@@ -110,11 +117,12 @@ define(function(require) {
 				this.$("#nome-error").css("display", "block");
 			
 			this.form.nome = correct;
-			//this.update();
 			this.checkConfermaButton();
-			//return correct;
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 */
 		validaCognome : function() {
 			var cognome = this.$("#last_name").val();
 			var regex = /^[a-zA-Z]+$/;
@@ -127,11 +135,12 @@ define(function(require) {
 				this.$("#cognome-error").css("display", "block");
 			
 			this.form.cognome = correct;
-			//this.update();
 			this.checkConfermaButton();
-			//return correct;
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 */
 		validaEmail : function() {
 			var email = this.$("#email").val();
 			var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -144,11 +153,12 @@ define(function(require) {
 				this.$("#email-error").css("display", "block");
 			this.$("#email-usata").css("display", "none");
 			this.form.email = correct;
-			//this.update();
 			this.checkConfermaButton();
-			//return correct;
 		},
 		
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 */
 		validaIndirizzo : function() {
 			var indirizzo = this.$("#indirizzo").val();			
 			var regex1 = /^[a-zA-Z0-9 ]+$/;
@@ -162,11 +172,12 @@ define(function(require) {
 			}else
 				this.$("#indirizzo-error").css("display", "block");
 			this.form.indirizzo = correct1 && correct2;
-			//this.update();
 			this.checkConfermaButton();
-			//return correct1 && correct2;
 		},
 		
+		/**
+		 * Controlla la validita' del dato impostato
+		 */
 		validaCitta : function() {
 			var citta = $("#citta option:selected").val() || this.model.get("citta");
 			var correct = false;
@@ -178,12 +189,12 @@ define(function(require) {
 			else
 				correct = false;
 			this.form.citta = correct;
-			console.log("citta "+citta+": ", this.form.citta)
 			this.checkConfermaButton();
-			//this.update();
-			//return correct;
 		},
 		
+		/**
+		 * Controlla la validita' del dato impostato
+		 */
 		validaPagamento : function() {
 			// Non c'e necessita', la modalita' richiesta e' solo il
 			// pagamento in contrassegno, che e' impostato di default.
@@ -193,11 +204,12 @@ define(function(require) {
 			this.model.set("pagamento", pagamento);
 			this.model.update();
 			this.form.pagamento = correct;
-			//this.update();
 			this.checkConfermaButton();
-			//return correct;
 		},
 		
+		/**
+		 * Ripristina la form allo stato neutro
+		 */
 		resetForm : function() {
 			this.form.nome = null; 
 			this.form.cognome = null;
@@ -207,6 +219,12 @@ define(function(require) {
 			this.form.pagamento = true;
 		},
 		
+		/**
+		 * Valida la form ed abilita eventualmente
+		 * il pulsante per proseguire
+		 * 
+		 * @return bool
+		 */
 		validaForm : function() {
 			this.validaNome(); 
 			this.validaCognome();
@@ -218,6 +236,12 @@ define(function(require) {
 			this.checkConfermaButton();
 		},
 		
+		/**
+		 * Controlla la validita' dei dati inseriti ed abilita
+		 * eventualmente il pulsante per proseguire
+		 * 
+		 * @return bool
+		 */
 		checkConfermaButton : function() {
 			if(	this.form.nome == true
 					&& this.form.cognome == true

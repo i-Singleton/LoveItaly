@@ -19,6 +19,10 @@ define(function(require) {
 		
 		collection : ListaCategorie,
 
+		events : {
+			"click li" : "cacheCategoria"
+		},
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.categorie;
@@ -41,10 +45,6 @@ define(function(require) {
 			this.collection = new ListaCategorie();
 			this.collection.getResult();
 			this.listenTo(this.collection, "sync", this.render);
-		},
-
-		events : {
-			"click li" : "cacheCategoria"
 		},
 
 		render : function() {

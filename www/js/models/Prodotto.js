@@ -24,7 +24,7 @@ define(function(require) {
 		},
 
 		/**
-		 * Salva il Prodotto nel db locale
+		 * Salva il Prodotto in locale
 		 * 
 		 */
 		salva : function() {
@@ -32,7 +32,7 @@ define(function(require) {
 		},
 
 		/**
-		 * Carica il Prodotto dal db locale
+		 * Carica il Prodotto da locale
 		 * 
 		 * @return this
 		 */
@@ -90,12 +90,9 @@ define(function(require) {
 		 * @return array
 		 */
 		getImmagini : function() {
-			// abilito solo l'immagine di default, in quanto le altre
-			// spesso sono immagini correlate e non del prodotto stesso
-			if (this.get("immagini").length > 1) {
-//				console.log("immagini: ", this.get("immagini"));
+			if (this.get("immagini").length > 1) 
 				return this.get("immagini");
-			}
+			
 			return [ this.get("immagine_default") ];
 		},
 

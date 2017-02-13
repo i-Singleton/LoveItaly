@@ -23,6 +23,15 @@ define(function(require) {
 			this.template = Utils.templates.errore;
 		},
 
+		/**
+		 * In base alla stringa passata:
+		 * 
+		 * - risultato
+		 * - carrello
+		 * - connessione
+		 * 
+		 * renderizza i corrispondenti immagini e messaggi testuali
+		 */
 		render : function(string) {
 			var params;
 			if (string == "risultato") {

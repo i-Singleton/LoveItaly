@@ -8,7 +8,7 @@ define(function(require) {
 
 		constructorName : "Utente",
 		
-		// lato server e' "customer"
+		// Lato server e' "customer"
 		customer : {
 			"customer" : {
 				"id" : "",
@@ -130,9 +130,10 @@ define(function(require) {
 		},
 		
 		loginAfterRegistration : function() {
-			var encrypted_password = md5(window.encryptionKey + this.get("password"));
+			var password = this.get("password");
+			var encrypted_password = md5(window.encryptionKey + password);
 			this.set("password", encrypted_password);
-			this.setPasswordOscurata(this.get("password").length);
+			this.setPasswordOscurata(password.length);
 			localStorage.setItem(this.constructorName, JSON.stringify(this));
 		},
 		
@@ -178,74 +179,12 @@ define(function(require) {
 				sessionStorage.setItem("Guest", JSON.stringify(this));
 		},
 		
+		/**
+		 * Rimuove l'utente Guest
+		 */
 		removeGuest : function() {
 			sessionStorage.removeItem("Guest");
 		},
-		
-//		updateCustomer : function(utente) {
-//			if (this.get("nome") == utente.get("nome") &&
-//				this.get("cognome") == utente.get("cognome") &&
-//				this.get("email") == utente.get("email") &&
-//				this.get("password") == utente.get("password") &&
-//				this.get("indirizzo") == utente.get("indirizzo") &&
-//				this.get("citta") == utente.get("citta") &&
-//				this.get("pagamento") == utente.get("pagamento")) {
-//				return false;
-//			} else {
-//				var old = {
-//					nome : this.get("nome"),
-//					cognome : this.get("cognome"),
-//					email : this.get("email"),
-//					password : this.get("password"),
-//					indirizzo : this.get("indirizzo"),
-//					citta : this.get("citta"),
-//					pagamento : this.get("pagamento"),
-//				};
-//				this.set({
-//					nome : utente.get("nome"),
-//					cognome : utente.get("cognome"),
-//					email : utente.get("email"),
-//					password : utente.get("password"),
-//					indirizzo : utente.get("indirizzo"),
-//					citta : utente.get("citta"),
-//					pagamento : utente.get("pagamento"),
-//				});
-//				
-//				this.setCustomerInfo();
-//				
-//				// uso il convertitore json xml
-//				// perche' accetta solo xml
-//				var x2js = new X2JS();
-//				var xml_customer = x2js.json2xml_str( this.customer );
-//				xml_customer = '<prestashop>' + xml_customer + '</prestashop>';
-//				
-//				this.url = window.baseUrl 
-//		    	+ '/customers/' 
-//		    	+ this.getId() 
-//		    	+ '/?xml=content' 
-//		    	+ '&ws_key='
-//		    	+ window.apiKey;
-//		    	
-//		    	this.set("registrato", "");
-//		    	var t = this;
-//		    	var salvato;
-//		    	$.put(this.url, xml_customer)
-//		    	.done(function() {
-//		    		salvato = true;
-//		    		// la put e' andata a buon fine, aggiorno in locale
-//		    		localStorage.setItem(t.constructorName, JSON.stringify(t));
-//		    		t.set("registrato", salvato);
-//		    		//console.log("salvato: ", salvato);
-//		    		return salvato;
-//				})
-//				.fail(function() {
-//					salvato = false;
-//					t.set("registrato", salvato);
-//					//console.log("salvato: ", salvato);
-//					return salvato;
-//				});
-//			}
-//		},
 		
 		/**
 		 * Effettua la registrazione di un Utente.
@@ -309,40 +248,9 @@ define(function(require) {
 					t.set(factory, false);
 					available = false;
 				}
-				//console.log("(ajax) email disponibile: ", t.get("email"));
 				return available;
 			});
-		},		
-		
-//		getLastCustomerId : function() {
-//			this.url = window.baseUrl
-//			+ '/customers/?io_format=JSON&limit=1&sort=[id_DESC]'
-//			+ '&ws_key=' 
-//			+ window.apiKey;
-//			
-//			var id = null;
-//			var t = this;
-//			$.get(this.url, function(data_returned){
-//				console.log("last id: " + JSON.stringify(data_returned));
-//				t.customer = data_returned["customers"];
-//				last_id = t.customer[0]["id"];
-//				id = last_id + 1;
-//				console.log("updated id: " + id);
-//			})
-//			.done(function() {
-//				if(id != null && id.toString().length > 0){
-//					console.log("current id: " + id);
-//				    
-//				    t.saveCustomer();
-//				}
-//			})
-//			.fail(function() {
-//			    //alert( "error" );
-//			})
-//			.always(function() {
-//				//alert( "finished" );
-//			});			
-//		},
+		},
 
 		/**
 		 * Salva sul server il customer, dopo averlo convertito in xml
@@ -352,18 +260,13 @@ define(function(require) {
 		saveCustomer : function() {
 			this.setCustomerInfo();
 			
-			//console.log('customer model: ' + JSON.stringify(this.customer));
-			//console.log('customer email: ' + this.customer["customer"]["email"]);			
-			
 			// uso il convertitore json xml
 			// perche' accetta solo xml
 			var x2js = new X2JS();
 			var xml_customer = x2js.json2xml_str( this.customer );
 			xml_customer = '<prestashop>' + xml_customer + '</prestashop>';
 			
-			//console.log('customer xml: ' + xml_customer);			
-			
-	    	this.url = window.baseUrl 
+			this.url = window.baseUrl 
 	    	+ '/customers/?xml=content' 
 	    	+ '&ws_key='
 	    	+ window.apiKey;
@@ -375,13 +278,11 @@ define(function(require) {
 	    	.done(function() {
 	    		salvato = true;
 	    		t.set("registrato", salvato);
-	    		//console.log("salvato: ", salvato);
 	    		return salvato;
 			})
 			.fail(function() {
 				salvato = false;
 				t.set("registrato", salvato);
-				//console.log("salvato: ", salvato);
 				return salvato;
 			});
 		},

@@ -55,22 +55,6 @@ define(function(require) {
 			this.currentView = undefined;
 		},
 
-		// myView: function() {
-		// // highlight the nav1 tab bar element as the current one
-		// this.structureView.setActiveTabBarElement("nav1");
-		// // create a model with an arbitrary attribute for testing the
-		// template engine
-		// var model = new MyModel({
-		// key: "testValue"
-		// });
-		// // create the view
-		// var page = new MyView({
-		// model: model
-		// });
-		// // show the view
-		// this.changePage(page);
-		// },
-
 		// load the structure view
 		showStructure : function() {
 			if (!this.structureView) {

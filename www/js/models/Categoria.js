@@ -12,7 +12,7 @@ define(function(require) {
 		},
 		
 		/**
-		 * Salva la Categoria nel db locale
+		 * Salva la Categoria in locale
 		 * 
 		 */
 		salva : function() {
@@ -20,7 +20,7 @@ define(function(require) {
 		},
 
 		/**
-		 * Carica la Categoria dal db locale
+		 * Carica la Categoria da locale
 		 * 
 		 * @return this
 		 */

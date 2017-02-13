@@ -16,7 +16,7 @@ define(function(require) {
 		events : {
 			"click #menu-list a" : "waitAndHideMenu",
 			"click #menu-accedi a" : "hideAndDisableMenu",
-			"click #disconnetti" : "logout",
+			"click #disconnetti" : "logout"
 		},
 
 		initialize : function(options) {
@@ -43,7 +43,7 @@ define(function(require) {
 		 * tutto il lag, grazie a un'attesa totalmente impercettibile
 		 * all'utente, nonche' migliora il comfort visivo.
 		 * 
-		 * un decimo di secondo
+		 * Ritrazione menu di un decimo di secondo
 		 * 
 		 */
 		waitAndHideMenu : function() {
@@ -57,6 +57,9 @@ define(function(require) {
 			}, 100);
 		},
 
+		/**
+		 * Ritrae e disabilita il menu
+		 */
 		hideAndDisableMenu : function() {
 			var t = this;
 			setTimeout(function() {
@@ -65,10 +68,16 @@ define(function(require) {
 			}, 100);
 		},
 		
+		/**
+		 * Disabilita il menu (non permette di draggarlo)
+		 */
 		disableMenu : function() {			
 			$(".drag-target").css("left", "-10px");
 		},
 
+		/**
+		 * Viene richiamato alla pressione del corrispondente pulsante nel menu
+		 */
 		logout : function() {
 			this.model.logout();
 			var toastContent = 'Disconnessione effettuata';
@@ -81,10 +90,13 @@ define(function(require) {
 				this.$("#ordini").attr("href", "#accedi");
 				this.$("#disconnetti").css("display", "none");
 				this.$("#accedi").css("display", "block");
-				//this.$("#utente-info").html("");
 			}, 100);
 		},
 
+		/**
+		 * Viene richiamato internamente a questa classe ed imposta gli elementi grafici
+		 * in base se risulta essere loggato o meno
+		 */
 		checkLogged : function() {
 			if (this.model.isLogged()) {
 				this.$("#accedi").css("display", "none");
@@ -98,6 +110,7 @@ define(function(require) {
 				this.$("#ordini").attr("href", "#accedi");
 			}
 		}
+		
 	});
 
 	return StructureView;

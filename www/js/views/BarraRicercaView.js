@@ -25,12 +25,14 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.barraRicerca;
 			this.collection = new ListaProdotti();	
-//			this.caricaUltimaRicerca();
 		},
 
 		render : function() {
 			// load the template
 			this.el.innerHTML = this.template({});
+			$("#titolo").html(this.el);
+			this.focusInput();
+			this.caricaUltimaRicerca();
 			return this;
 		},
 
@@ -49,32 +51,28 @@ define(function(require) {
 
 		resetInput : function(event) {
 			$("#barra-ricerca input").val("");
+			sessionStorage.removeItem("ultimaRicerca");
 		},
 		
 		search : function(event) {
-			// Disabilitare l'if per effettuare la richiesta ajax ogni carattere che si digita
-			// Effettua la richiesta ajax alla pressione del pulsante invio
-			if(event.which == 13) {
-				var stringa = $("#barra-ricerca input").val();
+			var stringa = this.$("#barra-ricerca input").val();
+			if(event.which == 13 && stringa.length) {
 				this.collection.getResult("Cerca", stringa);
-//				this.salvaStringaUltimaRicerca(stringa);				
+				this.salvaUltimaRicerca(stringa);				
 			}
 		},
 		
-//		salvaStringaUltimaRicerca : function(stringa){
-//			localStorage.setItem(this.constructorName, stringa);			
-//		},
-//		
-//		caricaUltimaRicerca : function(){
-//			// se contiene qualcosa, allora carica lo stringa
-//			var ricercaJSONString = null;
-//			var stringa = "";
-//			if((ricercaJSONString = localStorage.getItem(this.constructorName)) != null){
-//				stringa = JSON.parse(ricercaJSONString);
-//				$("#barra-ricerca input").val(stringa);				
-//			}
-//			this.collection.getResult("Cerca", stringa);
-//		}
+		salvaUltimaRicerca : function(stringa){
+			sessionStorage.setItem("ultimaRicerca", stringa);
+		},
+		
+		caricaUltimaRicerca : function(){
+			var stringa;
+			if((stringa = sessionStorage.getItem("ultimaRicerca")) != null){
+				$("#barra-ricerca input").val(stringa);				
+				this.collection.getResult("Cerca", stringa);
+			}
+		}
 
 	});
 

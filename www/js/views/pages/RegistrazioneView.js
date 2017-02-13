@@ -40,7 +40,6 @@ define(function(require) {
 		events : {
 			"click #chiudi-registrazione-view" : "chiudi",
 			"focus input" : "focus",
-			//"blur input" : "blur",
 			"click #registrati" : "registra",
 			"blur #first_name" : "validaNome",
 			"blur #last_name" : "validaCognome",
@@ -70,6 +69,10 @@ define(function(require) {
 			$("#content").scrollTop(0);
 		},
 
+		/**
+		 * Quando un input e' focus, imposta lo stesso
+		 * in modo tale da essere al di sopra della tastiera
+		 */
 		focus : function(e) {
 			this.$("#logo").css("display", "none");
 			var offset = $(e.currentTarget).offset().top;
@@ -78,11 +81,28 @@ define(function(require) {
 			$("#content").scrollTop(spostamento);
 		},
 
+		/**
+		 * Ripristina dal metodo focus
+		 */
 		blur : function() {
 			this.$("#logo").css("display", "block");
 			$("#content").scrollTop(0);
+		},		
+		
+		/**
+		 * Controlla se la form e' valida, e poi e inoltra la registrazione
+		 */
+		registra : function() {
+			this.blur();
+			if (this.formIsValid()) {
+				this.spinner.trasparente().render();				
+				this.model.registra();
+			}
 		},
 		
+		/**
+		 * Controlla se la registrazione e' andata a buon fine o meno
+		 */
 		conferma : function() {
 			if (this.model.get("registrato") == true) {
 				var toastContent = 'Registrazione effettuata';
@@ -95,22 +115,18 @@ define(function(require) {
 				$("#disconnetti").css("display", "block");
 				$("#profilo").attr("href", "#profilo");
 				$("#ordini").attr("href", "#ordini");
-				//$("#utente-info").html(this.model.get("nome"));
 			} else if(this.model.get("registrato") == false) {
 				var toastContent = 'Registrazione non effettuata, riprovare';
 				Materialize.toast(toastContent, 5000);
 			}
 			this.spinner.rimuovi();
 		},
-
-		registra : function() {
-			this.blur();
-			if (this.formIsValid()) {
-				this.spinner.trasparente().render();				
-				this.model.registra();
-			}
-		},
 		
+		/**
+		 * Controlla la validita' dei dati inseriti nella form
+		 * 
+		 * @return bool
+		 */
 		formIsValid : function() {
 			if (	this.form.nome == true 
 					&& this.form.cognome == true
@@ -134,6 +150,11 @@ define(function(require) {
 				return false;
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 * 
+		 * @return bool
+		 */
 		validaNome : function() {
 			var nome = this.$("#first_name").val();			
 			var regex = /^[a-zA-Z]+$/;
@@ -143,10 +164,14 @@ define(function(require) {
 			else
 				this.$("#nome-error").css("display", "block");
 			
-			//console.log("nome: ", correct);
 			return this.form.nome = correct;
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 * 
+		 * @return bool
+		 */
 		validaCognome : function() {
 			var cognome = this.$("#last_name").val();
 			var regex = /^[a-zA-Z]+$/;
@@ -156,12 +181,15 @@ define(function(require) {
 			else
 				this.$("#cognome-error").css("display", "block");
 			
-			//console.log("cognome: ", correct);
 			return this.form.cognome = correct;
 		},
 
+		/**
+		 * Controlla la disponibilita' sul server della mail
+		 * 
+		 * @return bool
+		 */
 		emailUsata : function() {
-			//console.log("model get email: ", this.model.get("email"));
 			var usata;
 			if(this.model.get("email") == false){
 				this.$("#email-error").css("display", "none");
@@ -172,14 +200,19 @@ define(function(require) {
 				this.$("#email-usata").css("display", "none");
 				usata = false;
 			}
+			
 			return this.form.email.usata = usata;
 		},
 		
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 * 
+		 * @return bool
+		 */
 		validaEmail : function() {
 			var email = this.$("#email").val();
 			var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var correct = regex.test(email);
-			//console.log("email regex validation: ", correct);
 			if (correct) {
 				this.$("#email-error").css("display", "none");
 				this.model.emailAvailable(email);
@@ -187,9 +220,15 @@ define(function(require) {
 				this.$("#email-error").css("display", "block");
 			}
 			this.$("#email-usata").css("display", "none");
+			
 			return this.form.email.valida = correct;
 		},
 
+		/**
+		 * Controlla la validita' sintattica del dato inserito nell'input
+		 * 
+		 * @return bool
+		 */
 		validaPassword : function() {
 			var password = this.$("#password").val();
 			var correct = (password.length >= 6);
@@ -197,7 +236,7 @@ define(function(require) {
 				this.$("#password-error").css("display", "none");
 			else
 				this.$("#password-error").css("display", "block");
-			//console.log("password: ", correct);
+			
 			return this.form.password = correct;
 		},
 

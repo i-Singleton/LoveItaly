@@ -9,6 +9,10 @@ define(function(require) {
 
 		// model : MyModel,
 
+		// id : "",
+		
+		// className : "",
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.copertina;
@@ -16,23 +20,13 @@ define(function(require) {
 			$("#content").empty();
 		},
 
-		// id : "myview",
-		// className : "i-g page",
-
-		events : {
-		// "tap #goToMap" : "goToMap"
-		},
+		events : {},
 
 		render : function() {
 			$(this.el).html(this.template());
 			return this;
-		},
-
-	// goToMap : function(e) {
-	// Backbone.history.navigate("map", {
-	// trigger : true
-	// });
-	// }
+		}
+		
 	});
 
 	return CopertinaView;

@@ -73,6 +73,9 @@ define(function(require) {
 	    	//console.log('fetch error');
 	    },
 	    
+	    /**
+	     * Effettua una fetch in base ai parametri passati
+	     */
 	    getResult : function(factory, keyword) {
 	    	if(factory == "Cerca" && keyword.length){
 				this.url = window.baseUrl 
@@ -112,6 +115,10 @@ define(function(require) {
 	    	});	    	
 	    },
 	    
+	    /**
+	     * Filtro
+	     * Ordina per prezzo crescente
+	     */
 	    sortByPriceAsc : function() {
 	    	this.comparator = "prezzo";
 	    	this.sort();
