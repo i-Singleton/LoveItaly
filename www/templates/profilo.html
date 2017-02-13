@@ -4,10 +4,10 @@
 			type="text" value="{{nome}}" placeholder="Inserisci nome" disabled>
 		<label class="active" for="first_name">Nome</label>
 	</div>
-	<div class="input-field col s6" style="padding-left: 10px;">
+	<div class="input-field col s6" id="col-cognome">
 		<input id="last_name" type="text" value="{{cognome}}"
 			placeholder="Inserisci cognome" disabled> <label
-			class="active" for="last_name" style="left: 32px;">Cognome</label>
+			class="active" for="last_name">Cognome</label>
 	</div>
 </div>
 
@@ -42,7 +42,7 @@
 </div>
 
 <div class="row">
-	<i class="material-icons" style="margin-top: 8px; position: absolute;">payment</i>
+	<i id="icona-pagamento" class="material-icons">payment</i>
 	<select id="pagamento">
 		<option selected>Pagamento in contrassegno</option>
 		<option disabled>Pagamento con carta di credito</option>

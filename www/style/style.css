@@ -141,7 +141,6 @@ body {
 }
 /* ombra nav headbar */
 #headbar nav {
-	/* box-shadow: 0 2px 4px 0px rgba(0,0,0,0.16),0 4px 9px 0 rgba(0,0,0,0.12); */
 	
 }
 /* grandezza icone headbar */
@@ -165,10 +164,7 @@ body {
 #headbar a:hover {
 	background-color: unset;
 }
-/* abilito il comportamento active quando tappo */
-/* #headbar a:active {
-	background-color: green;
-} */
+
 /* annullo il comportamento hover */
 #content a:hover {
 	background-color: unset;
@@ -180,9 +176,6 @@ body {
 }
 /* menu laterale */
 #mobile-demo {
-	/* position: absolute;
-	height: 100%;
-	transform: translateX(-100%); */
 	top: 0px;
 	overflow-y: hidden;
 	height: 100%;
@@ -196,10 +189,7 @@ body {
 	height: 64px;
 	line-height: 65px;
 }
-/* abilito il comportamento active quanto tappo */
-/* #mobile-demo a:active {
-	background-color: #d4d4d4;
-} */
+
 /* marigini icone menu laterale */
 #mobile-demo i {
 	margin-right: 30px;
@@ -216,6 +206,10 @@ body {
 	font-size: 24px;
 	height: 120px;
 	padding-top: 24px;
+}
+
+#menu-header img {
+	margin: 18px 0px 0px -5px;
 }
 
 #menu-list {
@@ -250,14 +244,11 @@ body {
 }
 /* div che si scurisce per effetto fading del menu */
 #sidenav-overlay {
-	/* display: none; */
 	z-index: 998;
 }
 /* classe per div che si scurisce per effetto fading del menu */
 .drag-target {
-	/* display: none; */
 	z-index: 999;
-	/* top: 56px; */
 	top: 80px;
 }
 
@@ -266,7 +257,7 @@ body {
 		/* top: 64px; */
 		
 	}
-	/* quando il browser android supporterà calc(), decommentare */
+	/* con calc() */
 	/* #menu-list {
 		height: calc(100% - 64px);
 		height: -moz-calc(100% - 64px);
@@ -312,15 +303,7 @@ body {
 	}
 }
 
-/* #cerca {
-	padding: 0 8px 0 15px;
-}
-
-#carrello {
-	padding: 0 15px 0 8px;
-} */
-
-/* HOME da qui in poi */
+/* HOME */
 /* cards */
 #home-view {
 	padding: 10px;
@@ -340,11 +323,9 @@ body {
 
 #home-view .card .card-title {
 	font-size: unset;
-	/* font-weight: bold; */
 }
 
 #home-view #home-row {
-	/*padding-bottom: 50px;*/
 	margin-bottom: 0;	
 }
 
@@ -372,11 +353,9 @@ body {
 
 #cerca-view .card .card-title {
 	font-size: unset;
-	/* font-weight: bold; */
 }
 
 #cerca-view #cerca-row {
-	/*padding-bottom: 50px;*/
 	
 }
 
@@ -490,7 +469,6 @@ body {
 	background-color: unset;
 	display: block;
 	padding: 10px 20px 0px 20px;
-	/* padding: 15px 20px 5px 20px; */
 }
 
 #categorie-view li a {
@@ -526,8 +504,6 @@ body {
 
 /* Profilo */
 .input-field {
-	/*margin: 0;
-	margin-left: 10px !important;*/
 	
 }
 
@@ -547,7 +523,7 @@ body {
 	color: #9e9e9e;
 }
 
-/* class valid, esce la cosa verde sotto
+/* class valid di materialize, border-bottom green
 
 border-bottom: 1px solid #4CAF50;
 box-shadow: 0 1px 0 0 #4CAF50;
@@ -568,7 +544,6 @@ box-shadow: 0 1px 0 0 #4CAF50;
 
 /* ----------------profilo 2---------------- */
 #profilo-view {
-	/* background-color: #eeeeee; */
 	height: calc(100% - 7px);
 	padding: 0;
 	margin-top: 7px;
@@ -582,6 +557,18 @@ box-shadow: 0 1px 0 0 #4CAF50;
 	padding: 0;
 }
 
+#profilo-view #col-cognome {
+	padding-left: 10px;
+}
+
+#profilo-view #col-cognome label {
+	left: 32px;
+}
+
+#profilo-view #icona-pagamento {
+	margin-top: 8px; position: absolute;
+}
+
 #profilo-view ul {
 	/*box-shadow: 0 2px 2px #aaaaaa;*/
 	padding-bottom: 1px;
@@ -593,15 +580,7 @@ box-shadow: 0 1px 0 0 #4CAF50;
 	padding: 10px 20px 0px 0px;
 	border: 0;
 }
-/*
-#profilo-view .collection-header {
-	border: 0px none;
-	color: #388e3c;
-	font-weight: bold !important;
-	padding: 15px 0px 0px 30px;
-	font-size: 13px;
-}
-*/
+
 #profilo-view i {
 	margin-left: 12px;
 	color: rgba(0, 0, 0, 0.54);
@@ -620,16 +599,6 @@ box-shadow: 0 1px 0 0 #4CAF50;
 #profilo-view #last_name {
 	margin-left: 22px;
 }
-
-/* #profilo-view select {
-	display: block;
-	padding: 0;
-	margin-left: 62px;
-	width: calc(100% - 62px);
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-} */
 
 #profilo-view .select-dropdown {
 	margin-bottom: 0;
@@ -847,20 +816,13 @@ select:focus {
 
 #carrello-view .card-action a {
 	margin: 0px;
-	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
-	/*background-color: #f8f8f8;*/
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 #carrello-view .card-action i {
-	/*margin: 0px;*/
-	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
-	/*border-radius: 50%;*/
-	/*margin-top: 6px;*/
 	
 }
 
@@ -874,7 +836,6 @@ select:focus {
 }
 
 #carrello-view #incrementa-quantita {
-	/*float: right;*/
 	
 }
 
@@ -908,7 +869,6 @@ select:focus {
 
 /* Riepilogo */
 #riepilogo-view {
-	/*background-color: rgb(238, 238, 238);*/
 	padding: 0;
 	height: calc(100% - 7px);
 	margin-top: 7px;
@@ -922,6 +882,18 @@ select:focus {
 	padding: 0;
 }
 
+#riepilogo-view #col-cognome {
+	padding-left: 10px;
+}
+
+#riepilogo-view #col-cognome label {
+	left: 32px;
+}
+
+#riepilogo-view #icona-pagamento {
+	margin-top: 8px; position: absolute;
+}
+
 #riepilogo-view .form-error {
 	color: red;
 	font-size: 11px;
@@ -931,12 +903,15 @@ select:focus {
 	display: none;
 }
 
+#riepilogo-view #nome-error {
+	right: -22px;
+}
+
 /*#riepilogo-view*/ .caret {
 	right: 14px !important;
 }
 
 #riepilogo-view ul {
-	/*box-shadow: 0 2px 2px #aaaaaa;*/
 	padding-bottom: 1px;
 	border: 0;
 }
@@ -946,15 +921,7 @@ select:focus {
 	padding: 10px 20px 0px 0px;
 	border: 0;
 }
-/*
-#riepilogo-view .collection-header {
-	border: 0px none;
-	color: #388e3c;
-	font-weight: bold !important;
-	padding: 15px 0px 0px 30px;
-	font-size: 13px;
-}
-*/
+
 #riepilogo-view i {
 	margin-left: 12px;
 	color: rgba(0, 0, 0, 0.54);
@@ -965,7 +932,6 @@ select:focus {
 }
 
 #riepilogo-view input {
-	/*padding-left: 12px;*/
 	border-color: #f2f2f2;
 	margin-left: 64px;
 }
@@ -973,16 +939,6 @@ select:focus {
 #riepilogo-view #last_name {
 	margin-left: 22px;
 }
-
-/* #riepilogo-view select {
-	display: block;
-	padding: 0;
-	margin-left: 62px;
-	width: calc(100% - 62px);
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-} */
 
 #riepilogo-view .select-dropdown {
 	margin-bottom: 0;
@@ -1053,11 +1009,8 @@ select:focus {
 
 #scheda-prodotto-view #modifica-quantita a {
 	margin: 0px;
-	/*color: rgba(0, 0, 0, 0.54);*/
 	color: #343434;
 	padding: 0 10px;
-	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
-	/*background-color: #f8f8f8;*/
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }

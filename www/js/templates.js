@@ -10,7 +10,6 @@
 //  - value: the path of the html file containing the HTML fragment of the template
 define({
 	structure : "templates/structure.html",
-	myview : "templates/myview.html",
 	/**
 	 * elementi
 	 */
@@ -19,7 +18,6 @@ define({
 	carousel : "templates/carousel.html",
 	carouselImmagine : "templates/carouselImmagine.html",
 	errore : "templates/errore.html",
-	menuLaterale : "templates/menuLaterale.html",
 	preloaderCircolare : "templates/preloaderCircolare.html",
 	prodottoCard : "templates/prodottoCard.html",
 	prodottoCarrello : "templates/prodottoCarrello.html",
