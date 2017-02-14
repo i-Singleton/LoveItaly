@@ -21,6 +21,7 @@ define(function(require) {
 	var CopertinaView = require("views/pages/CopertinaView");
 	var HomeView = require("views/pages/HomeView");
 	var OrdiniView = require("views/pages/OrdiniView");
+	var ProdottiAziendaView = require("views/pages/ProdottiAziendaView");
 	var ProdottiCategoriaView = require("views/pages/ProdottiCategoriaView");
 	var ProfiloView = require("views/pages/ProfiloView");
 	var RegistrazioneView = require("views/pages/RegistrazioneView");
@@ -42,6 +43,7 @@ define(function(require) {
 			"copertina" : "copertina",
 			"home" : "home",
 			"ordini" : "ordini",
+			"prodottiAzienda/:id_azienda" : "prodottiAzienda",
 			"prodottiCategoria/:id_categoria" : "prodottiCategoria",
 			"profilo" : "profilo",
 			"registrazione" : "registrazione",
@@ -141,6 +143,16 @@ define(function(require) {
 			}
 		},
 		
+		prodottiAzienda : function(id_azienda) {
+			// create the view and show it
+			var page = new ProdottiAziendaView({id_azienda:id_azienda});
+			this.changePage(page);
+			if (navigator.connection.type == Connection.NONE){
+				var errorView = new ErroreView();
+				errorView.render("connessione");					
+			}
+		},
+		
 		prodottiCategoria : function(id_categoria) {
 			// create the view and show it
 			var page = new ProdottiCategoriaView({id_categoria:id_categoria});
@@ -155,10 +167,6 @@ define(function(require) {
 			// create the view and show it
 			var page = new ProfiloView();
 			this.changePage(page);
-			if (navigator.connection.type == Connection.NONE){
-				var errorView = new ErroreView();
-				errorView.render("connessione");					
-			}
 		},
 
 		registrazione : function() {

@@ -14,6 +14,8 @@ define(function(require) {
 		tagName: "a",
 
 		// id : "prodottoCard",
+		
+		// className : "",
 
 		events : {},
 

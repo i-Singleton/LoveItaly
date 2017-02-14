@@ -14,6 +14,14 @@ define(function(require) {
 
 		collection : ListaProdotti,
 
+		id : "home-view",
+		
+		// className : "",
+		
+		events : {
+			"click .card" : "cacheProdotto"
+		},
+		
 		initialize : function() {
 			// load the precompiled template
 			this.template = Utils.templates.home;
@@ -47,14 +55,6 @@ define(function(require) {
 									t.collection.getResult("Home");
 								}
 							});
-		},
-
-		id : "home-view",
-
-		// className : "",
-
-		events : {
-			"click .card" : "cacheProdotto"
 		},
 
 		render : function() {

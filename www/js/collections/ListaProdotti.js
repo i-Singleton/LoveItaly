@@ -109,6 +109,15 @@ define(function(require) {
 				+ '&ws_key=' 
 				+ window.apiKey;
 			}
+	    	if(factory == "Aziende" && keyword.length){
+				var id = keyword;
+				this.url = window.baseUrl 
+				+ '/products/?io_format=JSON&display=full'
+				+ '&filter[id_manufacturer]='
+				+ id
+				+ '&ws_key=' 
+				+ window.apiKey;
+			}
 	    	this.fetch({
 	    		success: this.fetchSuccess,
 	    		error: this.fetchError

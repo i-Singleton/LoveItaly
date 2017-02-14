@@ -13,6 +13,7 @@ define({
 	/**
 	 * elementi
 	 */
+	aziendaElemento : "templates/aziendaElemento.html",
 	barraRicerca : "templates/barraRicerca.html",
 	categoriaElementoLista : "templates/categoriaElementoLista.html",
 	carousel : "templates/carousel.html",
@@ -33,6 +34,7 @@ define({
 	copertina : "templates/copertina.html",
 	home : "templates/home.html",
 	ordini : "templates/ordini.html",
+	prodottiAzienda : "templates/prodottiAzienda.html",
 	prodottiCategoria : "templates/prodottiCategoria.html",
 	profilo : "templates/profilo.html",
 	registrazione : "templates/registrazione.html",

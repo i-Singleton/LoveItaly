@@ -23,7 +23,6 @@ define(function(require) {
 			// load the precompiled template
 			this.template = Utils.templates.categoriaElementoLista;
 			this.$el.attr("data-id", this.model.get("id"));
-//			this.$el.attr("data-nome", this.model.get("nome"));
 		},
 
 		render : function() {

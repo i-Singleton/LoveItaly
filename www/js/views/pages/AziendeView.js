@@ -2,18 +2,24 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Utils = require("utils");
+	var ListaAziende = require("collections/ListaAziende");
+	var PreloaderCircolareView = require("views/PreloaderCircolareView");
+	var AziendaElementoView = require("views/AziendaElementoView");
+	var Azienda = require("models/Azienda");
 
 	var AziendeView = Utils.Page.extend({
 
 		constructorName : "AziendeView",
 
-		// model : MyModel,
+		collection : ListaAziende,
 
-		// id : "",
+		id : "aziende-view",
 		
 		// className : "",
 
-		events : {},
+		events : {
+			"click a" : "cacheAzienda"
+		},
 		
 		initialize : function() {
 			// load the precompiled template
@@ -32,11 +38,47 @@ define(function(require) {
 			});
 			$(".drag-target").css("left", "0px");
 			$("#content").scrollTop(0);
+			
+			this.spinner = new PreloaderCircolareView();
+			this.collection = new ListaAziende();
+			this.collection.getResult();
+			this.listenTo(this.collection, "sync", this.render);
 		},
 
 		render : function() {
-			$(this.el).html(this.template());
+			// load the template
+			this.el.innerHTML = this.template({});
+			
+			this.spinner.render();
+			
+			var sx = true;
+			for (var i = 0; i < this.collection.length; i++) {
+				var aziendaElementoView = new AziendaElementoView({
+					model : this.collection.at(i)
+				});
+				if (sx) {
+					this.$("#sx").append(aziendaElementoView.render().$el);
+					sx = false;
+				} else {
+					this.$("#dx").append(aziendaElementoView.render().$el);
+					sx = true;
+				}
+			}
+			
+			this.spinner.rimuovi();
+
 			return this;
+		},
+		
+		/**
+		 * Salva nel db locale l'Azienda per evitare una seconda richiesta
+		 * superflua verso il server; e' gia' in nostro possesso la Categoria
+		 */
+		cacheAzienda : function(e) {
+			var id = $(e.currentTarget).data("id");
+			var azienda = new Azienda();
+			azienda = this.collection.get(id);
+			azienda.salva();
 		}
 		
 	});
